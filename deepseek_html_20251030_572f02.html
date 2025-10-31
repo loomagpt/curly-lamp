@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProntoGiftCard - Cartes-cadeaux numériques et recharges</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-black: #121212;
+            --primary-gold: #D4AF37;
+            --gold-light: #F4E4A8;
+            --gold-dark: #B8860B;
+            --gray-light: #F5F5F5;
+            --gray-medium: #E0E0E0;
+            --gray-dark: #757575;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --error: #F44336;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gray-light);
+            color: var(--primary-black);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-black);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-gold);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .language-currency {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        select {
+            background-color: var(--primary-black);
+            color: white;
+            border: 1px solid var(--gray-dark);
+            padding: 0.3rem;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-black) 0%, #2c2c2c 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%23D4AF37" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background-color: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-gold);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-card p {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image {
+            height: 180px;
+            background-color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dark);
+        }
+
+        .product-image i {
+            font-size: 3rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-black);
+        }
+
+        .buy-button {
+            background-color: var(--primary-black);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .buy-button:hover {
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 2rem;
+            background-color: var(--gray-light);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .step h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--gray-dark);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 2rem;
+            background-color: white;
+        }
+
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+        }
+
+        .testimonial-card {
+            background-color: var(--gray-light);
+            padding: 2rem;
+            border-radius: 10px;
+            min-width: 300px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-gold);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.5;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--gray-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dark);
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-gold);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-medium);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .steps {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .step {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .header-actions .language-currency {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .categories-grid, .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero, .categories, .featured-products, .how-it-works, .testimonials {
+                padding: 3rem 1rem;
+            }
+            
+            .categories-grid, .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Alert Styles */
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .alert-success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .alert-warning {
+            background-color: rgba(255, 152, 0, 0.1);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .alert-error {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: var(--error);
+            border: 1px solid var(--error);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-dark);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-gold);
+            color: var(--primary-black);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gold-light);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-medium);
+            color: var(--primary-black);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--gray-dark);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+                <h1>ProntoGiftCard</h1>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="active">Accueil</a>
+                <a href="#">Produits</a>
+                <a href="#">Comment ça marche</a>
+                <a href="#">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="language-currency">
+                    <select id="language-select">
+                        <option value="fr">Français</option>
+                        <option value="ht">Kreyòl</option>
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="de">Deutsch</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                    
+                    <select id="currency-select">
+                        <option value="USD">USD</option>
+                        <option value="HTG">HTG</option>
+                        <option value="EUR">EUR</option>
+                        <option value="CAD">CAD</option>
+                        <option value="GBP">GBP</option>
+                        <option value="MXN">MXN</option>
+                    </select>
+                </div>
+                
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="fade-in">Cartes-cadeaux numériques et recharges instantanées</h2>
+            <p class="fade-in">Achetez plus de 500 produits numériques - cartes-cadeaux, abonnements, recharges téléphoniques, VPN et plus encore</p>
+            <a href="#" class="cta-button fade-in">Explorer les produits</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="section-title">
+            <h2>Catégories de produits</h2>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card slide-in-left">
+                <div class="category-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Cartes-cadeaux</h3>
+                <p>Netflix, Spotify, Amazon, Apple et plus</p>
+            </div>
+            
+            <div class="category-card slide-in-left">
+                <div class="category-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Recharges téléphoniques</h3>
+                <p>Natcom, Digicel et opérateurs internationaux</p>
+            </div>
+            
+            <div class="category-card slide-in-right">
+                <div class="category-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Plateformes de streaming</h3>
+                <p>Netflix, Disney+, HBO Max, YouTube Premium</p>
+            </div>
+            
+            <div class="category-card slide-in-right">
+                <div class="category-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Services VPN</h3>
+                <p>NordVPN, ExpressVPN, CyberGhost et plus</p>
+            </div>
+            
+            <div class="category-card slide-in-left">
+                <div class="category-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Outils de productivité</h3>
+                <p>Office 365, Adobe Creative Cloud, etc.</p>
+            </div>
+            
+            <div class="category-card slide-in-left">
+                <div class="category-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3>Services de musique</h3>
+                <p>Spotify, Apple Music, YouTube Music</p>
+            </div>
+            
+            <div class="category-card slide-in-right">
+                <div class="category-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Cartes de jeu</h3>
+                <p>Steam, PlayStation, Xbox, Nintendo</p>
+            </div>
+            
+            <div class="category-card slide-in-right">
+                <div class="category-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <h3>Packs promotionnels</h3>
+                <p>Combinaisons et offres groupées</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="section-title">
+            <h2>Produits populaires</h2>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card fade-in">
+                <div class="product-badge">Populaire</div>
+                <div class="product-image">
+                    <i class="fab fa-netflix"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Carte-cadeau Netflix 25$</h3>
+                    <p>Profitez de films et séries sans publicité</p>
+                    <div class="product-price">
+                        <span class="price">25.00 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fab fa-spotify"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Abonnement Spotify Premium 3 mois</h3>
+                    <p>Écoutez de la musique sans publicité</p>
+                    <div class="product-price">
+                        <span class="price">29.97 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-badge">Nouveau</div>
+                <div class="product-image">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Abonnement NordVPN 1 an</h3>
+                    <p>Protégez votre vie privée en ligne</p>
+                    <div class="product-price">
+                        <span class="price">59.88 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fab fa-microsoft"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Microsoft Office 365 Personnel</h3>
+                    <p>Accédez aux applications Office complètes</p>
+                    <div class="product-price">
+                        <span class="price">69.99 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fab fa-google-play"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Carte Google Play 15$</h3>
+                    <p>Achetez des applications, jeux et plus</p>
+                    <div class="product-price">
+                        <span class="price">15.00 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-badge">Économique</div>
+                <div class="product-image">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Recharge Digicel 10$</h3>
+                    <p>Rechargez votre téléphone Digicel</p>
+                    <div class="product-price">
+                        <span class="price">10.00 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fab fa-disney"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Abonnement Disney+ 1 mois</h3>
+                    <p>Regardez des films Disney, Marvel, Star Wars</p>
+                    <div class="product-price">
+                        <span class="price">7.99 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="product-info">
+                    <h3>Pack Streaming Premium</h3>
+                    <p>Netflix + Spotify + Disney+ pour 3 mois</p>
+                    <div class="product-price">
+                        <span class="price">49.99 $</span>
+                        <button class="buy-button">Acheter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-title">
+            <h2>Comment ça marche</h2>
+        </div>
+        
+        <div class="steps">
+            <div class="step fade-in">
+                <div class="step-number">1</div>
+                <h3>Choisissez votre produit</h3>
+                <p>Parcourez notre catalogue de plus de 500 produits numériques</p>
+            </div>
+            
+            <div class="step fade-in">
+                <div class="step-number">2</div>
+                <h3>Passez votre commande</h3>
+                <p>Sélectionnez votre produit et passez à la caisse</p>
+            </div>
+            
+            <div class="step fade-in">
+                <div class="step-number">3</div>
+                <h3>Effectuez le paiement</h3>
+                <p>Payez via votre méthode préférée</p>
+            </div>
+            
+            <div class="step fade-in">
+                <div class="step-number">4</div>
+                <h3>Recevez instantanément</h3>
+                <p>Obtenez votre produit numérique immédiatement après paiement</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>Témoignages clients</h2>
+        </div>
+        
+        <div class="testimonials-container">
+            <div class="testimonial-card slide-in-left">
+                <div class="testimonial-text">
+                    J'ai acheté une carte-cadeau Netflix et je l'ai reçue instantanément. Service rapide et fiable !
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Marie L.</h4>
+                        <p>Port-au-Prince, Haïti</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card slide-in-left">
+                <div class="testimonial-text">
+                    Excellent service client. Ils m'ont aidé lorsque j'ai eu un problème avec ma recharge téléphonique.
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Jean P.</h4>
+                        <p>Montréal, Canada</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card slide-in-right">
+                <div class="testimonial-text">
+                    J'utilise ProntoGiftCard depuis des mois pour acheter des cartes Steam. Toujours rapide et sans problème.
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Alex D.</h4>
+                        <p>Paris, France</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card slide-in-right">
+                <div class="testimonial-text">
+                    Le meilleur site pour les produits numériques. Large sélection et prix compétitifs.
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="author-info">
+                        <h4>Sophie M.</h4>
+                        <p>New York, USA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>ProntoGiftCard</h3>
+                <p>Votre destination de confiance pour les produits numériques. Plus de 500 cartes-cadeaux, recharges et abonnements disponibles.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Liens rapides</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Produits</a></li>
+                    <li><a href="#">Catégories</a></li>
+                    <li><a href="#">Comment ça marche</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Catégories</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Cartes-cadeaux</a></li>
+                    <li><a href="#">Recharges téléphoniques</a></li>
+                    <li><a href="#">Services de streaming</a></li>
+                    <li><a href="#">Abonnements VPN</a></li>
+                    <li><a href="#">Outils de productivité</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Informations légales</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Politique de remboursement</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 ProntoGiftCard. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Language Modal -->
+    <div class="modal" id="language-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Changer de langue</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <p>Sélectionnez votre langue préférée :</p>
+            <select id="modal-language-select" style="width: 100%; margin: 1rem 0; padding: 0.5rem;">
+                <option value="fr">Français</option>
+                <option value="ht">Kreyòl Ayisyen</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="zh">中文</option>
+                <option value="ja">日本語</option>
+            </select>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Annuler</button>
+                <button class="btn btn-primary" id="confirm-language">Confirmer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currency Modal -->
+    <div class="modal" id="currency-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Changer de devise</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <p>Sélectionnez votre devise préférée :</p>
+            <select id="modal-currency-select" style="width: 100%; margin: 1rem 0; padding: 0.5rem;">
+                <option value="USD">USD ($)</option>
+                <option value="HTG">HTG (G)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="CAD">CAD (C$)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="MXN">MXN ($)</option>
+            </select>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Annuler</button>
+                <button class="btn btn-primary" id="confirm-currency">Confirmer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Votre panier</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div id="cart-items">
+                <p>Votre panier est vide</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Continuer les achats</button>
+                <button class="btn btn-primary" id="checkout-btn">Passer à la caisse</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Parse SDK Initialization
+        Parse.initialize("YOUR_APP_ID", "YOUR_JAVASCRIPT_KEY");
+        Parse.serverURL = 'https://parseapi.back4app.com/';
+
+        // DOM Elements
+        const languageSelect = document.getElementById('language-select');
+        const currencySelect = document.getElementById('currency-select');
+        const cartIcon = document.querySelector('.cart-icon');
+        const cartCount = document.querySelector('.cart-count');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const buyButtons = document.querySelectorAll('.buy-button');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const languageModal = document.getElementById('language-modal');
+        const currencyModal = document.getElementById('currency-modal');
+        const cartModal = document.getElementById('cart-modal');
+        const confirmLanguageBtn = document.getElementById('confirm-language');
+        const confirmCurrencyBtn = document.getElementById('confirm-currency');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const modalLanguageSelect = document.getElementById('modal-language-select');
+        const modalCurrencySelect = document.getElementById('modal-currency-select');
+
+        // Cart state
+        let cart = [];
+
+        // Language and currency state
+        let currentLanguage = 'fr';
+        let currentCurrency = 'USD';
+
+        // Event Listeners
+        languageSelect.addEventListener('click', () => {
+            languageModal.style.display = 'flex';
+        });
+
+        currencySelect.addEventListener('click', () => {
+            currencyModal.style.display = 'flex';
+        });
+
+        cartIcon.addEventListener('click', () => {
+            updateCartModal();
+            cartModal.style.display = 'flex';
+        });
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        buyButtons.forEach(button => {
+            button.addEventListener('click', addToCart);
+        });
+
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                languageModal.style.display = 'none';
+                currencyModal.style.display = 'none';
+                cartModal.style.display = 'none';
+            });
+        });
+
+        confirmLanguageBtn.addEventListener('click', confirmLanguageChange);
+        confirmCurrencyBtn.addEventListener('click', confirmCurrencyChange);
+        checkoutBtn.addEventListener('click', proceedToCheckout);
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === languageModal) languageModal.style.display = 'none';
+            if (e.target === currencyModal) currencyModal.style.display = 'none';
+            if (e.target === cartModal) cartModal.style.display = 'none';
+        });
+
+        // Functions
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const languageCurrency = document.querySelector('.header-actions .language-currency');
+            
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            languageCurrency.style.display = languageCurrency.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function addToCart(e) {
+            const productCard = e.target.closest('.product-card');
+            const productName = productCard.querySelector('h3').textContent;
+            const productPrice = productCard.querySelector('.price').textContent;
+            
+            // Extract numeric price
+            const price = parseFloat(productPrice.replace(/[^0-9.]/g, ''));
+            
+            // Add to cart
+            cart.push({
+                name: productName,
+                price: price,
+                currency: currentCurrency
+            });
+            
+            // Update cart count
+            cartCount.textContent = cart.length;
+            
+            // Show success message
+            showAlert('Produit ajouté au panier avec succès!', 'success');
+            
+            // Animate cart icon
+            cartIcon.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                cartIcon.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        function updateCartModal() {
+            const cartItems = document.getElementById('cart-items');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Votre panier est vide</p>';
+                checkoutBtn.disabled = true;
+                return;
+            }
+            
+            let itemsHTML = '';
+            let total = 0;
+            
+            cart.forEach((item, index) => {
+                itemsHTML += `
+                    <div class="cart-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        <div>
+                            <h4 style="margin: 0;">${item.name}</h4>
+                            <p style="margin: 0; color: var(--gray-dark);">${item.price} ${item.currency}</p>
+                        </div>
+                        <button class="remove-item" data-index="${index}" style="background: none; border: none; color: var(--error); cursor: pointer;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                total += item.price;
+            });
+            
+            itemsHTML += `
+                <div style="display: flex; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--primary-gold); font-weight: bold;">
+                    <span>Total:</span>
+                    <span>${total.toFixed(2)} ${currentCurrency}</span>
+                </div>
+            `;
+            
+            cartItems.innerHTML = itemsHTML;
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const index = parseInt(e.target.closest('.remove-item').dataset.index);
+                    cart.splice(index, 1);
+                    cartCount.textContent = cart.length;
+                    updateCartModal();
+                });
+            });
+            
+            checkoutBtn.disabled = false;
+        }
+
+        function confirmLanguageChange() {
+            currentLanguage = modalLanguageSelect.value;
+            languageSelect.value = currentLanguage;
+            languageModal.style.display = 'none';
+            
+            // In a real implementation, this would update all text on the page
+            showAlert(`Langue changée en ${getLanguageName(currentLanguage)}`, 'success');
+        }
+
+        function confirmCurrencyChange() {
+            currentCurrency = modalCurrencySelect.value;
+            currencySelect.value = currentCurrency;
+            currencyModal.style.display = 'none';
+            
+            // In a real implementation, this would update all prices on the page
+            showAlert(`Devise changée en ${currentCurrency}`, 'success');
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) return;
+            
+            // In a real implementation, this would redirect to the checkout page
+            // For now, we'll just show a success message and clear the cart
+            showAlert('Redirection vers la page de commande...', 'success');
+            
+            // Simulate saving order to Back4App
+            saveOrderToBack4App();
+            
+            // Clear cart
+            cart = [];
+            cartCount.textContent = '0';
+            cartModal.style.display = 'none';
+        }
+
+        function saveOrderToBack4App() {
+            // This is a simulation - in a real implementation, this would save to Back4App
+            const Order = Parse.Object.extend("Order");
+            const order = new Order();
+            
+            order.set("products", cart);
+            order.set("total", cart.reduce((sum, item) => sum + item.price, 0));
+            order.set("currency", currentCurrency);
+            order.set("status", "pending");
+            order.set("customerContact", "");
+            
+            order.save().then((order) => {
+                console.log('Order saved to Back4App:', order.id);
+            }, (error) => {
+                console.error('Error saving order to Back4App:', error);
+            });
+        }
+
+        function showAlert(message, type) {
+            // Create alert element
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            // Add to page
+            document.body.appendChild(alert);
+            
+            // Position at top
+            alert.style.position = 'fixed';
+            alert.style.top = '80px';
+            alert.style.left = '50%';
+            alert.style.transform = 'translateX(-50%)';
+            alert.style.zIndex = '3000';
+            alert.style.maxWidth = '90%';
+            alert.style.width = 'auto';
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                alert.style.opacity = '0';
+                alert.style.transition = 'opacity 0.5s';
+                setTimeout(() => {
+                    document.body.removeChild(alert);
+                }, 500);
+            }, 3000);
+        }
+
+        function getLanguageName(code) {
+            const languages = {
+                'fr': 'Français',
+                'ht': 'Kreyòl Ayisyen',
+                'en': 'English',
+                'es': 'Español',
+                'de': 'Deutsch',
+                'zh': '中文',
+                'ja': '日本語'
+            };
+            return languages[code] || code;
+        }
+
+        // Initialize page with animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add animation to elements when they come into view
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements that should animate on scroll
+            document.querySelectorAll('.category-card, .product-card, .step, .testimonial-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
