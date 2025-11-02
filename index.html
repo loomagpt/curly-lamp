@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProntoGiftCard - Cartes-cadeaux numériques et recharges</title>
+    <title>ProntoGiftCards - Cartes-cadeaux et recharges numériques</title>
+    <meta name="description" content="Achetez des cartes-cadeaux numériques, recharges mobiles et abonnements. Livraison instantanée 24/7.">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -11,14 +12,13 @@
             --primary-black: #121212;
             --primary-gold: #D4AF37;
             --gold-light: #F4E4A8;
-            --gold-dark: #B8860B;
             --gray-light: #F5F5F5;
             --gray-medium: #E0E0E0;
             --gray-dark: #757575;
             --success: #4CAF50;
-            --warning: #FF9800;
             --error: #F44336;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --warning: #FF9800;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
 
@@ -35,9 +35,9 @@
             line-height: 1.6;
         }
 
-        /* Header Styles */
+        /* Header */
         header {
-            background-color: var(--primary-black);
+            background: var(--primary-black);
             color: white;
             padding: 1rem 2rem;
             position: sticky;
@@ -50,7 +50,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -58,6 +58,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
+            color: white;
         }
 
         .logo i {
@@ -80,65 +82,46 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
-            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary-gold);
-        }
-
-        .nav-links a.active {
-            color: var(--primary-gold);
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.1);
         }
 
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
-        .language-currency {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        select {
-            background-color: var(--primary-black);
-            color: white;
-            border: 1px solid var(--gray-dark);
-            padding: 0.3rem;
-            border-radius: 4px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .cart-icon {
+        .cart-icon, .user-icon {
             position: relative;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .cart-icon:hover, .user-icon:hover {
+            background: rgba(212, 175, 55, 0.1);
         }
 
         .cart-count {
             position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--primary-gold);
+            top: -5px;
+            right: -5px;
+            background: var(--primary-gold);
             color: var(--primary-black);
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             font-weight: bold;
         }
 
@@ -149,6 +132,29 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
         }
 
         /* Hero Section */
@@ -157,26 +163,8 @@
             color: white;
             padding: 4rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%23D4AF37" opacity="0.1"/></svg>');
-            background-size: cover;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+            border-radius: 15px;
+            margin-bottom: 3rem;
         }
 
         .hero h2 {
@@ -193,38 +181,35 @@
 
         .cta-button {
             display: inline-block;
-            background-color: var(--primary-gold);
+            background: var(--primary-gold);
             color: var(--primary-black);
             padding: 0.8rem 2rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: var(--transition);
-            box-shadow: var(--shadow);
         }
 
         .cta-button:hover {
-            background-color: var(--gold-light);
-            transform: translateY(-3px);
+            background: var(--gold-light);
+            transform: translateY(-2px);
         }
 
-        /* Categories Section */
+        /* Categories */
         .categories {
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            margin: 3rem 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+            margin-bottom: 2rem;
         }
 
         .section-title h2 {
             font-size: 2rem;
             font-weight: 700;
             display: inline-block;
+            position: relative;
         }
 
         .section-title h2::after {
@@ -235,28 +220,27 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--primary-gold);
+            background: var(--primary-gold);
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
 
         .category-card {
-            background-color: white;
+            background: white;
+            padding: 2rem;
             border-radius: 10px;
-            overflow: hidden;
+            text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            text-align: center;
-            padding: 2rem 1rem;
+            cursor: pointer;
         }
 
         .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
         }
 
         .category-icon {
@@ -265,32 +249,16 @@
             margin-bottom: 1rem;
         }
 
-        .category-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .category-card p {
-            color: var(--gray-dark);
-            font-size: 0.9rem;
-        }
-
-        /* Featured Products */
-        .featured-products {
-            padding: 4rem 2rem;
-            background-color: white;
-        }
-
+        /* Products Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
         .product-card {
-            background-color: white;
+            background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -300,14 +268,13 @@
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
         .product-badge {
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: var(--primary-gold);
+            background: var(--primary-gold);
             color: var(--primary-black);
             padding: 0.3rem 0.7rem;
             border-radius: 20px;
@@ -317,16 +284,13 @@
         }
 
         .product-image {
-            height: 180px;
-            background-color: var(--gray-light);
+            height: 160px;
+            background: var(--gray-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray-dark);
-        }
-
-        .product-image i {
             font-size: 3rem;
+            color: var(--gray-dark);
         }
 
         .product-info {
@@ -338,177 +302,291 @@
             margin-bottom: 0.5rem;
         }
 
-        .product-info p {
+        .product-description {
             color: var(--gray-dark);
             font-size: 0.9rem;
             margin-bottom: 1rem;
+            height: 40px;
+            overflow: hidden;
         }
 
         .product-price {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
-        }
-
-        .price {
+            font-size: 1.3rem;
             font-weight: 700;
-            font-size: 1.2rem;
             color: var(--primary-black);
+            margin: 0.5rem 0;
         }
 
-        .buy-button {
-            background-color: var(--primary-black);
+        .view-button {
+            width: 100%;
+            background: var(--primary-black);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.7rem;
             border-radius: 5px;
             cursor: pointer;
-            transition: var(--transition);
             font-weight: 500;
+            transition: var(--transition);
         }
 
-        .buy-button:hover {
-            background-color: var(--primary-gold);
+        .view-button:hover {
+            background: var(--primary-gold);
             color: var(--primary-black);
         }
 
-        /* How It Works */
-        .how-it-works {
-            padding: 4rem 2rem;
-            background-color: var(--gray-light);
-        }
-
-        .steps {
+        /* Product Detail Page */
+        .product-detail {
             display: flex;
-            justify-content: space-between;
-            max-width: 1000px;
-            margin: 0 auto;
-            gap: 2rem;
+            gap: 3rem;
+            margin-top: 2rem;
         }
 
-        .step {
-            text-align: center;
+        .product-image-large {
+            flex: 1;
+            height: 400px;
+            background: var(--gray-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: var(--gray-dark);
+        }
+
+        .product-detail-info {
             flex: 1;
         }
 
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-gold);
-            color: var(--primary-black);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-weight: 700;
-            font-size: 1.2rem;
+        .product-detail-info h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .step h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .step p {
+        .product-detail-description {
             color: var(--gray-dark);
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 4rem 2rem;
-            background-color: white;
-        }
-
-        .testimonials-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            padding: 1rem 0;
-        }
-
-        .testimonial-card {
-            background-color: var(--gray-light);
-            padding: 2rem;
-            border-radius: 10px;
-            min-width: 300px;
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-text {
-            font-style: italic;
             margin-bottom: 1.5rem;
-            position: relative;
+            line-height: 1.8;
         }
 
-        .testimonial-text::before {
-            content: '"';
-            font-size: 3rem;
-            color: var(--primary-gold);
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            opacity: 0.5;
+        .product-price-large {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
 
-        .testimonial-author {
+        .quantity-selector {
             display: flex;
             align-items: center;
             gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .author-avatar {
-            width: 50px;
-            height: 50px;
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
-            background-color: var(--gray-medium);
+            background: var(--gray-medium);
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray-dark);
+            cursor: pointer;
+            font-weight: bold;
         }
 
-        .author-info h4 {
-            font-weight: 600;
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid var(--gray-medium);
+            border-radius: 5px;
+            padding: 0.5rem;
+            font-size: 1rem;
         }
 
-        .author-info p {
-            color: var(--gray-dark);
-            font-size: 0.9rem;
+        .fee-breakdown {
+            background: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .fee-breakdown h3 {
+            margin-bottom: 1rem;
+        }
+
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .fee-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-medium);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--primary-black);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+        }
+
+        .btn-secondary {
+            background: var(--gray-medium);
+            color: var(--primary-black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-dark);
+            color: white;
+        }
+
+        /* Netflix Account Form */
+        .account-form {
+            background: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .account-form h3 {
+            margin-bottom: 1rem;
+        }
+
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .warning i {
+            color: var(--warning);
+            margin-right: 0.5rem;
+        }
+
+        /* Cart */
+        .cart-items {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-medium);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .checkout-form {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--gray-medium);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Auth */
+        .auth-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .auth-container h2 {
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-black);
+            background: var(--primary-black);
             color: white;
-            padding: 4rem 2rem 2rem;
+            padding: 3rem 2rem 2rem;
+            margin-top: 4rem;
         }
 
-        .footer-container {
-            max-width: 1400px;
+        .footer-content {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--primary-gold);
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
         }
 
         .footer-links {
@@ -516,7 +594,7 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
 
         .footer-links a {
@@ -527,239 +605,81 @@
 
         .footer-links a:hover {
             color: var(--primary-gold);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-gold);
-            color: var(--primary-black);
         }
 
         .copyright {
             text-align: center;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             color: var(--gray-medium);
-            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .steps {
-                flex-direction: column;
-                gap: 3rem;
-            }
-            
-            .step {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links, .header-actions .language-currency {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-            }
-            
-            .categories-grid, .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero, .categories, .featured-products, .how-it-works, .testimonials {
-                padding: 3rem 1rem;
-            }
-            
-            .categories-grid, .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation Classes */
-        .fade-in {
-            animation: fadeIn 0.8s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .slide-in-left {
-            animation: slideInLeft 0.8s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .slide-in-right {
-            animation: slideInRight 0.8s ease-out;
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Alert Styles */
+        /* Alert */
         .alert {
-            padding: 1rem;
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
             border-radius: 5px;
-            margin: 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            z-index: 1000;
+            animation: slideDown 0.3s ease;
         }
 
         .alert-success {
-            background-color: rgba(76, 175, 80, 0.1);
-            color: var(--success);
-            border: 1px solid var(--success);
-        }
-
-        .alert-warning {
-            background-color: rgba(255, 152, 0, 0.1);
-            color: var(--warning);
-            border: 1px solid var(--warning);
+            background: var(--success);
+            color: white;
         }
 
         .alert-error {
-            background-color: rgba(244, 67, 54, 0.1);
-            color: var(--error);
-            border: 1px solid var(--error);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            border-radius: 10px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: modalFadeIn 0.3s ease-out;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-header h2 {
-            font-size: 1.5rem;
-        }
-
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray-dark);
-        }
-
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .btn {
-            padding: 0.7rem 1.5rem;
-            border-radius: 5px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-gold);
-            color: var(--primary-black);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--gold-light);
-        }
-
-        .btn-secondary {
-            background-color: var(--gray-medium);
-            color: var(--primary-black);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--gray-dark);
+            background: var(--error);
             color: white;
+        }
+
+        @keyframes slideDown {
+            from { transform: translate(-50%, -100%); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-black);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .product-detail {
+                flex-direction: column;
+            }
+
+            .product-image-large {
+                height: 300px;
+                font-size: 5rem;
+            }
         }
     </style>
 </head>
@@ -767,43 +687,30 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <div class="logo">
+            <a href="#" class="logo" onclick="showPage('home')">
                 <i class="fas fa-gift"></i>
-                <h1>ProntoGiftCard</h1>
-            </div>
+                <h1>ProntoGiftCards</h1>
+            </a>
             
             <nav class="nav-links">
-                <a href="#" class="active">Accueil</a>
-                <a href="#">Produits</a>
-                <a href="#">Comment ça marche</a>
-                <a href="#">Contact</a>
+                <a href="#" class="active" onclick="showPage('home')">Accueil</a>
+                <a href="#" onclick="showPage('products')">Produits</a>
+                <a href="#" onclick="showPage('cart')">
+                    <i class="fas fa-shopping-cart"></i> Panier
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="#" onclick="showPage('support')">Support</a>
+                <a href="#" onclick="showPage('login')">Connexion</a>
             </nav>
             
             <div class="header-actions">
-                <div class="language-currency">
-                    <select id="language-select">
-                        <option value="fr">Français</option>
-                        <option value="ht">Kreyòl</option>
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="de">Deutsch</option>
-                        <option value="zh">中文</option>
-                        <option value="ja">日本語</option>
-                    </select>
-                    
-                    <select id="currency-select">
-                        <option value="USD">USD</option>
-                        <option value="HTG">HTG</option>
-                        <option value="EUR">EUR</option>
-                        <option value="CAD">CAD</option>
-                        <option value="GBP">GBP</option>
-                        <option value="MXN">MXN</option>
-                    </select>
-                </div>
-                
-                <div class="cart-icon">
+                <div class="cart-icon" onclick="showPage('cart')">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
+                </div>
+                
+                <div class="user-icon" onclick="showPage('login')">
+                    <i class="fas fa-user"></i>
                 </div>
                 
                 <button class="mobile-menu-btn">
@@ -813,706 +720,899 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2 class="fade-in">Cartes-cadeaux numériques et recharges instantanées</h2>
-            <p class="fade-in">Achetez plus de 500 produits numériques - cartes-cadeaux, abonnements, recharges téléphoniques, VPN et plus encore</p>
-            <a href="#" class="cta-button fade-in">Explorer les produits</a>
-        </div>
-    </section>
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Page -->
+        <div class="page active" id="home-page">
+            <section class="hero">
+                <h2>Cartes-cadeaux numériques instantanées</h2>
+                <p>Achetez et recevez vos cartes-cadeaux en moins de 5 minutes</p>
+                <a href="#" class="cta-button" onclick="showPage('products')">Acheter Maintenant</a>
+            </section>
 
-    <!-- Categories Section -->
-    <section class="categories">
-        <div class="section-title">
-            <h2>Catégories de produits</h2>
-        </div>
-        
-        <div class="categories-grid">
-            <div class="category-card slide-in-left">
-                <div class="category-icon">
-                    <i class="fas fa-gift"></i>
+            <section class="categories">
+                <div class="section-title">
+                    <h2>Catégories Populaires</h2>
                 </div>
-                <h3>Cartes-cadeaux</h3>
-                <p>Netflix, Spotify, Amazon, Apple et plus</p>
-            </div>
-            
-            <div class="category-card slide-in-left">
-                <div class="category-icon">
-                    <i class="fas fa-mobile-alt"></i>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="filterProducts('mobile-recharge')">
+                        <div class="category-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Recharges Mobiles</h3>
+                        <p>Digicel, Natcom, Claro, AT&T</p>
+                    </div>
+                    <div class="category-card" onclick="filterProducts('streaming')">
+                        <div class="category-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>Streaming</h3>
+                        <p>Netflix, Disney+, Spotify, HBO</p>
+                    </div>
+                    <div class="category-card" onclick="filterProducts('gaming')">
+                        <div class="category-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Jeux</h3>
+                        <p>Steam, PlayStation, Xbox</p>
+                    </div>
+                    <div class="category-card" onclick="filterProducts('gift-cards')">
+                        <div class="category-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>Cartes-cadeaux</h3>
+                        <p>Amazon, Google Play, Apple</p>
+                    </div>
                 </div>
-                <h3>Recharges téléphoniques</h3>
-                <p>Natcom, Digicel et opérateurs internationaux</p>
-            </div>
-            
-            <div class="category-card slide-in-right">
-                <div class="category-icon">
-                    <i class="fas fa-film"></i>
-                </div>
-                <h3>Plateformes de streaming</h3>
-                <p>Netflix, Disney+, HBO Max, YouTube Premium</p>
-            </div>
-            
-            <div class="category-card slide-in-right">
-                <div class="category-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Services VPN</h3>
-                <p>NordVPN, ExpressVPN, CyberGhost et plus</p>
-            </div>
-            
-            <div class="category-card slide-in-left">
-                <div class="category-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>Outils de productivité</h3>
-                <p>Office 365, Adobe Creative Cloud, etc.</p>
-            </div>
-            
-            <div class="category-card slide-in-left">
-                <div class="category-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <h3>Services de musique</h3>
-                <p>Spotify, Apple Music, YouTube Music</p>
-            </div>
-            
-            <div class="category-card slide-in-right">
-                <div class="category-icon">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <h3>Cartes de jeu</h3>
-                <p>Steam, PlayStation, Xbox, Nintendo</p>
-            </div>
-            
-            <div class="category-card slide-in-right">
-                <div class="category-icon">
-                    <i class="fas fa-box"></i>
-                </div>
-                <h3>Packs promotionnels</h3>
-                <p>Combinaisons et offres groupées</p>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Featured Products -->
-    <section class="featured-products">
-        <div class="section-title">
-            <h2>Produits populaires</h2>
+            <section class="products">
+                <div class="section-title">
+                    <h2>Produits Populaires</h2>
+                </div>
+                <div class="products-grid" id="featured-products">
+                    <!-- Featured products will load here -->
+                </div>
+            </section>
         </div>
-        
-        <div class="products-grid">
-            <div class="product-card fade-in">
-                <div class="product-badge">Populaire</div>
-                <div class="product-image">
-                    <i class="fab fa-netflix"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Carte-cadeau Netflix 25$</h3>
-                    <p>Profitez de films et séries sans publicité</p>
-                    <div class="product-price">
-                        <span class="price">25.00 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fab fa-spotify"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Abonnement Spotify Premium 3 mois</h3>
-                    <p>Écoutez de la musique sans publicité</p>
-                    <div class="product-price">
-                        <span class="price">29.97 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in">
-                <div class="product-badge">Nouveau</div>
-                <div class="product-image">
-                    <i class="fas fa-wifi"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Abonnement NordVPN 1 an</h3>
-                    <p>Protégez votre vie privée en ligne</p>
-                    <div class="product-price">
-                        <span class="price">59.88 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fab fa-microsoft"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Microsoft Office 365 Personnel</h3>
-                    <p>Accédez aux applications Office complètes</p>
-                    <div class="product-price">
-                        <span class="price">69.99 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fab fa-google-play"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Carte Google Play 15$</h3>
-                    <p>Achetez des applications, jeux et plus</p>
-                    <div class="product-price">
-                        <span class="price">15.00 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in">
-                <div class="product-badge">Économique</div>
-                <div class="product-image">
-                    <i class="fas fa-phone-alt"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Recharge Digicel 10$</h3>
-                    <p>Rechargez votre téléphone Digicel</p>
-                    <div class="product-price">
-                        <span class="price">10.00 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fab fa-disney"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Abonnement Disney+ 1 mois</h3>
-                    <p>Regardez des films Disney, Marvel, Star Wars</p>
-                    <div class="product-price">
-                        <span class="price">7.99 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="product-card fade-in">
-                <div class="product-image">
-                    <i class="fas fa-box"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Pack Streaming Premium</h3>
-                    <p>Netflix + Spotify + Disney+ pour 3 mois</p>
-                    <div class="product-price">
-                        <span class="price">49.99 $</span>
-                        <button class="buy-button">Acheter</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="section-title">
-            <h2>Comment ça marche</h2>
-        </div>
-        
-        <div class="steps">
-            <div class="step fade-in">
-                <div class="step-number">1</div>
-                <h3>Choisissez votre produit</h3>
-                <p>Parcourez notre catalogue de plus de 500 produits numériques</p>
+        <!-- Products Page -->
+        <div class="page" id="products-page">
+            <div class="section-title">
+                <h2>Tous les Produits</h2>
             </div>
-            
-            <div class="step fade-in">
-                <div class="step-number">2</div>
-                <h3>Passez votre commande</h3>
-                <p>Sélectionnez votre produit et passez à la caisse</p>
-            </div>
-            
-            <div class="step fade-in">
-                <div class="step-number">3</div>
-                <h3>Effectuez le paiement</h3>
-                <p>Payez via votre méthode préférée</p>
-            </div>
-            
-            <div class="step fade-in">
-                <div class="step-number">4</div>
-                <h3>Recevez instantanément</h3>
-                <p>Obtenez votre produit numérique immédiatement après paiement</p>
+            <div class="products-grid" id="all-products">
+                <!-- All products will load here -->
             </div>
         </div>
-    </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="section-title">
-            <h2>Témoignages clients</h2>
+        <!-- Product Detail Page -->
+        <div class="page" id="product-detail-page">
+            <!-- Product details will be loaded here dynamically -->
         </div>
-        
-        <div class="testimonials-container">
-            <div class="testimonial-card slide-in-left">
-                <div class="testimonial-text">
-                    J'ai acheté une carte-cadeau Netflix et je l'ai reçue instantanément. Service rapide et fiable !
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>Marie L.</h4>
-                        <p>Port-au-Prince, Haïti</p>
-                    </div>
-                </div>
+
+        <!-- Cart Page -->
+        <div class="page" id="cart-page">
+            <div class="section-title">
+                <h2>Votre Panier</h2>
             </div>
-            
-            <div class="testimonial-card slide-in-left">
-                <div class="testimonial-text">
-                    Excellent service client. Ils m'ont aidé lorsque j'ai eu un problème avec ma recharge téléphonique.
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="author-info">
-                        <h4>Jean P.</h4>
-                        <p>Montréal, Canada</p>
-                    </div>
-                </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will load here -->
             </div>
-            
-            <div class="testimonial-card slide-in-right">
-                <div class="testimonial-text">
-                    J'utilise ProntoGiftCard depuis des mois pour acheter des cartes Steam. Toujours rapide et sans problème.
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
+            <div class="checkout-form">
+                <h3>Informations de Commande</h3>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="name">Nom Complet</label>
+                        <input type="text" id="name" required>
                     </div>
-                    <div class="author-info">
-                        <h4>Alex D.</h4>
-                        <p>Paris, France</p>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
                     </div>
-                </div>
-            </div>
-            
-            <div class="testimonial-card slide-in-right">
-                <div class="testimonial-text">
-                    Le meilleur site pour les produits numériques. Large sélection et prix compétitifs.
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-avatar">
-                        <i class="fas fa-user"></i>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="tel" id="whatsapp" required>
                     </div>
-                    <div class="author-info">
-                        <h4>Sophie M.</h4>
-                        <p>New York, USA</p>
+                    <div class="form-group">
+                        <label for="delivery">Méthode de livraison</label>
+                        <select id="delivery" required>
+                            <option value="email">Email</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="sms">SMS</option>
+                        </select>
                     </div>
-                </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmer la Commande</button>
+                </form>
             </div>
         </div>
-    </section>
+
+        <!-- Login Page -->
+        <div class="page" id="login-page">
+            <div class="auth-container">
+                <h2>Connexion</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Se Connecter</button>
+                </form>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Pas de compte? <a href="#" onclick="showPage('signup')" style="color: var(--primary-gold);">Créer un compte</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Signup Page -->
+        <div class="page" id="signup-page">
+            <div class="auth-container">
+                <h2>Créer un Compte</h2>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Nom Complet</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-whatsapp">WhatsApp</label>
+                        <input type="tel" id="signup-whatsapp" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Mot de passe</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Créer le Compte</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Support Page -->
+        <div class="page" id="support-page">
+            <div class="auth-container">
+                <h2>Support Client</h2>
+                <form id="support-form">
+                    <div class="form-group">
+                        <label for="support-email">Email</label>
+                        <input type="email" id="support-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="support-subject">Sujet</label>
+                        <input type="text" id="support-subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="support-message">Message</label>
+                        <textarea id="support-message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid var(--gray-medium); border-radius: 5px; font-family: 'Poppins', sans-serif;" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-container">
+        <div class="footer-content">
             <div class="footer-column">
-                <h3>ProntoGiftCard</h3>
-                <p>Votre destination de confiance pour les produits numériques. Plus de 500 cartes-cadeaux, recharges et abonnements disponibles.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
+                <h3>ProntoGiftCards</h3>
+                <p>Votre destination de confiance pour les cartes-cadeaux numériques. Livraison instantanée 24h/24.</p>
             </div>
-            
             <div class="footer-column">
-                <h3>Liens rapides</h3>
+                <h3>Liens Rapides</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Produits</a></li>
-                    <li><a href="#">Catégories</a></li>
-                    <li><a href="#">Comment ça marche</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#" onclick="showPage('home')">Accueil</a></li>
+                    <li><a href="#" onclick="showPage('products')">Produits</a></li>
+                    <li><a href="#" onclick="showPage('cart')">Panier</a></li>
+                    <li><a href="#" onclick="showPage('support')">Support</a></li>
                 </ul>
             </div>
-            
             <div class="footer-column">
-                <h3>Catégories</h3>
+                <h3>Contact</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Cartes-cadeaux</a></li>
-                    <li><a href="#">Recharges téléphoniques</a></li>
-                    <li><a href="#">Services de streaming</a></li>
-                    <li><a href="#">Abonnements VPN</a></li>
-                    <li><a href="#">Outils de productivité</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Informations légales</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Conditions d'utilisation</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                    <li><a href="#">Politique de remboursement</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Support</a></li>
+                    <li><i class="fas fa-envelope"></i> support@prontogiftcards.com</li>
+                    <li><i class="fab fa-whatsapp"></i> +509 1234 5678</li>
                 </ul>
             </div>
         </div>
-        
         <div class="copyright">
-            <p>&copy; 2023 ProntoGiftCard. Tous droits réservés.</p>
+            <p>&copy; 2023 ProntoGiftCards. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- Language Modal -->
-    <div class="modal" id="language-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Changer de langue</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <p>Sélectionnez votre langue préférée :</p>
-            <select id="modal-language-select" style="width: 100%; margin: 1rem 0; padding: 0.5rem;">
-                <option value="fr">Français</option>
-                <option value="ht">Kreyòl Ayisyen</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="de">Deutsch</option>
-                <option value="zh">中文</option>
-                <option value="ja">日本語</option>
-            </select>
-            <div class="modal-footer">
-                <button class="btn btn-secondary close-modal">Annuler</button>
-                <button class="btn btn-primary" id="confirm-language">Confirmer</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Currency Modal -->
-    <div class="modal" id="currency-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Changer de devise</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <p>Sélectionnez votre devise préférée :</p>
-            <select id="modal-currency-select" style="width: 100%; margin: 1rem 0; padding: 0.5rem;">
-                <option value="USD">USD ($)</option>
-                <option value="HTG">HTG (G)</option>
-                <option value="EUR">EUR (€)</option>
-                <option value="CAD">CAD (C$)</option>
-                <option value="GBP">GBP (£)</option>
-                <option value="MXN">MXN ($)</option>
-            </select>
-            <div class="modal-footer">
-                <button class="btn btn-secondary close-modal">Annuler</button>
-                <button class="btn btn-primary" id="confirm-currency">Confirmer</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cart Modal -->
-    <div class="modal" id="cart-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Votre panier</h2>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div id="cart-items">
-                <p>Votre panier est vide</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary close-modal">Continuer les achats</button>
-                <button class="btn btn-primary" id="checkout-btn">Passer à la caisse</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Parse SDK Initialization
-        Parse.initialize("YOUR_APP_ID", "YOUR_JAVASCRIPT_KEY");
-        Parse.serverURL = 'https://parseapi.back4app.com/';
-
-        // DOM Elements
-        const languageSelect = document.getElementById('language-select');
-        const currencySelect = document.getElementById('currency-select');
-        const cartIcon = document.querySelector('.cart-icon');
-        const cartCount = document.querySelector('.cart-count');
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const buyButtons = document.querySelectorAll('.buy-button');
-        const closeModalButtons = document.querySelectorAll('.close-modal');
-        const languageModal = document.getElementById('language-modal');
-        const currencyModal = document.getElementById('currency-modal');
-        const cartModal = document.getElementById('cart-modal');
-        const confirmLanguageBtn = document.getElementById('confirm-language');
-        const confirmCurrencyBtn = document.getElementById('confirm-currency');
-        const checkoutBtn = document.getElementById('checkout-btn');
-        const modalLanguageSelect = document.getElementById('modal-language-select');
-        const modalCurrencySelect = document.getElementById('modal-currency-select');
-
-        // Cart state
-        let cart = [];
-
-        // Language and currency state
-        let currentLanguage = 'fr';
-        let currentCurrency = 'USD';
-
-        // Event Listeners
-        languageSelect.addEventListener('click', () => {
-            languageModal.style.display = 'flex';
-        });
-
-        currencySelect.addEventListener('click', () => {
-            currencyModal.style.display = 'flex';
-        });
-
-        cartIcon.addEventListener('click', () => {
-            updateCartModal();
-            cartModal.style.display = 'flex';
-        });
-
-        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-
-        buyButtons.forEach(button => {
-            button.addEventListener('click', addToCart);
-        });
-
-        closeModalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                languageModal.style.display = 'none';
-                currencyModal.style.display = 'none';
-                cartModal.style.display = 'none';
-            });
-        });
-
-        confirmLanguageBtn.addEventListener('click', confirmLanguageChange);
-        confirmCurrencyBtn.addEventListener('click', confirmCurrencyChange);
-        checkoutBtn.addEventListener('click', proceedToCheckout);
-
-        // Close modals when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === languageModal) languageModal.style.display = 'none';
-            if (e.target === currencyModal) currencyModal.style.display = 'none';
-            if (e.target === cartModal) cartModal.style.display = 'none';
-        });
-
-        // Functions
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            const languageCurrency = document.querySelector('.header-actions .language-currency');
+        // Sample product data
+        const products = [
+            // Mobile Recharges - Digicel
+            { 
+                id: 1, 
+                name: "Recharge Digicel $5", 
+                price: 5.00, 
+                category: "mobile-recharge", 
+                provider: "Digicel",
+                icon: "fas fa-mobile-alt", 
+                featured: true,
+                description: "Recharge instantanée pour téléphones Digicel. Valable pour tous les forfaits. Code envoyé immédiatement après paiement."
+            },
+            { 
+                id: 2, 
+                name: "Recharge Digicel $10", 
+                price: 10.00, 
+                category: "mobile-recharge", 
+                provider: "Digicel",
+                icon: "fas fa-mobile-alt", 
+                featured: true,
+                description: "Recharge de $10 pour téléphones Digicel. Parfait pour les appels, SMS et données. Livraison instantanée."
+            },
+            { 
+                id: 3, 
+                name: "Recharge Digicel $15", 
+                price: 15.00, 
+                category: "mobile-recharge", 
+                provider: "Digicel",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge de $15 pour Digicel. Idéal pour les forfaits mensuels ou l'utilisation intensive."
+            },
+            { 
+                id: 4, 
+                name: "Recharge Digicel $20", 
+                price: 20.00, 
+                category: "mobile-recharge", 
+                provider: "Digicel",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge de $20 pour Digicel. Grande valeur pour les utilisateurs fréquents."
+            },
+            { 
+                id: 5, 
+                name: "Recharge Digicel $25", 
+                price: 25.00, 
+                category: "mobile-recharge", 
+                provider: "Digicel",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge premium de $25 pour Digicel. Maximum de crédit en une seule transaction."
+            },
             
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            languageCurrency.style.display = languageCurrency.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function addToCart(e) {
-            const productCard = e.target.closest('.product-card');
-            const productName = productCard.querySelector('h3').textContent;
-            const productPrice = productCard.querySelector('.price').textContent;
+            // Mobile Recharges - Natcom
+            { 
+                id: 6, 
+                name: "Recharge Natcom $5", 
+                price: 5.00, 
+                category: "mobile-recharge", 
+                provider: "Natcom",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge de $5 pour Natcom. Valable pour tous les services Natcom."
+            },
+            { 
+                id: 7, 
+                name: "Recharge Natcom $10", 
+                price: 10.00, 
+                category: "mobile-recharge", 
+                provider: "Natcom",
+                icon: "fas fa-mobile-alt", 
+                featured: true,
+                description: "Recharge de $10 pour Natcom. Parfait pour les besoins de communication quotidiens."
+            },
+            { 
+                id: 8, 
+                name: "Recharge Natcom $15", 
+                price: 15.00, 
+                category: "mobile-recharge", 
+                provider: "Natcom",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge de $15 pour Natcom. Excellente valeur pour l'utilisation modérée."
+            },
             
-            // Extract numeric price
-            const price = parseFloat(productPrice.replace(/[^0-9.]/g, ''));
+            // Mobile Recharges - Claro
+            { 
+                id: 9, 
+                name: "Recharge Claro $10", 
+                price: 10.00, 
+                category: "mobile-recharge", 
+                provider: "Claro",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge de $10 pour Claro. Couverture nationale et internationale."
+            },
+            { 
+                id: 10, 
+                name: "Recharge Claro $20", 
+                price: 20.00, 
+                category: "mobile-recharge", 
+                provider: "Claro",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge de $20 pour Claro. Idéal pour les voyageurs fréquents."
+            },
             
-            // Add to cart
-            cart.push({
-                name: productName,
-                price: price,
-                currency: currentCurrency
-            });
+            // Mobile Recharges - International
+            { 
+                id: 11, 
+                name: "Recharge AT&T $15", 
+                price: 15.00, 
+                category: "mobile-recharge", 
+                provider: "AT&T",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge internationale AT&T $15. Valable aux États-Unis et destinations internationales."
+            },
+            { 
+                id: 12, 
+                name: "Recharge ALTICE $10", 
+                price: 10.00, 
+                category: "mobile-recharge", 
+                provider: "ALTICE",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge ALTICE $10. Pour les utilisateurs en République Dominicaine et autres pays."
+            },
+            { 
+                id: 13, 
+                name: "Recharge VIVA $10", 
+                price: 10.00, 
+                category: "mobile-recharge", 
+                provider: "VIVA",
+                icon: "fas fa-mobile-alt", 
+                description: "Recharge VIVA $10. Opérateur mobile en Amérique latine."
+            },
             
-            // Update cart count
-            cartCount.textContent = cart.length;
+            // Streaming - Netflix
+            { 
+                id: 14, 
+                name: "Netflix Premium 1 Mois", 
+                price: 15.00, 
+                category: "streaming", 
+                provider: "Netflix",
+                icon: "fab fa-netflix", 
+                featured: true,
+                description: "Abonnement Netflix Premium 1 mois. 4 écrans simultanés, Ultra HD. Compte privé avec vos identifiants.",
+                requiresAccount: true
+            },
+            { 
+                id: 15, 
+                name: "Netflix Standard 1 Mois", 
+                price: 12.00, 
+                category: "streaming", 
+                provider: "Netflix",
+                icon: "fab fa-netflix", 
+                description: "Abonnement Netflix Standard 1 mois. 2 écrans simultanés, HD. Compte privé avec vos identifiants.",
+                requiresAccount: true
+            },
+            { 
+                id: 16, 
+                name: "Netflix Basic 1 Mois", 
+                price: 10.00, 
+                category: "streaming", 
+                provider: "Netflix",
+                icon: "fab fa-netflix", 
+                description: "Abonnement Netflix Basic 1 mois. 1 écran, qualité standard. Compte privé avec vos identifiants.",
+                requiresAccount: true
+            },
             
-            // Show success message
-            showAlert('Produit ajouté au panier avec succès!', 'success');
+            // Streaming - Other
+            { 
+                id: 17, 
+                name: "Disney+ 1 Mois", 
+                price: 9.99, 
+                category: "streaming", 
+                provider: "Disney",
+                icon: "fab fa-disney", 
+                featured: true,
+                description: "Abonnement Disney+ 1 mois. Films Disney, Marvel, Star Wars et National Geographic."
+            },
+            { 
+                id: 18, 
+                name: "Spotify Premium 3 Mois", 
+                price: 29.99, 
+                category: "streaming", 
+                provider: "Spotify",
+                icon: "fab fa-spotify", 
+                featured: true,
+                description: "Spotify Premium 3 mois. Musique sans publicité, téléchargement hors ligne, qualité supérieure."
+            },
+            { 
+                id: 19, 
+                name: "HBO Max 1 Mois", 
+                price: 14.99, 
+                category: "streaming", 
+                provider: "HBO",
+                icon: "fas fa-tv", 
+                description: "Abonnement HBO Max 1 mois. Films, séries et documentaires exclusifs."
+            },
             
-            // Animate cart icon
-            cartIcon.style.transform = 'scale(1.2)';
-            setTimeout(() => {
-                cartIcon.style.transform = 'scale(1)';
-            }, 300);
-        }
-
-        function updateCartModal() {
-            const cartItems = document.getElementById('cart-items');
+            // Gaming
+            { 
+                id: 20, 
+                name: "Carte Steam $20", 
+                price: 20.00, 
+                category: "gaming", 
+                provider: "Steam",
+                icon: "fab fa-steam", 
+                featured: true,
+                description: "Carte cadeau Steam $20. Achetez des jeux, DLC, et plus sur la plateforme Steam."
+            },
+            { 
+                id: 21, 
+                name: "PlayStation Network $25", 
+                price: 25.00, 
+                category: "gaming", 
+                provider: "PlayStation",
+                icon: "fab fa-playstation", 
+                description: "Carte PSN $25. Pour jeux PlayStation, abonnements PS Plus, et contenu du PlayStation Store."
+            },
+            { 
+                id: 22, 
+                name: "Xbox Live $25", 
+                price: 25.00, 
+                category: "gaming", 
+                provider: "Xbox",
+                icon: "fab fa-xbox", 
+                description: "Carte Xbox Live $25. Pour jeux, abonnements Game Pass, et contenu du Microsoft Store."
+            },
             
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p>Votre panier est vide</p>';
-                checkoutBtn.disabled = true;
-                return;
+            // Gift Cards
+            { 
+                id: 23, 
+                name: "Carte Amazon $25", 
+                price: 25.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                icon: "fab fa-amazon", 
+                featured: true,
+                description: "Carte cadeau Amazon $25. Achetez des millions de produits sur Amazon.com."
+            },
+            { 
+                id: 24, 
+                name: "Google Play $15", 
+                price: 15.00, 
+                category: "gift-cards", 
+                provider: "Google",
+                icon: "fab fa-google-play", 
+                description: "Carte Google Play $15. Applications, jeux, films, livres et plus sur Google Play."
+            },
+            { 
+                id: 25, 
+                name: "Apple iTunes $25", 
+                price: 25.00, 
+                category: "gift-cards", 
+                provider: "Apple",
+                icon: "fab fa-apple", 
+                description: "Carte Apple iTunes $25. Pour musique, films, applications et plus sur l'App Store."
             }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let currentPage = 'home';
+        let currentProductId = null;
+
+        // Initialize the app
+        function init() {
+            loadFeaturedProducts();
+            loadAllProducts();
+            updateCartCount();
+            setupEventListeners();
+        }
+
+        // Show specific page
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`${pageName}-page`).classList.add('active');
+            currentPage = pageName;
+
+            // Update navigation
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Load page-specific content
+            if (pageName === 'cart') {
+                loadCart();
+            }
+        }
+
+        // Load featured products on home page
+        function loadFeaturedProducts() {
+            const container = document.getElementById('featured-products');
+            const featured = products.filter(p => p.featured);
             
-            let itemsHTML = '';
-            let total = 0;
-            
-            cart.forEach((item, index) => {
-                itemsHTML += `
-                    <div class="cart-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
-                        <div>
-                            <h4 style="margin: 0;">${item.name}</h4>
-                            <p style="margin: 0; color: var(--gray-dark);">${item.price} ${item.currency}</p>
-                        </div>
-                        <button class="remove-item" data-index="${index}" style="background: none; border: none; color: var(--error); cursor: pointer;">
-                            <i class="fas fa-trash"></i>
+            container.innerHTML = featured.map(product => `
+                <div class="product-card">
+                    ${product.requiresAccount ? '<div class="product-badge">Compte requis</div>' : ''}
+                    <div class="product-image">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <div class="product-description">${product.description.substring(0, 60)}...</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="view-button" onclick="showProductDetail(${product.id})">
+                            Voir Détails
                         </button>
                     </div>
-                `;
-                total += item.price;
-            });
+                </div>
+            `).join('');
+        }
+
+        // Load all products on products page
+        function loadAllProducts() {
+            const container = document.getElementById('all-products');
             
-            itemsHTML += `
-                <div style="display: flex; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--primary-gold); font-weight: bold;">
-                    <span>Total:</span>
-                    <span>${total.toFixed(2)} ${currentCurrency}</span>
+            container.innerHTML = products.map(product => `
+                <div class="product-card">
+                    ${product.requiresAccount ? '<div class="product-badge">Compte requis</div>' : ''}
+                    <div class="product-image">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <div class="product-description">${product.description.substring(0, 60)}...</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="view-button" onclick="showProductDetail(${product.id})">
+                            Voir Détails
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Show product detail page
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            currentProductId = productId;
+            const container = document.getElementById('product-detail-page');
+            
+            // Calculate fees
+            const instantDeliveryFee = 1.58;
+            const transactionFee = 2.00;
+            const tax = 3.58;
+            
+            container.innerHTML = `
+                <div class="section-title">
+                    <h2>Détails du Produit</h2>
+                </div>
+                <div class="product-detail">
+                    <div class="product-image-large">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <div class="product-detail-info">
+                        <h1>${product.name}</h1>
+                        <p class="product-detail-description">${product.description}</p>
+                        <div class="product-price-large">$${product.price.toFixed(2)}</div>
+                        
+                        ${product.requiresAccount ? `
+                        <div class="account-form">
+                            <h3>Informations du compte</h3>
+                            <div class="warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <strong>ATTENTION:</strong> Ne partagez PAS votre Gmail et mot de passe. 
+                                Nous pouvons vous retirer du compte sans remboursement si vous partagez vos identifiants.
+                            </div>
+                            <div class="form-group">
+                                <label for="account-email">Gmail du compte</label>
+                                <input type="email" id="account-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="account-password">Mot de passe du compte</label>
+                                <input type="password" id="account-password" required>
+                            </div>
+                        </div>
+                        ` : ''}
+                        
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                            <input type="number" class="quantity-input" id="product-quantity" value="1" min="1">
+                            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                        </div>
+                        
+                        <div class="fee-breakdown">
+                            <h3>Détail des frais</h3>
+                            <div class="fee-item">
+                                <span>Prix du produit:</span>
+                                <span id="product-subtotal">$${product.price.toFixed(2)}</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>Livraison instantanée:</span>
+                                <span>$${instantDeliveryFee.toFixed(2)}</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>Frais de transaction:</span>
+                                <span>$${transactionFee.toFixed(2)}</span>
+                            </div>
+                            <div class="fee-item">
+                                <span>Taxes:</span>
+                                <span>$${tax.toFixed(2)}</span>
+                            </div>
+                            <div class="fee-total">
+                                <span>Total:</span>
+                                <span id="product-total">$${(product.price + instantDeliveryFee + transactionFee + tax).toFixed(2)}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-secondary" onclick="showPage('products')">
+                                Retour aux produits
+                            </button>
+                            <button class="btn btn-primary" onclick="addToCart(${product.id})">
+                                Ajouter au Panier
+                            </button>
+                        </div>
+                    </div>
                 </div>
             `;
             
-            cartItems.innerHTML = itemsHTML;
+            // Set up quantity change listeners
+            const quantityInput = document.getElementById('product-quantity');
+            quantityInput.addEventListener('change', function() {
+                if (this.value < 1) this.value = 1;
+                updateProductTotal(product);
+            });
             
-            // Add event listeners to remove buttons
-            document.querySelectorAll('.remove-item').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const index = parseInt(e.target.closest('.remove-item').dataset.index);
-                    cart.splice(index, 1);
-                    cartCount.textContent = cart.length;
-                    updateCartModal();
+            showPage('product-detail');
+        }
+
+        // Update product total when quantity changes
+        function updateProductTotal(product) {
+            const quantity = parseInt(document.getElementById('product-quantity').value);
+            const instantDeliveryFee = 1.58;
+            const transactionFee = 2.00;
+            const tax = 3.58;
+            
+            const subtotal = product.price * quantity;
+            const total = subtotal + instantDeliveryFee + transactionFee + tax;
+            
+            document.getElementById('product-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('product-total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        // Quantity controls
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('product-quantity');
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+                const product = products.find(p => p.id === currentProductId);
+                updateProductTotal(product);
+            }
+        }
+
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('product-quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+            const product = products.find(p => p.id === currentProductId);
+            updateProductTotal(product);
+        }
+
+        // Filter products by category
+        function filterProducts(category) {
+            showPage('products');
+            const container = document.getElementById('all-products');
+            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            
+            container.innerHTML = filtered.map(product => `
+                <div class="product-card">
+                    ${product.requiresAccount ? '<div class="product-badge">Compte requis</div>' : ''}
+                    <div class="product-image">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <div class="product-description">${product.description.substring(0, 60)}...</div>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="view-button" onclick="showProductDetail(${product.id})">
+                            Voir Détails
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Add product to cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const quantity = document.getElementById('product-quantity') ? 
+                parseInt(document.getElementById('product-quantity').value) : 1;
+            
+            // For Netflix accounts, validate account info
+            if (product.requiresAccount) {
+                const accountEmail = document.getElementById('account-email');
+                const accountPassword = document.getElementById('account-password');
+                
+                if (!accountEmail.value || !accountPassword.value) {
+                    showAlert('Veuillez fournir les informations du compte Netflix', 'error');
+                    return;
+                }
+            }
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: quantity,
+                    requiresAccount: product.requiresAccount,
+                    accountEmail: product.requiresAccount ? document.getElementById('account-email').value : null,
+                    accountPassword: product.requiresAccount ? document.getElementById('account-password').value : null
                 });
+            }
+            
+            updateCartCount();
+            saveCart();
+            showAlert('Produit ajouté au panier!', 'success');
+            
+            // Return to products page after adding to cart
+            setTimeout(() => {
+                showPage('products');
+            }, 1500);
+        }
+
+        // Load cart page
+        function loadCart() {
+            const container = document.getElementById('cart-items');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 2rem;">Votre panier est vide</p>';
+                return;
+            }
+            
+            let total = 0;
+            const instantDeliveryFee = 1.58;
+            const transactionFee = 2.00;
+            const tax = 3.58;
+            
+            container.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            ${item.requiresAccount ? `<p><small>Compte: ${item.accountEmail}</small></p>` : ''}
+                            <div class="cart-item-quantity">
+                                <button onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                                <span>Quantité: ${item.quantity}</span>
+                                <button onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                            </div>
+                        </div>
+                        <div>
+                            <strong>$${itemTotal.toFixed(2)}</strong>
+                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--error); cursor: pointer; margin-left: 1rem;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            const totalWithFees = total + instantDeliveryFee + transactionFee + tax;
+            
+            container.innerHTML += `
+                <div class="fee-breakdown">
+                    <h3>Détail des frais</h3>
+                    <div class="fee-item">
+                        <span>Sous-total:</span>
+                        <span>$${total.toFixed(2)}</span>
+                    </div>
+                    <div class="fee-item">
+                        <span>Livraison instantanée:</span>
+                        <span>$${instantDeliveryFee.toFixed(2)}</span>
+                    </div>
+                    <div class="fee-item">
+                        <span>Frais de transaction:</span>
+                        <span>$${transactionFee.toFixed(2)}</span>
+                    </div>
+                    <div class="fee-item">
+                        <span>Taxes:</span>
+                        <span>$${tax.toFixed(2)}</span>
+                    </div>
+                    <div class="fee-total">
+                        <span>Total:</span>
+                        <span>$${totalWithFees.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Update item quantity in cart
+        function updateCartQuantity(productId, newQuantity) {
+            if (newQuantity < 1) {
+                removeFromCart(productId);
+                return;
+            }
+            
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity = newQuantity;
+                updateCartCount();
+                saveCart();
+                loadCart();
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            saveCart();
+            loadCart();
+            showAlert('Produit retiré du panier', 'success');
+        }
+
+        // Update cart count in header
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelectorAll('.cart-count').forEach(el => {
+                el.textContent = totalItems;
             });
-            
-            checkoutBtn.disabled = false;
         }
 
-        function confirmLanguageChange() {
-            currentLanguage = modalLanguageSelect.value;
-            languageSelect.value = currentLanguage;
-            languageModal.style.display = 'none';
-            
-            // In a real implementation, this would update all text on the page
-            showAlert(`Langue changée en ${getLanguageName(currentLanguage)}`, 'success');
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
         }
 
-        function confirmCurrencyChange() {
-            currentCurrency = modalCurrencySelect.value;
-            currencySelect.value = currentCurrency;
-            currencyModal.style.display = 'none';
-            
-            // In a real implementation, this would update all prices on the page
-            showAlert(`Devise changée en ${currentCurrency}`, 'success');
-        }
-
-        function proceedToCheckout() {
-            if (cart.length === 0) return;
-            
-            // In a real implementation, this would redirect to the checkout page
-            // For now, we'll just show a success message and clear the cart
-            showAlert('Redirection vers la page de commande...', 'success');
-            
-            // Simulate saving order to Back4App
-            saveOrderToBack4App();
-            
-            // Clear cart
-            cart = [];
-            cartCount.textContent = '0';
-            cartModal.style.display = 'none';
-        }
-
-        function saveOrderToBack4App() {
-            // This is a simulation - in a real implementation, this would save to Back4App
-            const Order = Parse.Object.extend("Order");
-            const order = new Order();
-            
-            order.set("products", cart);
-            order.set("total", cart.reduce((sum, item) => sum + item.price, 0));
-            order.set("currency", currentCurrency);
-            order.set("status", "pending");
-            order.set("customerContact", "");
-            
-            order.save().then((order) => {
-                console.log('Order saved to Back4App:', order.id);
-            }, (error) => {
-                console.error('Error saving order to Back4App:', error);
-            });
-        }
-
+        // Show alert message
         function showAlert(message, type) {
-            // Create alert element
             const alert = document.createElement('div');
             alert.className = `alert alert-${type}`;
-            alert.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'}"></i>
-                <span>${message}</span>
-            `;
-            
-            // Add to page
+            alert.textContent = message;
             document.body.appendChild(alert);
             
-            // Position at top
-            alert.style.position = 'fixed';
-            alert.style.top = '80px';
-            alert.style.left = '50%';
-            alert.style.transform = 'translateX(-50%)';
-            alert.style.zIndex = '3000';
-            alert.style.maxWidth = '90%';
-            alert.style.width = 'auto';
-            
-            // Remove after 3 seconds
             setTimeout(() => {
-                alert.style.opacity = '0';
-                alert.style.transition = 'opacity 0.5s';
-                setTimeout(() => {
-                    document.body.removeChild(alert);
-                }, 500);
+                alert.remove();
             }, 3000);
         }
 
-        function getLanguageName(code) {
-            const languages = {
-                'fr': 'Français',
-                'ht': 'Kreyòl Ayisyen',
-                'en': 'English',
-                'es': 'Español',
-                'de': 'Deutsch',
-                'zh': '中文',
-                'ja': '日本語'
-            };
-            return languages[code] || code;
+        // Setup event listeners
+        function setupEventListeners() {
+            // Mobile menu
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.classList.toggle('show');
+            });
+
+            // Form submissions
+            document.getElementById('checkout-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (cart.length === 0) {
+                    showAlert('Votre panier est vide', 'error');
+                    return;
+                }
+                showAlert('Commande passée avec succès! Nous vous contacterons bientôt.', 'success');
+                cart = [];
+                updateCartCount();
+                saveCart();
+                loadCart();
+                showPage('home');
+            });
+
+            document.getElementById('login-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                showAlert('Connexion réussie!', 'success');
+                showPage('home');
+            });
+
+            document.getElementById('signup-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                showAlert('Compte créé avec succès!', 'success');
+                showPage('home');
+            });
+
+            document.getElementById('support-form')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                showAlert('Message envoyé! Nous vous répondrons dans les 24h.', 'success');
+                showPage('home');
+            });
         }
 
-        // Initialize page with animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add animation to elements when they come into view
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe elements that should animate on scroll
-            document.querySelectorAll('.category-card, .product-card, .step, .testimonial-card').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        });
+        // Initialize the app when page loads
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
