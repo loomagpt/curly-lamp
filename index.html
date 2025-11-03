@@ -5,8 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProntoGiftCards - Cartes-cadeaux et recharges numériques</title>
     <meta name="description" content="Achetez des cartes-cadeaux numériques, recharges mobiles et abonnements. Livraison instantanée 24/7.">
+    <meta property="og:title" content="ProntoGiftCards - Cartes-cadeaux et recharges numériques">
+    <meta property="og:description" content="Achetez des cartes-cadeaux numériques, recharges mobiles et abonnements. Livraison instantanée 24/7.">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta property="og:url" content="https://prontogiftcards.com">
+    
+    <!-- Parse SDK -->
+    <script type="text/javascript" src="https://unpkg.com/parse/dist/parse.min.js"></script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ProntoGiftCards",
+      "description": "Votre destination de confiance pour les cartes-cadeaux numériques",
+      "url": "https://prontogiftcards.com"
+    }
+    </script>
+    
     <style>
         :root {
             --primary-black: #121212;
@@ -26,6 +45,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            will-change: auto;
         }
 
         body {
@@ -75,6 +95,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -95,6 +116,56 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
+        }
+
+        .language-selector {
+            position: relative;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            min-width: 120px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--primary-black);
+            text-decoration: none;
+            display: block;
+        }
+
+        .language-option:hover {
+            background: var(--gray-light);
         }
 
         .cart-icon, .user-icon {
@@ -237,6 +308,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
+            transform: translateZ(0);
         }
 
         .category-card:hover {
@@ -264,6 +336,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
+            transform: translateZ(0);
         }
 
         .product-card:hover {
@@ -289,8 +362,42 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 1rem;
+        }
+
+        .product-image i {
             font-size: 3rem;
             color: var(--gray-dark);
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            opacity: 0;
+        }
+
+        .product-image.loading::before {
+            opacity: 1;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         .product-info {
@@ -349,6 +456,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 2rem;
+        }
+
+        .product-image-large i {
             font-size: 8rem;
             color: var(--gray-dark);
         }
@@ -464,16 +583,26 @@
             color: white;
         }
 
-        /* Netflix Account Form */
-        .account-form {
+        /* Phone Number Form */
+        .phone-form {
             background: var(--gray-light);
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 1.5rem;
         }
 
-        .account-form h3 {
+        .phone-form h3 {
             margin-bottom: 1rem;
+        }
+
+        .phone-format {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid var(--primary-gold);
         }
 
         .warning {
@@ -487,6 +616,18 @@
         .warning i {
             color: var(--warning);
             margin-right: 0.5rem;
+        }
+
+        /* Netflix Account Form */
+        .account-form {
+            background: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .account-form h3 {
+            margin-bottom: 1rem;
         }
 
         /* Cart */
@@ -637,6 +778,31 @@
             color: white;
         }
 
+        /* Loading States */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            border-right-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         @keyframes slideDown {
             from { transform: translate(-50%, -100%); opacity: 0; }
             to { transform: translate(-50%, 0); opacity: 1; }
@@ -678,7 +844,14 @@
 
             .product-image-large {
                 height: 300px;
+            }
+
+            .product-image-large i {
                 font-size: 5rem;
+            }
+
+            .language-selector {
+                display: none;
             }
         }
     </style>
@@ -689,21 +862,34 @@
         <div class="header-container">
             <a href="#" class="logo" onclick="showPage('home')">
                 <i class="fas fa-gift"></i>
-                <h1>ProntoGiftCards</h1>
+                <h1 data-translate="site_title">ProntoGiftCards</h1>
             </a>
             
-            <nav class="nav-links">
-                <a href="#" class="active" onclick="showPage('home')">Accueil</a>
-                <a href="#" onclick="showPage('products')">Produits</a>
+            <nav class="nav-links" aria-label="Navigation principale">
+                <a href="#" class="active" onclick="showPage('home')" aria-current="page" data-translate="nav_home">Accueil</a>
+                <a href="#" onclick="showPage('products')" data-translate="nav_products">Produits</a>
                 <a href="#" onclick="showPage('cart')">
-                    <i class="fas fa-shopping-cart"></i> Panier
+                    <i class="fas fa-shopping-cart"></i> <span data-translate="nav_cart">Panier</span>
                     <span class="cart-count">0</span>
                 </a>
-                <a href="#" onclick="showPage('support')">Support</a>
-                <a href="#" onclick="showPage('login')">Connexion</a>
+                <a href="#" onclick="showPage('support')" data-translate="nav_support">Support</a>
+                <a href="#" onclick="showPage('login')" data-translate="nav_login">Connexion</a>
             </nav>
             
             <div class="header-actions">
+                <div class="language-selector">
+                    <button class="language-btn" onclick="toggleLanguageDropdown()">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">FR</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown" id="language-dropdown">
+                        <a href="#" class="language-option" onclick="changeLanguage('fr')">Français</a>
+                        <a href="#" class="language-option" onclick="changeLanguage('ht')">Kreyòl</a>
+                        <a href="#" class="language-option" onclick="changeLanguage('es')">Español</a>
+                    </div>
+                </div>
+                
                 <div class="cart-icon" onclick="showPage('cart')">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
@@ -713,7 +899,7 @@
                     <i class="fas fa-user"></i>
                 </div>
                 
-                <button class="mobile-menu-btn">
+                <button class="mobile-menu-btn" aria-label="Menu mobile">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -723,52 +909,52 @@
     <!-- Main Content -->
     <div class="container">
         <!-- Home Page -->
-        <div class="page active" id="home-page">
+        <div class="page active" id="home-page" tabindex="-1">
             <section class="hero">
-                <h2>Cartes-cadeaux numériques instantanées</h2>
-                <p>Achetez et recevez vos cartes-cadeaux en moins de 5 minutes</p>
-                <a href="#" class="cta-button" onclick="showPage('products')">Acheter Maintenant</a>
+                <h2 data-translate="hero_title">Cartes-cadeaux numériques instantanées</h2>
+                <p data-translate="hero_subtitle">Achetez et recevez vos cartes-cadeaux en moins de 5 minutes</p>
+                <a href="#" class="cta-button" onclick="showPage('products')" data-translate="hero_cta">Acheter Maintenant</a>
             </section>
 
             <section class="categories">
                 <div class="section-title">
-                    <h2>Catégories Populaires</h2>
+                    <h2 data-translate="categories_title">Catégories Populaires</h2>
                 </div>
                 <div class="categories-grid">
                     <div class="category-card" onclick="filterProducts('mobile-recharge')">
                         <div class="category-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h3>Recharges Mobiles</h3>
-                        <p>Digicel, Natcom, Claro, AT&T</p>
+                        <h3 data-translate="category_mobile">Recharges Mobiles</h3>
+                        <p data-translate="category_mobile_desc">Digicel, Natcom, Claro, AT&T</p>
                     </div>
                     <div class="category-card" onclick="filterProducts('streaming')">
                         <div class="category-icon">
                             <i class="fas fa-film"></i>
                         </div>
-                        <h3>Streaming</h3>
-                        <p>Netflix, Disney+, Spotify, HBO</p>
+                        <h3 data-translate="category_streaming">Streaming</h3>
+                        <p data-translate="category_streaming_desc">Netflix, Disney+, Spotify, HBO</p>
                     </div>
                     <div class="category-card" onclick="filterProducts('gaming')">
                         <div class="category-icon">
                             <i class="fas fa-gamepad"></i>
                         </div>
-                        <h3>Jeux</h3>
-                        <p>Steam, PlayStation, Xbox</p>
+                        <h3 data-translate="category_gaming">Jeux</h3>
+                        <p data-translate="category_gaming_desc">Steam, PlayStation, Xbox</p>
                     </div>
                     <div class="category-card" onclick="filterProducts('gift-cards')">
                         <div class="category-icon">
                             <i class="fas fa-gift"></i>
                         </div>
-                        <h3>Cartes-cadeaux</h3>
-                        <p>Amazon, Google Play, Apple</p>
+                        <h3 data-translate="category_giftcards">Cartes-cadeaux</h3>
+                        <p data-translate="category_giftcards_desc">Amazon, Google Play, Apple</p>
                     </div>
                 </div>
             </section>
 
             <section class="products">
                 <div class="section-title">
-                    <h2>Produits Populaires</h2>
+                    <h2 data-translate="featured_products">Produits Populaires</h2>
                 </div>
                 <div class="products-grid" id="featured-products">
                     <!-- Featured products will load here -->
@@ -777,9 +963,9 @@
         </div>
 
         <!-- Products Page -->
-        <div class="page" id="products-page">
+        <div class="page" id="products-page" tabindex="-1">
             <div class="section-title">
-                <h2>Tous les Produits</h2>
+                <h2 data-translate="all_products">Tous les Produits</h2>
             </div>
             <div class="products-grid" id="all-products">
                 <!-- All products will load here -->
@@ -787,27 +973,27 @@
         </div>
 
         <!-- Product Detail Page -->
-        <div class="page" id="product-detail-page">
+        <div class="page" id="product-detail-page" tabindex="-1">
             <!-- Product details will be loaded here dynamically -->
         </div>
 
         <!-- Cart Page -->
-        <div class="page" id="cart-page">
+        <div class="page" id="cart-page" tabindex="-1">
             <div class="section-title">
-                <h2>Votre Panier</h2>
+                <h2 data-translate="cart_title">Votre Panier</h2>
             </div>
             <div class="cart-items" id="cart-items">
                 <!-- Cart items will load here -->
             </div>
             <div class="checkout-form">
-                <h3>Informations de Commande</h3>
+                <h3 data-translate="checkout_title">Informations de Commande</h3>
                 <form id="checkout-form">
                     <div class="form-group">
-                        <label for="name">Nom Complet</label>
+                        <label for="name" data-translate="checkout_name">Nom Complet</label>
                         <input type="text" id="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email" data-translate="checkout_email">Email</label>
                         <input type="email" id="email" required>
                     </div>
                     <div class="form-group">
@@ -815,50 +1001,51 @@
                         <input type="tel" id="whatsapp" required>
                     </div>
                     <div class="form-group">
-                        <label for="delivery">Méthode de livraison</label>
+                        <label for="delivery" data-translate="checkout_delivery">Méthode de livraison</label>
                         <select id="delivery" required>
-                            <option value="email">Email</option>
+                            <option value="email" data-translate="delivery_email">Email</option>
                             <option value="whatsapp">WhatsApp</option>
                             <option value="sms">SMS</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmer la Commande</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-translate="checkout_confirm">Confirmer la Commande</button>
                 </form>
             </div>
         </div>
 
         <!-- Login Page -->
-        <div class="page" id="login-page">
+        <div class="page" id="login-page" tabindex="-1">
             <div class="auth-container">
-                <h2>Connexion</h2>
+                <h2 data-translate="login_title">Connexion</h2>
                 <form id="login-form">
                     <div class="form-group">
-                        <label for="login-email">Email</label>
+                        <label for="login-email" data-translate="login_email">Email</label>
                         <input type="email" id="login-email" required>
                     </div>
                     <div class="form-group">
-                        <label for="login-password">Mot de passe</label>
+                        <label for="login-password" data-translate="login_password">Mot de passe</label>
                         <input type="password" id="login-password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Se Connecter</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-translate="login_button">Se Connecter</button>
                 </form>
                 <p style="text-align: center; margin-top: 1rem;">
-                    Pas de compte? <a href="#" onclick="showPage('signup')" style="color: var(--primary-gold);">Créer un compte</a>
+                    <span data-translate="login_no_account">Pas de compte?</span> 
+                    <a href="#" onclick="showPage('signup')" style="color: var(--primary-gold);" data-translate="login_create_account">Créer un compte</a>
                 </p>
             </div>
         </div>
 
         <!-- Signup Page -->
-        <div class="page" id="signup-page">
+        <div class="page" id="signup-page" tabindex="-1">
             <div class="auth-container">
-                <h2>Créer un Compte</h2>
+                <h2 data-translate="signup_title">Créer un Compte</h2>
                 <form id="signup-form">
                     <div class="form-group">
-                        <label for="signup-name">Nom Complet</label>
+                        <label for="signup-name" data-translate="signup_name">Nom Complet</label>
                         <input type="text" id="signup-name" required>
                     </div>
                     <div class="form-group">
-                        <label for="signup-email">Email</label>
+                        <label for="signup-email" data-translate="signup_email">Email</label>
                         <input type="email" id="signup-email" required>
                     </div>
                     <div class="form-group">
@@ -866,32 +1053,32 @@
                         <input type="tel" id="signup-whatsapp" required>
                     </div>
                     <div class="form-group">
-                        <label for="signup-password">Mot de passe</label>
+                        <label for="signup-password" data-translate="signup_password">Mot de passe</label>
                         <input type="password" id="signup-password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Créer le Compte</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-translate="signup_button">Créer le Compte</button>
                 </form>
             </div>
         </div>
 
         <!-- Support Page -->
-        <div class="page" id="support-page">
+        <div class="page" id="support-page" tabindex="-1">
             <div class="auth-container">
-                <h2>Support Client</h2>
+                <h2 data-translate="support_title">Support Client</h2>
                 <form id="support-form">
                     <div class="form-group">
-                        <label for="support-email">Email</label>
+                        <label for="support-email" data-translate="support_email">Email</label>
                         <input type="email" id="support-email" required>
                     </div>
                     <div class="form-group">
-                        <label for="support-subject">Sujet</label>
+                        <label for="support-subject" data-translate="support_subject">Sujet</label>
                         <input type="text" id="support-subject" required>
                     </div>
                     <div class="form-group">
-                        <label for="support-message">Message</label>
+                        <label for="support-message" data-translate="support_message">Message</label>
                         <textarea id="support-message" rows="5" style="width: 100%; padding: 0.8rem; border: 1px solid var(--gray-medium); border-radius: 5px; font-family: 'Poppins', sans-serif;" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-translate="support_button">Envoyer</button>
                 </form>
             </div>
         </div>
@@ -901,20 +1088,20 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>ProntoGiftCards</h3>
-                <p>Votre destination de confiance pour les cartes-cadeaux numériques. Livraison instantanée 24h/24.</p>
+                <h3 data-translate="footer_about">ProntoGiftCards</h3>
+                <p data-translate="footer_description">Votre destination de confiance pour les cartes-cadeaux numériques. Livraison instantanée 24h/24.</p>
             </div>
             <div class="footer-column">
-                <h3>Liens Rapides</h3>
+                <h3 data-translate="footer_links">Liens Rapides</h3>
                 <ul class="footer-links">
-                    <li><a href="#" onclick="showPage('home')">Accueil</a></li>
-                    <li><a href="#" onclick="showPage('products')">Produits</a></li>
-                    <li><a href="#" onclick="showPage('cart')">Panier</a></li>
-                    <li><a href="#" onclick="showPage('support')">Support</a></li>
+                    <li><a href="#" onclick="showPage('home')" data-translate="nav_home">Accueil</a></li>
+                    <li><a href="#" onclick="showPage('products')" data-translate="nav_products">Produits</a></li>
+                    <li><a href="#" onclick="showPage('cart')" data-translate="nav_cart">Panier</a></li>
+                    <li><a href="#" onclick="showPage('support')" data-translate="nav_support">Support</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>Contact</h3>
+                <h3 data-translate="footer_contact">Contact</h3>
                 <ul class="footer-links">
                     <li><i class="fas fa-envelope"></i> support@prontogiftcards.com</li>
                     <li><i class="fab fa-whatsapp"></i> +509 1234 5678</li>
@@ -922,144 +1109,563 @@
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 ProntoGiftCards. Tous droits réservés.</p>
+            <p>&copy; 2023 ProntoGiftCards. <span data-translate="footer_rights">Tous droits réservés.</span></p>
         </div>
     </footer>
 
     <script>
-        // Sample product data
-        const products = [
+        // Configuration Back4App
+        const BACK4APP_CONFIG = {
+            applicationId: 'bxp8a9HFPZ1RxTgxbc8WGL2YxQz8it16eWMHUCrj',
+            javascriptKey: 'BcuWoMO1w1ec3VUjeDCSws5fOkMsnTAQKkGVxEuP',
+            serverURL: 'https://parseapi.back4app.com/'
+        };
+
+        // Configuration de l'application
+        const CONFIG = {
+            fees: {
+                instantDelivery: 1.58,
+                transaction: 2.00,
+                tax: 3.58
+            },
+            localStorageKeys: {
+                cart: 'cart',
+                user: 'user',
+                language: 'language'
+            }
+        };
+
+        // Système de traduction
+        const TRANSLATIONS = {
+            fr: {
+                // Navigation
+                'site_title': 'ProntoGiftCards',
+                'nav_home': 'Accueil',
+                'nav_products': 'Produits',
+                'nav_cart': 'Panier',
+                'nav_support': 'Support',
+                'nav_login': 'Connexion',
+                
+                // Hero Section
+                'hero_title': 'Cartes-cadeaux numériques instantanées',
+                'hero_subtitle': 'Achetez et recevez vos cartes-cadeaux en moins de 5 minutes',
+                'hero_cta': 'Acheter Maintenant',
+                
+                // Categories
+                'categories_title': 'Catégories Populaires',
+                'category_mobile': 'Recharges Mobiles',
+                'category_mobile_desc': 'Digicel, Natcom, Claro, AT&T',
+                'category_streaming': 'Streaming',
+                'category_streaming_desc': 'Netflix, Disney+, Spotify, HBO',
+                'category_gaming': 'Jeux',
+                'category_gaming_desc': 'Steam, PlayStation, Xbox',
+                'category_giftcards': 'Cartes-cadeaux',
+                'category_giftcards_desc': 'Amazon, Google Play, Apple',
+                
+                // Products
+                'featured_products': 'Produits Populaires',
+                'all_products': 'Tous les Produits',
+                'view_details': 'Voir Détails',
+                'add_to_cart': 'Ajouter au Panier',
+                'account_required': 'Compte requis',
+                
+                // Product Detail
+                'product_details': 'Détails du Produit',
+                'back_to_products': 'Retour aux produits',
+                'quantity': 'Quantité',
+                'fee_breakdown': 'Détail des frais',
+                'product_price': 'Prix du produit',
+                'instant_delivery': 'Livraison instantanée',
+                'transaction_fee': 'Frais de transaction',
+                'taxes': 'Taxes',
+                'total': 'Total',
+                
+                // Phone Form
+                'phone_title': 'Numéro à recharger',
+                'phone_required_format': 'Format requis',
+                'phone_example': 'Exemple',
+                'phone_prefix': 'Préfixe du numéro',
+                'phone_number': 'Numéro de téléphone',
+                'choose_prefix': 'Choisir un préfixe',
+                'phone_warning': 'ATTENTION! Si vous saisissez un numéro incorrect, vérifiez-le avant d\'acheter, car une fois l\'achat effectué, vous ne pourrez plus le modifier et aucun remboursement ne sera possible.',
+                
+                // Account Form
+                'account_info': 'Informations du compte',
+                'account_warning': 'ATTENTION: Ne partagez PAS votre Gmail et mot de passe. Nous pouvons vous retirer du compte sans remboursement si vous partagez vos identifiants.',
+                'account_email': 'Gmail du compte',
+                'account_password': 'Mot de passe du compte',
+                
+                // Cart
+                'cart_title': 'Votre Panier',
+                'cart_empty': 'Votre panier est vide',
+                'subtotal': 'Sous-total',
+                'remove': 'Retirer',
+                
+                // Checkout
+                'checkout_title': 'Informations de Commande',
+                'checkout_name': 'Nom Complet',
+                'checkout_email': 'Email',
+                'checkout_delivery': 'Méthode de livraison',
+                'checkout_confirm': 'Confirmer la Commande',
+                'delivery_email': 'Email',
+                
+                // Auth
+                'login_title': 'Connexion',
+                'login_email': 'Email',
+                'login_password': 'Mot de passe',
+                'login_button': 'Se Connecter',
+                'login_no_account': 'Pas de compte?',
+                'login_create_account': 'Créer un compte',
+                
+                'signup_title': 'Créer un Compte',
+                'signup_name': 'Nom Complet',
+                'signup_email': 'Email',
+                'signup_password': 'Mot de passe',
+                'signup_button': 'Créer le Compte',
+                
+                'support_title': 'Support Client',
+                'support_email': 'Email',
+                'support_subject': 'Sujet',
+                'support_message': 'Message',
+                'support_button': 'Envoyer',
+                
+                // Footer
+                'footer_about': 'ProntoGiftCards',
+                'footer_description': 'Votre destination de confiance pour les cartes-cadeaux numériques. Livraison instantanée 24h/24.',
+                'footer_links': 'Liens Rapides',
+                'footer_contact': 'Contact',
+                'footer_rights': 'Tous droits réservés.',
+                
+                // Alerts
+                'alert_product_added': 'Produit ajouté au panier!',
+                'alert_product_removed': 'Produit retiré du panier',
+                'alert_order_success': 'Commande passée avec succès! Nous vous contacterons bientôt.',
+                'alert_login_success': 'Connexion réussie!',
+                'alert_signup_success': 'Compte créé avec succès!',
+                'alert_support_success': 'Message envoyé! Nous vous répondrons dans les 24h.',
+                'alert_empty_cart': 'Votre panier est vide',
+                'alert_product_not_found': 'Produit non trouvé',
+                'alert_invalid_email': 'Veuillez fournir un email valide',
+                'alert_invalid_phone': 'Veuillez fournir un numéro de téléphone valide',
+                'alert_netflix_info_required': 'Veuillez fournir les informations du compte Netflix',
+                'alert_error': 'Une erreur est survenue. Veuillez réessayer.'
+            },
+            ht: {
+                // Navigation
+                'site_title': 'ProntoGiftCards',
+                'nav_home': 'Akèy',
+                'nav_products': 'Pwodwi',
+                'nav_cart': 'Kabwa',
+                'nav_support': 'Sipò',
+                'nav_login': 'Koneksyon',
+                
+                // Hero Section
+                'hero_title': 'Kat kado dijital enstantane',
+                'hero_subtitle': 'Achte epi resevwa kat kado ou an mwens pase 5 minit',
+                'hero_cta': 'Achte Kounye a',
+                
+                // Categories
+                'categories_title': 'Kategori Popilè',
+                'category_mobile': 'Rechaj Mobil',
+                'category_mobile_desc': 'Digicel, Natcom, Claro, AT&T',
+                'category_streaming': 'Streaming',
+                'category_streaming_desc': 'Netflix, Disney+, Spotify, HBO',
+                'category_gaming': 'Jwèt',
+                'category_gaming_desc': 'Steam, PlayStation, Xbox',
+                'category_giftcards': 'Kat kado',
+                'category_giftcards_desc': 'Amazon, Google Play, Apple',
+                
+                // Products
+                'featured_products': 'Pwodwi Popilè',
+                'all_products': 'Tout Pwodwi yo',
+                'view_details': 'Wè Detay',
+                'add_to_cart': 'Ajoute nan Kabwa',
+                'account_required': 'Kont obligatwa',
+                
+                // Product Detail
+                'product_details': 'Detay Pwodwi a',
+                'back_to_products': 'Retounen nan pwodwi yo',
+                'quantity': 'Kantite',
+                'fee_breakdown': 'Detay frè yo',
+                'product_price': 'Pri pwodwi a',
+                'instant_delivery': 'Livrezon enstantane',
+                'transaction_fee': 'Frè tranzaksyon',
+                'taxes': 'Taks',
+                'total': 'Total',
+                
+                // Phone Form
+                'phone_title': 'Nimewo pou rechaje',
+                'phone_required_format': 'Fòma ki nesesè',
+                'phone_example': 'Egzanp',
+                'phone_prefix': 'Prefiks nimewo a',
+                'phone_number': 'Nimewo telefòn',
+                'choose_prefix': 'Chwazi yon prefiks',
+                'phone_warning': 'ATANSYON! Si ou antre yon nimewo ki pa kòrèk, tcheke li anvan w achte, paske yon fwa acha a fèt, ou p ap ka chanje l epi p ap gen okenn ranbousman.',
+                
+                // Account Form
+                'account_info': 'Enfòmasyon kont lan',
+                'account_warning': 'ATANSYON: Pa pataje Gmail ak modpas ou. Nou ka retire w nan kont la san ranbousman si w pataje idantifyan ou.',
+                'account_email': 'Gmail kont lan',
+                'account_password': 'Modpas kont lan',
+                
+                // Cart
+                'cart_title': 'Kabwa Ou',
+                'cart_empty': 'Kabwa ou a vid',
+                'subtotal': 'Sou-total',
+                'remove': 'Retire',
+                
+                // Checkout
+                'checkout_title': 'Enfòmasyon Lòd',
+                'checkout_name': 'Non Konplè',
+                'checkout_email': 'Imèl',
+                'checkout_delivery': 'Metòd livrezon',
+                'checkout_confirm': 'Konfime Lòd la',
+                'delivery_email': 'Imèl',
+                
+                // Auth
+                'login_title': 'Koneksyon',
+                'login_email': 'Imèl',
+                'login_password': 'Modpas',
+                'login_button': 'Konekte',
+                'login_no_account': 'Pa gen kont?',
+                'login_create_account': 'Kreye yon kont',
+                
+                'signup_title': 'Kreye yon Kont',
+                'signup_name': 'Non Konplè',
+                'signup_email': 'Imèl',
+                'signup_password': 'Modpas',
+                'signup_button': 'Kreye Kont lan',
+                
+                'support_title': 'Sipò Kliyan',
+                'support_email': 'Imèl',
+                'support_subject': 'Sijè',
+                'support_message': 'Mesaj',
+                'support_button': 'Voye',
+                
+                // Footer
+                'footer_about': 'ProntoGiftCards',
+                'footer_description': 'Destinasyon konfians ou pou kat kado dijital. Livrezon enstantane 24/24.',
+                'footer_links': 'Lyen Rapid',
+                'footer_contact': 'Kontak',
+                'footer_rights': 'Tou dwa rezève.',
+                
+                // Alerts
+                'alert_product_added': 'Pwodwi ajoute nan kabwa!',
+                'alert_product_removed': 'Pwodwi retire nan kabwa',
+                'alert_order_success': 'Lòd pase avèk siksè! Nou pral kontakte w byento.',
+                'alert_login_success': 'Koneksyon reyisi!',
+                'alert_signup_success': 'Kont kreye avèk siksè!',
+                'alert_support_success': 'Mesaj voye! Nou pral reponn ou nan 24 èdtan.',
+                'alert_empty_cart': 'Kabwa ou a vid',
+                'alert_product_not_found': 'Pwodwi pa jwenn',
+                'alert_invalid_email': 'Tanpri bay yon imèl valab',
+                'alert_invalid_phone': 'Tanpri bay yon nimewo telefòn valab',
+                'alert_netflix_info_required': 'Tanpri bay enfòmasyon kont Netflix la',
+                'alert_error': 'Yon erè rive. Tanpri eseye ankò.'
+            },
+            es: {
+                // Navigation
+                'site_title': 'ProntoGiftCards',
+                'nav_home': 'Inicio',
+                'nav_products': 'Productos',
+                'nav_cart': 'Carrito',
+                'nav_support': 'Soporte',
+                'nav_login': 'Iniciar Sesión',
+                
+                // Hero Section
+                'hero_title': 'Tarjetas regalo digitales instantáneas',
+                'hero_subtitle': 'Compra y recibe tus tarjetas regalo en menos de 5 minutos',
+                'hero_cta': 'Comprar Ahora',
+                
+                // Categories
+                'categories_title': 'Categorías Populares',
+                'category_mobile': 'Recargas Móviles',
+                'category_mobile_desc': 'Digicel, Natcom, Claro, AT&T',
+                'category_streaming': 'Streaming',
+                'category_streaming_desc': 'Netflix, Disney+, Spotify, HBO',
+                'category_gaming': 'Juegos',
+                'category_gaming_desc': 'Steam, PlayStation, Xbox',
+                'category_giftcards': 'Tarjetas regalo',
+                'category_giftcards_desc': 'Amazon, Google Play, Apple',
+                
+                // Products
+                'featured_products': 'Productos Populares',
+                'all_products': 'Todos los Productos',
+                'view_details': 'Ver Detalles',
+                'add_to_cart': 'Añadir al Carrito',
+                'account_required': 'Cuenta requerida',
+                
+                // Product Detail
+                'product_details': 'Detalles del Producto',
+                'back_to_products': 'Volver a productos',
+                'quantity': 'Cantidad',
+                'fee_breakdown': 'Desglose de tarifas',
+                'product_price': 'Precio del producto',
+                'instant_delivery': 'Entrega instantánea',
+                'transaction_fee': 'Tarifa de transacción',
+                'taxes': 'Impuestos',
+                'total': 'Total',
+                
+                // Phone Form
+                'phone_title': 'Número a recargar',
+                'phone_required_format': 'Formato requerido',
+                'phone_example': 'Ejemplo',
+                'phone_prefix': 'Prefijo del número',
+                'phone_number': 'Número de teléfono',
+                'choose_prefix': 'Elegir un prefijo',
+                'phone_warning': '¡ATENCIÓN! Si ingresa un número incorrecto, verifíquelo antes de comprar, porque una vez realizada la compra, no podrá modificarlo y no habrá reembolso posible.',
+                
+                // Account Form
+                'account_info': 'Información de la cuenta',
+                'account_warning': 'ATENCIÓN: NO comparta su Gmail y contraseña. Podemos retirarlo de la cuenta sin reembolso si comparte sus credenciales.',
+                'account_email': 'Gmail de la cuenta',
+                'account_password': 'Contraseña de la cuenta',
+                
+                // Cart
+                'cart_title': 'Tu Carrito',
+                'cart_empty': 'Tu carrito está vacío',
+                'subtotal': 'Subtotal',
+                'remove': 'Eliminar',
+                
+                // Checkout
+                'checkout_title': 'Información del Pedido',
+                'checkout_name': 'Nombre Completo',
+                'checkout_email': 'Email',
+                'checkout_delivery': 'Método de entrega',
+                'checkout_confirm': 'Confirmar Pedido',
+                'delivery_email': 'Email',
+                
+                // Auth
+                'login_title': 'Iniciar Sesión',
+                'login_email': 'Email',
+                'login_password': 'Contraseña',
+                'login_button': 'Iniciar Sesión',
+                'login_no_account': '¿No tienes cuenta?',
+                'login_create_account': 'Crear una cuenta',
+                
+                'signup_title': 'Crear Cuenta',
+                'signup_name': 'Nombre Completo',
+                'signup_email': 'Email',
+                'signup_password': 'Contraseña',
+                'signup_button': 'Crear Cuenta',
+                
+                'support_title': 'Soporte al Cliente',
+                'support_email': 'Email',
+                'support_subject': 'Asunto',
+                'support_message': 'Mensaje',
+                'support_button': 'Enviar',
+                
+                // Footer
+                'footer_about': 'ProntoGiftCards',
+                'footer_description': 'Tu destino de confianza para tarjetas regalo digitales. Entrega instantánea 24/7.',
+                'footer_links': 'Enlaces Rápidos',
+                'footer_contact': 'Contacto',
+                'footer_rights': 'Todos los derechos reservados.',
+                
+                // Alerts
+                'alert_product_added': '¡Producto añadido al carrito!',
+                'alert_product_removed': 'Producto eliminado del carrito',
+                'alert_order_success': '¡Pedido realizado con éxito! Nos contactaremos pronto.',
+                'alert_login_success': '¡Inicio de sesión exitoso!',
+                'alert_signup_success': '¡Cuenta creada con éxito!',
+                'alert_support_success': '¡Mensaje enviado! Te responderemos en 24 horas.',
+                'alert_empty_cart': 'Tu carrito está vacío',
+                'alert_product_not_found': 'Producto no encontrado',
+                'alert_invalid_email': 'Por favor proporcione un email válido',
+                'alert_invalid_phone': 'Por favor proporcione un número de teléfono válido',
+                'alert_netflix_info_required': 'Por favor proporcione la información de la cuenta Netflix',
+                'alert_error': 'Ocurrió un error. Por favor intente nuevamente.'
+            }
+        };
+
+        // Configuration des formats de numéros par pays et opérateur
+        const PHONE_FORMATS = {
+            'Haiti': {
+                'Digicel': {
+                    prefix: '+509',
+                    format: '+509 XX XX XXXX',
+                    example: '+509 48 12 3456',
+                    pattern: /^\+509\d{8}$/,
+                    placeholder: '+509XXXXXXXX'
+                },
+                'Natcom': {
+                    prefix: '+509', 
+                    format: '+509 XX XX XXXX',
+                    example: '+509 31 45 6789',
+                    pattern: /^\+509\d{8}$/,
+                    placeholder: '+509XXXXXXXX'
+                }
+            },
+            'Dominican Republic': {
+                'Claro': {
+                    prefix: '',
+                    format: 'XXX XXX XXXX',
+                    example: '809 234 5678',
+                    pattern: /^(809|829|849)\d{7}$/,
+                    placeholder: '8092345678',
+                    prefixes: ['809', '829', '849']
+                },
+                'Viva': {
+                    prefix: '',
+                    format: 'XXX XXX XXXX', 
+                    example: '809 543 2109',
+                    pattern: /^(809|829|849)\d{7}$/,
+                    placeholder: '8095432109',
+                    prefixes: ['809', '829', '849']
+                },
+                'Altice': {
+                    prefix: '',
+                    format: 'XXX XXX XXXX',
+                    example: '809 876 5432',
+                    pattern: /^(809|829|849)\d{7}$/,
+                    placeholder: '8098765432',
+                    prefixes: ['809', '829', '849']
+                }
+            }
+        };
+
+        // Initialisation de Parse
+        Parse.initialize(BACK4APP_CONFIG.applicationId, BACK4APP_CONFIG.javascriptKey);
+        Parse.serverURL = BACK4APP_CONFIG.serverURL;
+
+        // Pattern d'état centralisé
+        const AppState = {
+            cart: JSON.parse(localStorage.getItem(CONFIG.localStorageKeys.cart)) || [],
+            user: JSON.parse(localStorage.getItem(CONFIG.localStorageKeys.user)) || null,
+            currentLanguage: localStorage.getItem(CONFIG.localStorageKeys.language) || 'fr',
+            currentPage: 'home',
+            products: [],
+            
+            setCart(newCart) {
+                this.cart = newCart;
+                localStorage.setItem(CONFIG.localStorageKeys.cart, JSON.stringify(newCart));
+                this.notify('cartUpdated');
+            },
+            
+            setUser(newUser) {
+                this.user = newUser;
+                localStorage.setItem(CONFIG.localStorageKeys.user, JSON.stringify(newUser));
+                this.notify('userUpdated');
+            },
+            
+            setLanguage(newLanguage) {
+                this.currentLanguage = newLanguage;
+                localStorage.setItem(CONFIG.localStorageKeys.language, newLanguage);
+                this.notify('languageChanged');
+            },
+            
+            observers: {},
+            
+            subscribe(event, callback) {
+                if (!this.observers[event]) this.observers[event] = [];
+                this.observers[event].push(callback);
+            },
+            
+            notify(event) {
+                if (this.observers[event]) {
+                    this.observers[event].forEach(callback => callback());
+                }
+            }
+        };
+
+        // Sample product data (fallback) avec TOUS les produits
+        const FALLBACK_PRODUCTS = [
             // Mobile Recharges - Digicel
             { 
-                id: 1, 
-                name: "Recharge Digicel $5", 
-                price: 5.00, 
-                category: "mobile-recharge", 
-                provider: "Digicel",
-                icon: "fas fa-mobile-alt", 
-                featured: true,
-                description: "Recharge instantanée pour téléphones Digicel. Valable pour tous les forfaits. Code envoyé immédiatement après paiement."
-            },
-            { 
-                id: 2, 
+                id: '1', 
                 name: "Recharge Digicel $10", 
                 price: 10.00, 
                 category: "mobile-recharge", 
                 provider: "Digicel",
-                icon: "fas fa-mobile-alt", 
+                country: "Haiti",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkON3sykRlMmo7x_SaGu1IObqHF96cNYx1EsP_eNz2g&s",
                 featured: true,
                 description: "Recharge de $10 pour téléphones Digicel. Parfait pour les appels, SMS et données. Livraison instantanée."
             },
             { 
-                id: 3, 
-                name: "Recharge Digicel $15", 
-                price: 15.00, 
+                id: '2', 
+                name: "Recharge Digicel 1000 HTG", 
+                price: 7.50, 
                 category: "mobile-recharge", 
                 provider: "Digicel",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge de $15 pour Digicel. Idéal pour les forfaits mensuels ou l'utilisation intensive."
-            },
-            { 
-                id: 4, 
-                name: "Recharge Digicel $20", 
-                price: 20.00, 
-                category: "mobile-recharge", 
-                provider: "Digicel",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge de $20 pour Digicel. Grande valeur pour les utilisateurs fréquents."
-            },
-            { 
-                id: 5, 
-                name: "Recharge Digicel $25", 
-                price: 25.00, 
-                category: "mobile-recharge", 
-                provider: "Digicel",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge premium de $25 pour Digicel. Maximum de crédit en une seule transaction."
-            },
-            
-            // Mobile Recharges - Natcom
-            { 
-                id: 6, 
-                name: "Recharge Natcom $5", 
-                price: 5.00, 
-                category: "mobile-recharge", 
-                provider: "Natcom",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge de $5 pour Natcom. Valable pour tous les services Natcom."
-            },
-            { 
-                id: 7, 
-                name: "Recharge Natcom $10", 
-                price: 10.00, 
-                category: "mobile-recharge", 
-                provider: "Natcom",
-                icon: "fas fa-mobile-alt", 
-                featured: true,
-                description: "Recharge de $10 pour Natcom. Parfait pour les besoins de communication quotidiens."
-            },
-            { 
-                id: 8, 
-                name: "Recharge Natcom $15", 
-                price: 15.00, 
-                category: "mobile-recharge", 
-                provider: "Natcom",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge de $15 pour Natcom. Excellente valeur pour l'utilisation modérée."
+                country: "Haiti",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkON3sykRlMmo7x_SaGu1IObqHF96cNYx1EsP_eNz2g&s",
+                description: "Recharge Digicel de 1000 gourdes haïtiennes. Idéale pour l'utilisation locale en Haïti."
             },
             
             // Mobile Recharges - Claro
             { 
-                id: 9, 
+                id: '3', 
                 name: "Recharge Claro $10", 
                 price: 10.00, 
                 category: "mobile-recharge", 
                 provider: "Claro",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge de $10 pour Claro. Couverture nationale et internationale."
+                country: "Dominican Republic",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6UtGNmrsBQz0-uk2DVyDA6egaiCLlwVFMONlGFkwyjg&s",
+                featured: true,
+                description: "Recharge Claro de $10. Couverture nationale et internationale. Livraison instantanée par SMS ou email."
             },
             { 
-                id: 10, 
-                name: "Recharge Claro $20", 
-                price: 20.00, 
+                id: '4', 
+                name: "Recharge Claro 500 DOP", 
+                price: 8.50, 
                 category: "mobile-recharge", 
                 provider: "Claro",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge de $20 pour Claro. Idéal pour les voyageurs fréquents."
+                country: "Dominican Republic",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6UtGNmrsBQz0-uk2DVyDA6egaiCLlwVFMONlGFkwyjg&s",
+                featured: true,
+                description: "Recharge Claro de 500 pesos dominicains. Parfaite pour les appels locaux et l'utilisation de données en République Dominicaine."
             },
             
-            // Mobile Recharges - International
+            // Mobile Recharges - Viva
             { 
-                id: 11, 
-                name: "Recharge AT&T $15", 
-                price: 15.00, 
-                category: "mobile-recharge", 
-                provider: "AT&T",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge internationale AT&T $15. Valable aux États-Unis et destinations internationales."
-            },
-            { 
-                id: 12, 
-                name: "Recharge ALTICE $10", 
+                id: '5', 
+                name: "Recharge Viva $10", 
                 price: 10.00, 
                 category: "mobile-recharge", 
-                provider: "ALTICE",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge ALTICE $10. Pour les utilisateurs en République Dominicaine et autres pays."
+                provider: "Viva",
+                country: "Dominican Republic",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBzcZxGIXU4joqhuuJ1dq5GkfdFmgz5yySOI3OfT4TQ&s",
+                featured: true,
+                description: "Recharge Viva de $10. Opérateur mobile en Amérique latine. Couverture internationale étendue."
             },
             { 
-                id: 13, 
-                name: "Recharge VIVA $10", 
+                id: '6', 
+                name: "Recharge Viva 500 DOP", 
+                price: 8.50, 
+                category: "mobile-recharge", 
+                provider: "Viva",
+                country: "Dominican Republic",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBzcZxGIXU4joqhuuJ1dq5GkfdFmgz5yySOI3OfT4TQ&s",
+                description: "Recharge Viva de 500 pesos dominicains. Excellente couverture en République Dominicaine et destinations internationales."
+            },
+            
+            // Mobile Recharges - Altice
+            { 
+                id: '7', 
+                name: "Recharge Altice $10", 
                 price: 10.00, 
                 category: "mobile-recharge", 
-                provider: "VIVA",
-                icon: "fas fa-mobile-alt", 
-                description: "Recharge VIVA $10. Opérateur mobile en Amérique latine."
+                provider: "Altice",
+                country: "Dominican Republic",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdNOPx8pqH6vZ2lkCwh6mU4vm1LaYM9XFK_USZ8EuCuqj30c0WvhE0tTeP&s",
+                featured: true,
+                description: "Recharge Altice de $10. Pour les utilisateurs en République Dominicaine et autres pays. Services voix et données."
+            },
+            { 
+                id: '8', 
+                name: "Recharge Altice 500 DOP", 
+                price: 8.50, 
+                category: "mobile-recharge", 
+                provider: "Altice",
+                country: "Dominican Republic",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdNOPx8pqH6vZ2lkCwh6mU4vm1LaYM9XFK_USZ8EuCuqj30c0WvhE0tTeP&s",
+                description: "Recharge Altice de 500 pesos dominicains. Idéale pour l'utilisation locale avec une excellente couverture réseau."
             },
             
             // Streaming - Netflix
             { 
-                id: 14, 
+                id: '9', 
                 name: "Netflix Premium 1 Mois", 
                 price: 15.00, 
                 category: "streaming", 
@@ -1069,30 +1675,10 @@
                 description: "Abonnement Netflix Premium 1 mois. 4 écrans simultanés, Ultra HD. Compte privé avec vos identifiants.",
                 requiresAccount: true
             },
-            { 
-                id: 15, 
-                name: "Netflix Standard 1 Mois", 
-                price: 12.00, 
-                category: "streaming", 
-                provider: "Netflix",
-                icon: "fab fa-netflix", 
-                description: "Abonnement Netflix Standard 1 mois. 2 écrans simultanés, HD. Compte privé avec vos identifiants.",
-                requiresAccount: true
-            },
-            { 
-                id: 16, 
-                name: "Netflix Basic 1 Mois", 
-                price: 10.00, 
-                category: "streaming", 
-                provider: "Netflix",
-                icon: "fab fa-netflix", 
-                description: "Abonnement Netflix Basic 1 mois. 1 écran, qualité standard. Compte privé avec vos identifiants.",
-                requiresAccount: true
-            },
             
             // Streaming - Other
             { 
-                id: 17, 
+                id: '10', 
                 name: "Disney+ 1 Mois", 
                 price: 9.99, 
                 category: "streaming", 
@@ -1101,29 +1687,10 @@
                 featured: true,
                 description: "Abonnement Disney+ 1 mois. Films Disney, Marvel, Star Wars et National Geographic."
             },
-            { 
-                id: 18, 
-                name: "Spotify Premium 3 Mois", 
-                price: 29.99, 
-                category: "streaming", 
-                provider: "Spotify",
-                icon: "fab fa-spotify", 
-                featured: true,
-                description: "Spotify Premium 3 mois. Musique sans publicité, téléchargement hors ligne, qualité supérieure."
-            },
-            { 
-                id: 19, 
-                name: "HBO Max 1 Mois", 
-                price: 14.99, 
-                category: "streaming", 
-                provider: "HBO",
-                icon: "fas fa-tv", 
-                description: "Abonnement HBO Max 1 mois. Films, séries et documentaires exclusifs."
-            },
             
             // Gaming
             { 
-                id: 20, 
+                id: '11', 
                 name: "Carte Steam $20", 
                 price: 20.00, 
                 category: "gaming", 
@@ -1132,28 +1699,10 @@
                 featured: true,
                 description: "Carte cadeau Steam $20. Achetez des jeux, DLC, et plus sur la plateforme Steam."
             },
-            { 
-                id: 21, 
-                name: "PlayStation Network $25", 
-                price: 25.00, 
-                category: "gaming", 
-                provider: "PlayStation",
-                icon: "fab fa-playstation", 
-                description: "Carte PSN $25. Pour jeux PlayStation, abonnements PS Plus, et contenu du PlayStation Store."
-            },
-            { 
-                id: 22, 
-                name: "Xbox Live $25", 
-                price: 25.00, 
-                category: "gaming", 
-                provider: "Xbox",
-                icon: "fab fa-xbox", 
-                description: "Carte Xbox Live $25. Pour jeux, abonnements Game Pass, et contenu du Microsoft Store."
-            },
             
             // Gift Cards
             { 
-                id: 23, 
+                id: '12', 
                 name: "Carte Amazon $25", 
                 price: 25.00, 
                 category: "gift-cards", 
@@ -1161,75 +1710,189 @@
                 icon: "fab fa-amazon", 
                 featured: true,
                 description: "Carte cadeau Amazon $25. Achetez des millions de produits sur Amazon.com."
-            },
-            { 
-                id: 24, 
-                name: "Google Play $15", 
-                price: 15.00, 
-                category: "gift-cards", 
-                provider: "Google",
-                icon: "fab fa-google-play", 
-                description: "Carte Google Play $15. Applications, jeux, films, livres et plus sur Google Play."
-            },
-            { 
-                id: 25, 
-                name: "Apple iTunes $25", 
-                price: 25.00, 
-                category: "gift-cards", 
-                provider: "Apple",
-                icon: "fab fa-apple", 
-                description: "Carte Apple iTunes $25. Pour musique, films, applications et plus sur l'App Store."
             }
         ];
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let currentPage = 'home';
         let currentProductId = null;
 
         // Initialize the app
-        function init() {
+        async function init() {
+            try {
+                await loadProductsFromBack4App();
+            } catch (error) {
+                console.error('Error loading from Back4App:', error);
+                // Use fallback products
+                AppState.products = FALLBACK_PRODUCTS;
+                showAlert('alert_error', 'error');
+            }
+            
+            // Set initial language
+            updateLanguage();
+            
             loadFeaturedProducts();
             loadAllProducts();
             updateCartCount();
             setupEventListeners();
+            
+            // Subscribe to state changes
+            AppState.subscribe('cartUpdated', updateCartCount);
+            AppState.subscribe('cartUpdated', loadCart);
+            AppState.subscribe('languageChanged', updateLanguage);
+        }
+
+        // Language functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('language-dropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        function changeLanguage(language) {
+            AppState.setLanguage(language);
+            document.getElementById('language-dropdown').classList.remove('show');
+        }
+
+        function updateLanguage() {
+            const language = AppState.currentLanguage;
+            const languageNames = { 'fr': 'FR', 'ht': 'HT', 'es': 'ES' };
+            document.getElementById('current-language').textContent = languageNames[language];
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (TRANSLATIONS[language] && TRANSLATIONS[language][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = TRANSLATIONS[language][key];
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = TRANSLATIONS[language][key];
+                    } else {
+                        element.textContent = TRANSLATIONS[language][key];
+                    }
+                }
+            });
+            
+            // Update dynamic content
+            loadFeaturedProducts();
+            loadAllProducts();
+            if (AppState.currentPage === 'cart') {
+                loadCart();
+            }
+        }
+
+        function translate(key) {
+            return TRANSLATIONS[AppState.currentLanguage]?.[key] || key;
+        }
+
+        // Load products from Back4App
+        async function loadProductsFromBack4App() {
+            try {
+                const Product = Parse.Object.extend('Product');
+                const query = new Parse.Query(Product);
+                query.equalTo('active', true);
+                const results = await query.find();
+                
+                AppState.products = results.map(product => ({
+                    id: product.id,
+                    name: product.get('name'),
+                    price: product.get('price'),
+                    category: product.get('category'),
+                    provider: product.get('provider'),
+                    country: product.get('country'),
+                    icon: product.get('icon') || 'fas fa-gift',
+                    image: product.get('image'),
+                    featured: product.get('featured') || false,
+                    description: product.get('description'),
+                    requiresAccount: product.get('requiresAccount') || false
+                }));
+                
+                console.log('Products loaded from Back4App:', AppState.products.length);
+            } catch (error) {
+                console.error('Error loading products from Back4App:', error);
+                throw error;
+            }
+        }
+
+        // Save order to Back4App
+        async function saveOrderToBack4App(orderData) {
+            try {
+                const Order = Parse.Object.extend('Order');
+                const order = new Order();
+                
+                await order.save(orderData);
+                console.log('Order saved to Back4App:', order.id);
+                return order.id;
+            } catch (error) {
+                console.error('Error saving order to Back4App:', error);
+                throw error;
+            }
+        }
+
+        // Save user to Back4App
+        async function saveUserToBack4App(userData) {
+            try {
+                const User = Parse.Object.extend('User');
+                const user = new User();
+                
+                await user.save(userData);
+                console.log('User saved to Back4App:', user.id);
+                return user.id;
+            } catch (error) {
+                console.error('Error saving user to Back4App:', error);
+                throw error;
+            }
         }
 
         // Show specific page
         function showPage(pageName) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(`${pageName}-page`).classList.add('active');
-            currentPage = pageName;
+            safeExecute(() => {
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(`${pageName}-page`).classList.add('active');
+                AppState.currentPage = pageName;
 
-            // Update navigation
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-            });
+                // Update navigation
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.textContent.includes(pageName) || (pageName === 'home' && link.textContent === translate('nav_home'))) {
+                        link.classList.add('active');
+                    }
+                });
 
-            // Load page-specific content
-            if (pageName === 'cart') {
-                loadCart();
-            }
+                // Load page-specific content
+                if (pageName === 'cart') {
+                    loadCart();
+                }
+
+                // Focus management for accessibility
+                setTimeout(() => {
+                    const activePage = document.getElementById(`${pageName}-page`);
+                    if (activePage) {
+                        activePage.focus();
+                    }
+                }, 100);
+            }, 'alert_error');
         }
 
         // Load featured products on home page
         function loadFeaturedProducts() {
             const container = document.getElementById('featured-products');
-            const featured = products.filter(p => p.featured);
+            const featured = AppState.products.filter(p => p.featured);
             
             container.innerHTML = featured.map(product => `
                 <div class="product-card">
-                    ${product.requiresAccount ? '<div class="product-badge">Compte requis</div>' : ''}
+                    ${product.requiresAccount ? `<div class="product-badge">${translate('account_required')}</div>` : ''}
                     <div class="product-image">
-                        <i class="${product.icon}"></i>
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
+                            `<i class="${product.icon}"></i>`
+                        }
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
                         <div class="product-description">${product.description.substring(0, 60)}...</div>
                         <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <button class="view-button" onclick="showProductDetail(${product.id})">
-                            Voir Détails
+                        <button class="view-button" onclick="showProductDetail('${product.id}')">
+                            ${translate('view_details')}
                         </button>
                     </div>
                 </div>
@@ -1240,18 +1903,21 @@
         function loadAllProducts() {
             const container = document.getElementById('all-products');
             
-            container.innerHTML = products.map(product => `
+            container.innerHTML = AppState.products.map(product => `
                 <div class="product-card">
-                    ${product.requiresAccount ? '<div class="product-badge">Compte requis</div>' : ''}
+                    ${product.requiresAccount ? `<div class="product-badge">${translate('account_required')}</div>` : ''}
                     <div class="product-image">
-                        <i class="${product.icon}"></i>
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
+                            `<i class="${product.icon}"></i>`
+                        }
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
                         <div class="product-description">${product.description.substring(0, 60)}...</div>
                         <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <button class="view-button" onclick="showProductDetail(${product.id})">
-                            Voir Détails
+                        <button class="view-button" onclick="showProductDetail('${product.id}')">
+                            ${translate('view_details')}
                         </button>
                     </div>
                 </div>
@@ -1260,42 +1926,54 @@
 
         // Show product detail page
         function showProductDetail(productId) {
-            const product = products.find(p => p.id === productId);
+            console.log('Showing product detail for:', productId);
+            const product = AppState.products.find(p => p.id === productId);
+            
+            if (!product) {
+                console.error('Product not found:', productId, 'Available products:', AppState.products);
+                showAlert('alert_product_not_found', 'error');
+                return;
+            }
+            
             currentProductId = productId;
             const container = document.getElementById('product-detail-page');
             
             // Calculate fees
-            const instantDeliveryFee = 1.58;
-            const transactionFee = 2.00;
-            const tax = 3.58;
+            const instantDeliveryFee = CONFIG.fees.instantDelivery;
+            const transactionFee = CONFIG.fees.transaction;
+            const tax = CONFIG.fees.tax;
             
             container.innerHTML = `
                 <div class="section-title">
-                    <h2>Détails du Produit</h2>
+                    <h2>${translate('product_details')}</h2>
                 </div>
                 <div class="product-detail">
                     <div class="product-image-large">
-                        <i class="${product.icon}"></i>
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}">` : 
+                            `<i class="${product.icon}"></i>`
+                        }
                     </div>
                     <div class="product-detail-info">
                         <h1>${product.name}</h1>
                         <p class="product-detail-description">${product.description}</p>
                         <div class="product-price-large">$${product.price.toFixed(2)}</div>
                         
+                        ${product.category === 'mobile-recharge' ? generatePhoneForm(product) : ''}
+                        
                         ${product.requiresAccount ? `
                         <div class="account-form">
-                            <h3>Informations du compte</h3>
+                            <h3>${translate('account_info')}</h3>
                             <div class="warning">
                                 <i class="fas fa-exclamation-triangle"></i>
-                                <strong>ATTENTION:</strong> Ne partagez PAS votre Gmail et mot de passe. 
-                                Nous pouvons vous retirer du compte sans remboursement si vous partagez vos identifiants.
+                                ${translate('account_warning')}
                             </div>
                             <div class="form-group">
-                                <label for="account-email">Gmail du compte</label>
+                                <label for="account-email">${translate('account_email')}</label>
                                 <input type="email" id="account-email" required>
                             </div>
                             <div class="form-group">
-                                <label for="account-password">Mot de passe du compte</label>
+                                <label for="account-password">${translate('account_password')}</label>
                                 <input type="password" id="account-password" required>
                             </div>
                         </div>
@@ -1308,35 +1986,35 @@
                         </div>
                         
                         <div class="fee-breakdown">
-                            <h3>Détail des frais</h3>
+                            <h3>${translate('fee_breakdown')}</h3>
                             <div class="fee-item">
-                                <span>Prix du produit:</span>
+                                <span>${translate('product_price')}:</span>
                                 <span id="product-subtotal">$${product.price.toFixed(2)}</span>
                             </div>
                             <div class="fee-item">
-                                <span>Livraison instantanée:</span>
+                                <span>${translate('instant_delivery')}:</span>
                                 <span>$${instantDeliveryFee.toFixed(2)}</span>
                             </div>
                             <div class="fee-item">
-                                <span>Frais de transaction:</span>
+                                <span>${translate('transaction_fee')}:</span>
                                 <span>$${transactionFee.toFixed(2)}</span>
                             </div>
                             <div class="fee-item">
-                                <span>Taxes:</span>
+                                <span>${translate('taxes')}:</span>
                                 <span>$${tax.toFixed(2)}</span>
                             </div>
                             <div class="fee-total">
-                                <span>Total:</span>
+                                <span>${translate('total')}:</span>
                                 <span id="product-total">$${(product.price + instantDeliveryFee + transactionFee + tax).toFixed(2)}</span>
                             </div>
                         </div>
                         
                         <div class="product-actions">
                             <button class="btn btn-secondary" onclick="showPage('products')">
-                                Retour aux produits
+                                ${translate('back_to_products')}
                             </button>
-                            <button class="btn btn-primary" onclick="addToCart(${product.id})">
-                                Ajouter au Panier
+                            <button class="btn btn-primary" onclick="addToCart('${product.id}')">
+                                ${translate('add_to_cart')}
                             </button>
                         </div>
                     </div>
@@ -1353,12 +2031,115 @@
             showPage('product-detail');
         }
 
+        // Generate phone number form based on product country and provider
+        function generatePhoneForm(product) {
+            const country = product.country;
+            const provider = product.provider;
+            
+            if (!country || !provider || !PHONE_FORMATS[country] || !PHONE_FORMATS[country][provider]) {
+                return '';
+            }
+            
+            const phoneConfig = PHONE_FORMATS[country][provider];
+            
+            let prefixSelect = '';
+            if (phoneConfig.prefixes) {
+                prefixSelect = `
+                    <div class="form-group">
+                        <label for="phone-prefix">${translate('phone_prefix')}</label>
+                        <select id="phone-prefix" required>
+                            <option value="">${translate('choose_prefix')}</option>
+                            ${phoneConfig.prefixes.map(prefix => `<option value="${prefix}">${prefix}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone-number">${translate('phone_number')} (${translate('phone_prefix')})</label>
+                        <input type="tel" id="phone-number" placeholder="2345678" pattern="[0-9]{7}" required>
+                    </div>
+                `;
+            } else {
+                prefixSelect = `
+                    <div class="form-group">
+                        <label for="phone-number">${translate('phone_number')}</label>
+                        <input type="tel" id="phone-number" placeholder="${phoneConfig.placeholder}" required>
+                    </div>
+                `;
+            }
+            
+            return `
+                <div class="phone-form">
+                    <h3>${translate('phone_title')}</h3>
+                    <div class="phone-format">
+                        <strong>${translate('phone_required_format')}:</strong> ${phoneConfig.format}<br>
+                        <strong>${translate('phone_example')}:</strong> ${phoneConfig.example}
+                    </div>
+                    ${prefixSelect}
+                    <div class="warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        ${translate('phone_warning')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Validate phone number based on country and provider
+        function validatePhoneNumber(phoneNumber, product) {
+            const country = product.country;
+            const provider = product.provider;
+            
+            if (!country || !provider || !PHONE_FORMATS[country] || !PHONE_FORMATS[country][provider]) {
+                return true; // Skip validation if no format defined
+            }
+            
+            const phoneConfig = PHONE_FORMATS[country][provider];
+            
+            // For Dominican Republic, combine prefix and number
+            if (phoneConfig.prefixes) {
+                const prefix = document.getElementById('phone-prefix').value;
+                const number = document.getElementById('phone-number').value;
+                if (!prefix || !number) {
+                    return false;
+                }
+                phoneNumber = prefix + number;
+            }
+            
+            return phoneConfig.pattern.test(phoneNumber);
+        }
+
+        // Get formatted phone number for display
+        function getFormattedPhoneNumber(product) {
+            const country = product.country;
+            const provider = product.provider;
+            
+            if (!country || !provider || !PHONE_FORMATS[country] || !PHONE_FORMATS[country][provider]) {
+                return '';
+            }
+            
+            const phoneConfig = PHONE_FORMATS[country][provider];
+            
+            if (phoneConfig.prefixes) {
+                const prefix = document.getElementById('phone-prefix').value;
+                const number = document.getElementById('phone-number').value;
+                if (!prefix || !number) {
+                    return '';
+                }
+                
+                // Format as XXX XXX XXXX
+                const formattedNumber = number.replace(/(\d{3})(\d{4})/, '$1 $2');
+                return `${prefix} ${formattedNumber}`;
+            } else {
+                const number = document.getElementById('phone-number').value;
+                // Format as +509 XX XX XXXX
+                return number.replace(/(\d{2})(\d{2})(\d{4})/, '$1 $2 $3');
+            }
+        }
+
         // Update product total when quantity changes
         function updateProductTotal(product) {
             const quantity = parseInt(document.getElementById('product-quantity').value);
-            const instantDeliveryFee = 1.58;
-            const transactionFee = 2.00;
-            const tax = 3.58;
+            const instantDeliveryFee = CONFIG.fees.instantDelivery;
+            const transactionFee = CONFIG.fees.transaction;
+            const tax = CONFIG.fees.tax;
             
             const subtotal = product.price * quantity;
             const total = subtotal + instantDeliveryFee + transactionFee + tax;
@@ -1372,7 +2153,7 @@
             const quantityInput = document.getElementById('product-quantity');
             if (quantityInput.value > 1) {
                 quantityInput.value = parseInt(quantityInput.value) - 1;
-                const product = products.find(p => p.id === currentProductId);
+                const product = AppState.products.find(p => p.id === currentProductId);
                 updateProductTotal(product);
             }
         }
@@ -1380,7 +2161,7 @@
         function increaseQuantity() {
             const quantityInput = document.getElementById('product-quantity');
             quantityInput.value = parseInt(quantityInput.value) + 1;
-            const product = products.find(p => p.id === currentProductId);
+            const product = AppState.products.find(p => p.id === currentProductId);
             updateProductTotal(product);
         }
 
@@ -1388,20 +2169,23 @@
         function filterProducts(category) {
             showPage('products');
             const container = document.getElementById('all-products');
-            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            const filtered = category === 'all' ? AppState.products : AppState.products.filter(p => p.category === category);
             
             container.innerHTML = filtered.map(product => `
                 <div class="product-card">
-                    ${product.requiresAccount ? '<div class="product-badge">Compte requis</div>' : ''}
+                    ${product.requiresAccount ? `<div class="product-badge">${translate('account_required')}</div>` : ''}
                     <div class="product-image">
-                        <i class="${product.icon}"></i>
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
+                            `<i class="${product.icon}"></i>`
+                        }
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
                         <div class="product-description">${product.description.substring(0, 60)}...</div>
                         <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <button class="view-button" onclick="showProductDetail(${product.id})">
-                            Voir Détails
+                        <button class="view-button" onclick="showProductDetail('${product.id}')">
+                            ${translate('view_details')}
                         </button>
                     </div>
                 </div>
@@ -1410,62 +2194,88 @@
 
         // Add product to cart
         function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const quantity = document.getElementById('product-quantity') ? 
-                parseInt(document.getElementById('product-quantity').value) : 1;
-            
-            // For Netflix accounts, validate account info
-            if (product.requiresAccount) {
-                const accountEmail = document.getElementById('account-email');
-                const accountPassword = document.getElementById('account-password');
-                
-                if (!accountEmail.value || !accountPassword.value) {
-                    showAlert('Veuillez fournir les informations du compte Netflix', 'error');
+            safeExecute(() => {
+                const product = AppState.products.find(p => p.id === productId);
+                if (!product) {
+                    showAlert('alert_product_not_found', 'error');
                     return;
                 }
-            }
-            
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    quantity: quantity,
-                    requiresAccount: product.requiresAccount,
-                    accountEmail: product.requiresAccount ? document.getElementById('account-email').value : null,
-                    accountPassword: product.requiresAccount ? document.getElementById('account-password').value : null
-                });
-            }
-            
-            updateCartCount();
-            saveCart();
-            showAlert('Produit ajouté au panier!', 'success');
-            
-            // Return to products page after adding to cart
-            setTimeout(() => {
-                showPage('products');
-            }, 1500);
+                
+                const quantity = document.getElementById('product-quantity') ? 
+                    parseInt(document.getElementById('product-quantity').value) : 1;
+                
+                // For mobile recharges, validate phone number
+                let phoneNumber = '';
+                if (product.category === 'mobile-recharge') {
+                    if (!validatePhoneNumber('', product)) {
+                        showAlert('alert_invalid_phone', 'error');
+                        return;
+                    }
+                    phoneNumber = getFormattedPhoneNumber(product);
+                    if (!phoneNumber) {
+                        showAlert('alert_invalid_phone', 'error');
+                        return;
+                    }
+                }
+                
+                // For Netflix accounts, validate account info
+                if (product.requiresAccount) {
+                    const accountEmail = document.getElementById('account-email');
+                    const accountPassword = document.getElementById('account-password');
+                    
+                    if (!accountEmail.value || !accountPassword.value) {
+                        showAlert('alert_netflix_info_required', 'error');
+                        return;
+                    }
+                    
+                    if (!validateEmail(accountEmail.value)) {
+                        showAlert('alert_invalid_email', 'error');
+                        return;
+                    }
+                }
+                
+                const existingItem = AppState.cart.find(item => item.id === productId);
+                
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    AppState.cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        quantity: quantity,
+                        requiresAccount: product.requiresAccount,
+                        accountEmail: product.requiresAccount ? sanitizeInput(document.getElementById('account-email').value) : null,
+                        accountPassword: product.requiresAccount ? '••••••••' : null,
+                        phoneNumber: product.category === 'mobile-recharge' ? phoneNumber : null
+                    });
+                }
+                
+                AppState.setCart([...AppState.cart]);
+                showAlert('alert_product_added', 'success');
+                
+                // Return to products page after adding to cart
+                setTimeout(() => {
+                    showPage('products');
+                }, 1500);
+            }, 'alert_error');
         }
 
         // Load cart page
         function loadCart() {
             const container = document.getElementById('cart-items');
             
-            if (cart.length === 0) {
-                container.innerHTML = '<p style="text-align: center; padding: 2rem;">Votre panier est vide</p>';
+            if (AppState.cart.length === 0) {
+                container.innerHTML = `<p style="text-align: center; padding: 2rem;">${translate('cart_empty')}</p>`;
                 return;
             }
             
             let total = 0;
-            const instantDeliveryFee = 1.58;
-            const transactionFee = 2.00;
-            const tax = 3.58;
+            const instantDeliveryFee = CONFIG.fees.instantDelivery;
+            const transactionFee = CONFIG.fees.transaction;
+            const tax = CONFIG.fees.tax;
             
-            container.innerHTML = cart.map(item => {
+            container.innerHTML = AppState.cart.map(item => {
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
                 
@@ -1473,16 +2283,17 @@
                     <div class="cart-item">
                         <div class="cart-item-info">
                             <h4>${item.name}</h4>
-                            ${item.requiresAccount ? `<p><small>Compte: ${item.accountEmail}</small></p>` : ''}
+                            ${item.requiresAccount ? `<p><small>${translate('account_info')}: ${item.accountEmail}</small></p>` : ''}
+                            ${item.phoneNumber ? `<p><small>${translate('phone_number')}: ${item.phoneNumber}</small></p>` : ''}
                             <div class="cart-item-quantity">
-                                <button onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                                <span>Quantité: ${item.quantity}</span>
-                                <button onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                                <button onclick="updateCartQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                                <span>${translate('quantity')}: ${item.quantity}</span>
+                                <button onclick="updateCartQuantity('${item.id}', ${item.quantity + 1})">+</button>
                             </div>
                         </div>
                         <div>
                             <strong>$${itemTotal.toFixed(2)}</strong>
-                            <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--error); cursor: pointer; margin-left: 1rem;">
+                            <button onclick="removeFromCart('${item.id}')" style="background: none; border: none; color: var(--error); cursor: pointer; margin-left: 1rem;">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -1494,25 +2305,25 @@
             
             container.innerHTML += `
                 <div class="fee-breakdown">
-                    <h3>Détail des frais</h3>
+                    <h3>${translate('fee_breakdown')}</h3>
                     <div class="fee-item">
-                        <span>Sous-total:</span>
+                        <span>${translate('subtotal')}:</span>
                         <span>$${total.toFixed(2)}</span>
                     </div>
                     <div class="fee-item">
-                        <span>Livraison instantanée:</span>
+                        <span>${translate('instant_delivery')}:</span>
                         <span>$${instantDeliveryFee.toFixed(2)}</span>
                     </div>
                     <div class="fee-item">
-                        <span>Frais de transaction:</span>
+                        <span>${translate('transaction_fee')}:</span>
                         <span>$${transactionFee.toFixed(2)}</span>
                     </div>
                     <div class="fee-item">
-                        <span>Taxes:</span>
+                        <span>${translate('taxes')}:</span>
                         <span>$${tax.toFixed(2)}</span>
                     </div>
                     <div class="fee-total">
-                        <span>Total:</span>
+                        <span>${translate('total')}:</span>
                         <span>$${totalWithFees.toFixed(2)}</span>
                     </div>
                 </div>
@@ -1526,39 +2337,30 @@
                 return;
             }
             
-            const item = cart.find(item => item.id === productId);
+            const item = AppState.cart.find(item => item.id === productId);
             if (item) {
                 item.quantity = newQuantity;
-                updateCartCount();
-                saveCart();
-                loadCart();
+                AppState.setCart([...AppState.cart]);
             }
         }
 
         // Remove item from cart
         function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCartCount();
-            saveCart();
-            loadCart();
-            showAlert('Produit retiré du panier', 'success');
+            AppState.setCart(AppState.cart.filter(item => item.id !== productId));
+            showAlert('alert_product_removed', 'success');
         }
 
         // Update cart count in header
         function updateCartCount() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalItems = AppState.cart.reduce((sum, item) => sum + item.quantity, 0);
             document.querySelectorAll('.cart-count').forEach(el => {
                 el.textContent = totalItems;
             });
         }
 
-        // Save cart to localStorage
-        function saveCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
-
         // Show alert message
-        function showAlert(message, type) {
+        function showAlert(messageKey, type) {
+            const message = translate(messageKey);
             const alert = document.createElement('div');
             alert.className = `alert alert-${type}`;
             alert.textContent = message;
@@ -1569,6 +2371,28 @@
             }, 3000);
         }
 
+        // Utility functions
+        function validateEmail(email) {
+            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function sanitizeInput(input) {
+            const div = document.createElement('div');
+            div.textContent = input;
+            return div.innerHTML;
+        }
+
+        function safeExecute(fn, errorMessage) {
+            try {
+                return fn();
+            } catch (error) {
+                console.error(errorMessage, error);
+                showAlert('alert_error', 'error');
+                return null;
+            }
+        }
+
         // Setup event listeners
         function setupEventListeners() {
             // Mobile menu
@@ -1577,36 +2401,88 @@
                 navLinks.classList.toggle('show');
             });
 
+            // Close language dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const dropdown = document.getElementById('language-dropdown');
+                const button = document.querySelector('.language-btn');
+                if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+
             // Form submissions
-            document.getElementById('checkout-form')?.addEventListener('submit', function(e) {
+            document.getElementById('checkout-form')?.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                if (cart.length === 0) {
-                    showAlert('Votre panier est vide', 'error');
+                if (AppState.cart.length === 0) {
+                    showAlert('alert_empty_cart', 'error');
                     return;
                 }
-                showAlert('Commande passée avec succès! Nous vous contacterons bientôt.', 'success');
-                cart = [];
-                updateCartCount();
-                saveCart();
-                loadCart();
-                showPage('home');
+
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.classList.add('loading');
+                
+                try {
+                    // Calculate total
+                    const subtotal = AppState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    const total = subtotal + CONFIG.fees.instantDelivery + CONFIG.fees.transaction + CONFIG.fees.tax;
+                    
+                    // Prepare order data
+                    const orderData = {
+                        customerName: document.getElementById('name').value,
+                        customerEmail: document.getElementById('email').value,
+                        customerWhatsApp: document.getElementById('whatsapp').value,
+                        deliveryMethod: document.getElementById('delivery').value,
+                        items: AppState.cart,
+                        subtotal: subtotal,
+                        fees: CONFIG.fees,
+                        total: total,
+                        status: 'pending'
+                    };
+                    
+                    // Save to Back4App
+                    const orderId = await saveOrderToBack4App(orderData);
+                    
+                    showAlert('alert_order_success', 'success');
+                    AppState.setCart([]);
+                    showPage('home');
+                } catch (error) {
+                    showAlert('alert_error', 'error');
+                } finally {
+                    submitButton.classList.remove('loading');
+                }
             });
 
             document.getElementById('login-form')?.addEventListener('submit', function(e) {
                 e.preventDefault();
-                showAlert('Connexion réussie!', 'success');
+                showAlert('alert_login_success', 'success');
                 showPage('home');
             });
 
-            document.getElementById('signup-form')?.addEventListener('submit', function(e) {
+            document.getElementById('signup-form')?.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                showAlert('Compte créé avec succès!', 'success');
-                showPage('home');
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.classList.add('loading');
+                
+                try {
+                    const userData = {
+                        name: document.getElementById('signup-name').value,
+                        email: document.getElementById('signup-email').value,
+                        whatsapp: document.getElementById('signup-whatsapp').value
+                    };
+                    
+                    await saveUserToBack4App(userData);
+                    showAlert('alert_signup_success', 'success');
+                    showPage('home');
+                } catch (error) {
+                    showAlert('alert_error', 'error');
+                } finally {
+                    submitButton.classList.remove('loading');
+                }
             });
 
             document.getElementById('support-form')?.addEventListener('submit', function(e) {
                 e.preventDefault();
-                showAlert('Message envoyé! Nous vous répondrons dans les 24h.', 'success');
+                showAlert('alert_support_success', 'success');
                 showPage('home');
             });
         }
