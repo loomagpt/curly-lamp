@@ -266,6 +266,197 @@
             transform: translateY(-2px);
         }
 
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Streaming Services Sections */
+        .streaming-hero {
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .streaming-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .streaming-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .streaming-image {
+            flex: 0 0 200px;
+        }
+
+        .streaming-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        .streaming-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .streaming-feature {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+
+        .streaming-feature i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #FFD700;
+        }
+
+        /* Amazon Section */
+        .amazon-hero {
+            background: linear-gradient(135deg, #FF9900 0%, #FFAC31 100%);
+        }
+
+        /* Google Play Section */
+        .google-play-hero {
+            background: linear-gradient(135deg, #3BCCFF 0%, #4285F4 100%);
+        }
+
+        /* HBO Max Section */
+        .hbo-hero {
+            background: linear-gradient(135deg, #3D0C60 0%, #8B1A8B 100%);
+        }
+
+        /* Spotify Section */
+        .spotify-hero {
+            background: linear-gradient(135deg, #1DB954 0%, #1ED760 100%);
+        }
+
+        /* Steam Section */
+        .steam-hero {
+            background: linear-gradient(135deg, #1B2838 0%, #2A475E 100%);
+        }
+
+        /* Free Fire Hero Section */
+        .freefire-hero {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .freefire-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        /* Region Selector */
+        .region-selector {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .region-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .region-btn {
+            padding: 1rem;
+            border: 2px solid var(--gray-medium);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .region-btn.active {
+            border-color: var(--primary-gold);
+            background: var(--gold-light);
+        }
+
+        .region-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         /* Categories */
         .categories {
             margin: 3rem 0;
@@ -378,28 +569,6 @@
             color: var(--gray-dark);
         }
 
-        .product-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-            opacity: 0;
-        }
-
-        .product-image.loading::before {
-            opacity: 1;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
         .product-info {
             padding: 1.5rem;
         }
@@ -424,6 +593,19 @@
             margin: 0.5rem 0;
         }
 
+        .price-old {
+            text-decoration: line-through;
+            color: var(--gray-dark);
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .price-discount {
+            color: var(--success);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
         .view-button {
             width: 100%;
             background: var(--primary-black);
@@ -439,6 +621,144 @@
         .view-button:hover {
             background: var(--primary-gold);
             color: var(--primary-black);
+        }
+
+        /* Add All Button */
+        .add-all-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        /* Coupon Section */
+        .coupon-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .coupon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .coupon-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coupon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0 0 0 80px;
+        }
+
+        .coupon-percentage {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .coupon-description {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .coupon-expiry {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .countdown-unit {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 40px;
+        }
+
+        .countdown-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .coupon-signup {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Taptap Send Promo Section */
+        .taptap-promo-section {
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .taptap-promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .taptap-promo-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .taptap-promo-image {
+            flex: 0 0 150px;
+        }
+
+        .taptap-promo-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .promo-code {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 2px dashed white;
+        }
+
+        /* Disney+ Section */
+        .disney-hero {
+            background: linear-gradient(135deg, #113CCF 0%, #6B1FA6 100%);
         }
 
         /* Product Detail Page */
@@ -694,6 +1014,296 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* FAQ Styles */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: var(--gray-light);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+            color: var(--gray-dark);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Testimonials Styles */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-gold);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info .stars {
+            color: #FFD700;
+        }
+
+        /* TrustPilot Styles */
+        .trustpilot-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .trustpilot-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .trustpilot-logo {
+            font-size: 2rem;
+            color: #00b67a;
+        }
+
+        .trustpilot-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .trustpilot-stars {
+            color: #00b67a;
+        }
+
+        .trustpilot-score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00b67a;
+        }
+
+        .trustpilot-reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .trustpilot-review {
+            background: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .review-stars {
+            color: #00b67a;
+        }
+
+        .review-date {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        /* Community Styles */
+        .community-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .community-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .community-post {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .post-content {
+            margin-bottom: 1rem;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .post-action {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .post-action:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Exit Intent Modal */
+        .exit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .exit-modal.show {
+            display: flex;
+        }
+
+        .exit-modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .exit-modal h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-black);
+        }
+
+        .exit-modal p {
+            margin-bottom: 2rem;
+            color: var(--gray-dark);
+        }
+
+        .exit-modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
         /* Auth */
         .auth-container {
             max-width: 400px;
@@ -853,6 +1463,43 @@
             .language-selector {
                 display: none;
             }
+
+            .coupon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exit-modal-actions {
+                flex-direction: column;
+            }
+
+            .region-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .taptap-promo-content,
+            .streaming-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .taptap-promo-info,
+            .streaming-info {
+                text-align: center;
+            }
+
+            .streaming-features {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid,
+            .trustpilot-reviews,
+            .community-posts {
+                grid-template-columns: 1fr;
+            }
+
+            .community-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -868,6 +1515,10 @@
             <nav class="nav-links" aria-label="Navigation principale">
                 <a href="#" class="active" onclick="showPage('home')" aria-current="page" data-translate="nav_home">Accueil</a>
                 <a href="#" onclick="showPage('products')" data-translate="nav_products">Produits</a>
+                <a href="#" onclick="showPage('faq')">FAQ</a>
+                <a href="#" onclick="showPage('testimonials')">Témoignages</a>
+                <a href="#" onclick="showPage('trustpilot')">Avis Clients</a>
+                <a href="#" onclick="showPage('community')">Communauté</a>
                 <a href="#" onclick="showPage('cart')">
                     <i class="fas fa-shopping-cart"></i> <span data-translate="nav_cart">Panier</span>
                     <span class="cart-count">0</span>
@@ -916,9 +1567,381 @@
                 <a href="#" class="cta-button" onclick="showPage('products')" data-translate="hero_cta">Acheter Maintenant</a>
             </section>
 
+            <!-- Features Section -->
+            <section class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Recharge Rapide</h3>
+                    <p>Livraison instantanée en moins de 5 minutes</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sûr et Sécurisé</h3>
+                    <p>Paiements cryptés et transactions sécurisées</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>24h/24 et 7j/7</h3>
+                    <p>Service disponible en permanence</p>
+                </div>
+            </section>
+
+            <!-- Taptap Send Promo Section -->
+            <section class="taptap-promo-section">
+                <div class="taptap-promo-content">
+                    <div class="taptap-promo-info">
+                        <h2><i class="fas fa-paper-plane"></i> Taptap Send</h2>
+                        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                            <strong>Envoyez de l'argent à l'étranger sans frais!</strong>
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Transférez de l'argent vers Haïti et plus de 50 pays avec des taux imbattables. 
+                            Aucun frais de transfert, livraison instantanée.
+                        </p>
+                        <div class="promo-code">
+                            <i class="fas fa-tag"></i> Code promo: <strong>CARLINE326</strong>
+                        </div>
+                        <p style="font-size: 0.9rem; opacity: 0.9;">
+                            Utilisez ce code pour obtenir un bonus spécial sur votre premier transfert!
+                        </p>
+                        <button class="btn btn-primary" onclick="openTaptapSend()" style="margin-top: 1rem;">
+                            <i class="fas fa-external-link-alt"></i> Utiliser Taptap Send
+                        </button>
+                    </div>
+                    <div class="taptap-promo-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyygMs1hkkmTZosegMR0L1YA7dJbau__OwBurV6HAi-Q&s=10" alt="Taptap Send" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Amazon Section -->
+            <section class="streaming-hero amazon-hero">
+                <div class="streaming-content">
+                    <div class="streaming-info">
+                        <h2><i class="fab fa-amazon"></i> Cartes Cadeaux Amazon</h2>
+                        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                            <strong>Achetez tout sur Amazon avec nos cartes cadeaux</strong>
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Des millions de produits disponibles : électronique, mode, maison, jeux vidéo et bien plus. 
+                            Livraison instantanée 24h/24.
+                        </p>
+                        
+                        <div class="streaming-features">
+                            <div class="streaming-feature">
+                                <i class="fas fa-shipping-fast"></i>
+                                <h4>Livraison Instantanée</h4>
+                                <p>Reçu en moins de 5 minutes</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-shield-alt"></i>
+                                <h4>Paiement Sécurisé</h4>
+                                <p>Transactions cryptées</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-gift"></i>
+                                <h4>Parfait pour Offrir</h4>
+                                <p>Cadeau idéal</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="filterProducts('gift-cards')" style="margin-top: 1rem;">
+                            <i class="fas fa-shopping-cart"></i> Voir les Cartes Amazon
+                        </button>
+                    </div>
+                    <div class="streaming-image">
+                        <img src="https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100" alt="Amazon Gift Cards" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Google Play Section -->
+            <section class="streaming-hero google-play-hero">
+                <div class="streaming-content">
+                    <div class="streaming-info">
+                        <h2><i class="fab fa-google-play"></i> Cartes Google Play</h2>
+                        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                            <strong>Le meilleur du divertissement mobile</strong>
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Applications, jeux, films, séries, livres et musique. Choisissez votre montant 
+                            de 5€ à 300€ selon vos besoins.
+                        </p>
+                        
+                        <div class="streaming-features">
+                            <div class="streaming-feature">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h4>Apps & Jeux</h4>
+                                <p>Des millions d'applications</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-film"></i>
+                                <h4>Films & Séries</h4>
+                                <p>Contenu streaming</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-book"></i>
+                                <h4>Livres & Musique</h4>
+                                <p>Divertissement complet</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="filterProducts('gift-cards')" style="margin-top: 1rem;">
+                            <i class="fas fa-play-circle"></i> Voir les Cartes Google Play
+                        </button>
+                    </div>
+                    <div class="streaming-image">
+                        <img src="https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F11151316%2FGoogle-Play-LL-New.png&w=1080&q=100" alt="Google Play Gift Cards" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disney+ Section -->
+            <section class="streaming-hero disney-hero">
+                <div class="streaming-content">
+                    <div class="streaming-info">
+                        <h2><i class="fab fa-disney"></i> Disney+</h2>
+                        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                            <strong>Le meilleur du divertissement en streaming</strong>
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Films Disney, Marvel, Star Wars, Pixar et National Geographic. 
+                            Regardez en illimité sur tous vos appareils.
+                        </p>
+                        
+                        <div class="streaming-features">
+                            <div class="streaming-feature">
+                                <i class="fas fa-film"></i>
+                                <h4>10,000+ Titres</h4>
+                                <p>Films et séries</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-tv"></i>
+                                <h4>4 Écrans</h4>
+                                <p>Simultanés</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-download"></i>
+                                <h4>Téléchargement</h4>
+                                <p>Hors ligne</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="filterProducts('streaming')" style="margin-top: 1rem;">
+                            <i class="fas fa-play-circle"></i> Voir les Abonnements
+                        </button>
+                    </div>
+                    <div class="streaming-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsx_-z7UbqxBjyolaDRGujAeEOi82HerPLhcFkaLmtYg&s" alt="Disney+" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- HBO Max Section -->
+            <section class="streaming-hero hbo-hero">
+                <div class="streaming-content">
+                    <div class="streaming-info">
+                        <h2><i class="fas fa-crown"></i> HBO Max</h2>
+                        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                            <strong>Le meilleur de HBO, Warner Bros et plus</strong>
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Game of Thrones, The Last of Us, House of the Dragon et toutes les séries HBO. 
+                            Plus les films Warner Bros et le contenu exclusif Max.
+                        </p>
+                        
+                        <div class="streaming-features">
+                            <div class="streaming-feature">
+                                <i class="fas fa-video"></i>
+                                <h4>Contenu Exclusif</h4>
+                                <p>Séries HBO originales</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-theater-masks"></i>
+                                <h4>Films Warner</h4>
+                                <p>Nouveautés cinéma</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-hd"></i>
+                                <h4>4K HDR</h4>
+                                <p>Qualité maximale</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="filterProducts('streaming')" style="margin-top: 1rem;">
+                            <i class="fas fa-play-circle"></i> Voir les Abonnements HBO
+                        </button>
+                    </div>
+                    <div class="streaming-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr3xT_uGTwZ1XxlWrj8V5J_Dn6_frrnqGPStgGWlulvg&s=10" alt="HBO Max" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spotify Section -->
+            <section class="streaming-hero spotify-hero">
+                <div class="streaming-content">
+                    <div class="streaming-info">
+                        <h2><i class="fab fa-spotify"></i> Spotify Premium</h2>
+                        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                            <strong>La musique sans limites</strong>
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Écoutez des millions de chansons sans publicités, téléchargez pour écouter hors ligne 
+                            et profitez de la musique en haute qualité.
+                        </p>
+                        
+                        <div class="streaming-features">
+                            <div class="streaming-feature">
+                                <i class="fas fa-music"></i>
+                                <h4>100M+ Titres</h4>
+                                <p>Bibliothèque complète</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-download"></i>
+                                <h4>Téléchargement</h4>
+                                <p>Écoute hors ligne</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-volume-up"></i>
+                                <h4>Haute Qualité</h4>
+                                <p>Audio 320kbps</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="filterProducts('streaming')" style="margin-top: 1rem;">
+                            <i class="fas fa-music"></i> Voir les Abonnements Spotify
+                        </button>
+                    </div>
+                    <div class="streaming-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3x2YZ8ZkXbIqQ8WqpPnO8z57uc3nW4taEhrvZVqAOKJYx7dOss0tAkrno&s=10" alt="Spotify Premium" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Steam Section -->
+            <section class="streaming-hero steam-hero">
+                <div class="streaming-content">
+                    <div class="streaming-info">
+                        <h2><i class="fab fa-steam"></i> Steam Cartes Cadeaux</h2>
+                        <p style="margin-bottom: 1rem; font-size: 1.1rem;">
+                            <strong>La plus grande plateforme de jeux PC</strong>
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Achetez des jeux, DLC, skins et plus sur Steam. Cartes cadeaux disponibles 
+                            en différentes valeurs pour tous les gamers.
+                        </p>
+                        
+                        <div class="streaming-features">
+                            <div class="streaming-feature">
+                                <i class="fas fa-gamepad"></i>
+                                <h4>50,000+ Jeux</h4>
+                                <p>Bibliothèque immense</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h4>Achats Faciles</h4>
+                                <p>Processus sécurisé</p>
+                            </div>
+                            <div class="streaming-feature">
+                                <i class="fas fa-gift"></i>
+                                <h4>Cartes Cadeaux</h4>
+                                <p>Parfait pour offrir</p>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="filterProducts('gaming')" style="margin-top: 1rem;">
+                            <i class="fas fa-gamepad"></i> Voir les Cartes Steam
+                        </button>
+                    </div>
+                    <div class="streaming-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVW8D2kb3KplGwG5KeS2GiazzlV17zLuzgranVyFkA4lgqa9zLvXpq_EM&s=10" alt="Steam" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coupon Section -->
+            <section class="coupon-section">
+                <div class="section-title">
+                    <h2>🎁 Offres Spéciales</h2>
+                </div>
+                <div class="coupon-grid" id="coupon-grid">
+                    <!-- Coupons will be loaded here -->
+                </div>
+                <div class="coupon-signup">
+                    <p>Inscrivez-vous pour recevoir des coupons exclusifs!</p>
+                    <button class="btn btn-primary" onclick="showPage('signup')" style="margin-top: 1rem;">
+                        S'inscrire Maintenant
+                    </button>
+                </div>
+            </section>
+
+            <!-- Free Fire Section -->
+            <section class="freefire-hero">
+                <h2><i class="fas fa-fire"></i> Free Fire</h2>
+                <p>Recharges officielles et contenu exclusif</p>
+                
+                <div class="freefire-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100K+</div>
+                        <div class="stat-label">Vendus</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span>5.0</span>
+                        </div>
+                        <div class="stat-label">14,937 avis</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Region Selector -->
+            <section class="region-selector">
+                <h3>Sélectionnez votre région</h3>
+                <div class="region-grid">
+                    <button class="region-btn active" data-region="all">Toutes régions</button>
+                    <button class="region-btn" data-region="malaysia">Malaisie/Singapour</button>
+                    <button class="region-btn" data-region="brazil">Brésil</button>
+                    <button class="region-btn" data-region="americas">Amériques</button>
+                    <button class="region-btn" data-region="indonesia">Indonésie</button>
+                    <button class="region-btn" data-region="europe">Europe et Russie</button>
+                </div>
+            </section>
+
+            <!-- Free Fire Products -->
+            <section class="products">
+                <div class="section-title">
+                    <h2>Produits Free Fire Populaires</h2>
+                </div>
+                <div class="products-grid" id="freefire-products">
+                    <!-- Free Fire products will load here -->
+                </div>
+                
+                <!-- Add All Button -->
+                <div class="add-all-section">
+                    <button class="btn btn-primary" onclick="addAllFreeFireToCart()">
+                        <i class="fas fa-cart-plus"></i> Ajouter tout dans une seule commande
+                    </button>
+                </div>
+            </section>
+
+            <!-- Other Categories -->
             <section class="categories">
                 <div class="section-title">
-                    <h2 data-translate="categories_title">Catégories Populaires</h2>
+                    <h2 data-translate="categories_title">Autres Catégories</h2>
                 </div>
                 <div class="categories-grid">
                     <div class="category-card" onclick="filterProducts('mobile-recharge')">
@@ -952,6 +1975,7 @@
                 </div>
             </section>
 
+            <!-- Featured Products -->
             <section class="products">
                 <div class="section-title">
                     <h2 data-translate="featured_products">Produits Populaires</h2>
@@ -985,6 +2009,19 @@
             <div class="cart-items" id="cart-items">
                 <!-- Cart items will load here -->
             </div>
+            
+            <!-- Coupon Application in Cart -->
+            <div class="coupon-section">
+                <h3>Appliquer un coupon</h3>
+                <div class="form-group">
+                    <input type="text" id="coupon-code" placeholder="Entrez votre code promo">
+                    <button class="btn btn-primary" onclick="applyCoupon()" style="margin-top: 1rem;">
+                        Appliquer le coupon
+                    </button>
+                </div>
+                <div id="coupon-message"></div>
+            </div>
+            
             <div class="checkout-form">
                 <h3 data-translate="checkout_title">Informations de Commande</h3>
                 <form id="checkout-form">
@@ -1010,6 +2047,347 @@
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;" data-translate="checkout_confirm">Confirmer la Commande</button>
                 </form>
+            </div>
+        </div>
+
+        <!-- FAQ Page -->
+        <div class="page" id="faq-page" tabindex="-1">
+            <div class="section-title">
+                <h2>Foire Aux Questions</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Comment fonctionne la livraison instantanée ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Une fois votre paiement confirmé, votre carte cadeau numérique est générée automatiquement et vous est envoyée par email, WhatsApp ou SMS dans les 5 minutes suivant votre achat. Le processus est entièrement automatisé pour garantir une livraison rapide 24h/24 et 7j/7.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Quels modes de paiement acceptez-vous ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous acceptons les cartes de crédit/débit (Visa, Mastercard), les portefeuilles électroniques, et les virements bancaires. Tous les paiements sont sécurisés par un cryptage SSL de niveau bancaire.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Que faire si je ne reçois pas ma commande ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vérifiez d'abord vos spams/courriers indésirables. Si vous ne trouvez pas votre commande après 10 minutes, contactez notre support client via WhatsApp au +509 1234 5678 ou par email à support@prontogiftcards.com. Nous résolvons généralement les problèmes en moins de 30 minutes.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Les cartes cadeaux ont-elles une date d'expiration ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La plupart des cartes cadeaux n'expirent pas, mais nous recommandons de vérifier les conditions spécifiques de chaque fournisseur. Les codes Netflix et autres abonnements sont généralement valables 1 an à partir de la date d'achat.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Puis-je obtenir un remboursement ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>En raison de la nature instantanée et numérique de nos produits, les remboursements ne sont généralement pas possibles une fois le code livré. Cependant, en cas de problème technique ou d'erreur de notre part, nous nous engageons à résoudre le problème ou à procéder à un remboursement intégral.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Comment utiliser les coupons de réduction ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Entrez simplement votre code promo dans la case prévue à cet effet lors du processus de paiement. Les réductions sont appliquées automatiquement au total de votre commande. Chaque coupon a ses propres conditions d'utilisation (montant minimum, première commande, etc.).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Page -->
+        <div class="page" id="testimonials-page" tabindex="-1">
+            <div class="section-title">
+                <h2>Témoignages Clients</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Service exceptionnel ! J'ai commandé une carte Amazon à 3h du matin et je l'ai reçue en 2 minutes. Incroyablement rapide et fiable. Je recommande vivement !"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Marie Joseph</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "En tant que streamer, j'achète régulièrement des cartes Steam. ProntoGiftCards est de loin le service le plus rapide. Support client réactif et prix compétitifs."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PD</div>
+                        <div class="author-info">
+                            <h4>Pierre David</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "J'habite en Haïti et j'utilise souvent le service pour recharger mon compte Free Fire. Livraison instantanée même tard le soir. Service 5 étoiles !"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sophie Michel</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "J'ai eu un petit problème avec ma commande Netflix, le support m'a contacté en 5 minutes et a tout résolu. Professionnalisme et rapidité remarquables."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JM</div>
+                        <div class="author-info">
+                            <h4>Jean Marc</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TrustPilot Page -->
+        <div class="page" id="trustpilot-page" tabindex="-1">
+            <div class="section-title">
+                <h2>Avis Clients - TrustPilot</h2>
+            </div>
+            
+            <div class="trustpilot-section">
+                <div class="trustpilot-header">
+                    <div class="trustpilot-logo">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <h3>Excellent</h3>
+                        <div class="trustpilot-rating">
+                            <div class="trustpilot-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="trustpilot-score">4.9/5</div>
+                        </div>
+                        <p>Basé sur 2,847 avis</p>
+                    </div>
+                </div>
+                
+                <div class="trustpilot-reviews">
+                    <div class="trustpilot-review">
+                        <div class="review-header">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-date">Il y a 2 jours</div>
+                        </div>
+                        <h4>Service impeccable</h4>
+                        <p>"Commande passée à 23h45, code reçu à 23h46. Impossible de faire plus rapide ! Je recommande."</p>
+                        <p><strong>Alexandre T.</strong></p>
+                    </div>
+                    
+                    <div class="trustpilot-review">
+                        <div class="review-header">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-date">Il y a 1 semaine</div>
+                        </div>
+                        <h4>Fiable à 100%</h4>
+                        <p>"J'achète mes cartes Google Play ici depuis 6 mois. Jamais eu le moindre problème. Service client très réactif."</p>
+                        <p><strong>Sarah K.</strong></p>
+                    </div>
+                    
+                    <div class="trustpilot-review">
+                        <div class="review-header">
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="review-date">Il y a 2 semaines</div>
+                        </div>
+                        <h4>Meilleur prix</h4>
+                        <p>"Non seulement c'est rapide, mais en plus les prix sont imbattables. J'ai comparé avec d'autres sites, ProntoGiftCards est le moins cher."</p>
+                        <p><strong>Marc L.</strong></p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="window.open('#', '_blank')">
+                        <i class="fas fa-external-link-alt"></i> Voir tous les avis sur TrustPilot
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community Page -->
+        <div class="page" id="community-page" tabindex="-1">
+            <div class="section-title">
+                <h2>Communauté ProntoGiftCards</h2>
+            </div>
+            
+            <div class="community-stats">
+                <div class="stat-card">
+                    <div class="stat-number">50K+</div>
+                    <div>Membres</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15K+</div>
+                    <div>Commandes/mois</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div>Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div>Support</div>
+                </div>
+            </div>
+            
+            <div class="community-posts">
+                <div class="community-post">
+                    <div class="post-header">
+                        <div class="post-avatar">JD</div>
+                        <div>
+                            <h4>Jean D.</h4>
+                            <small>Membre depuis 2022</small>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Quelqu'un a testé les nouvelles cartes Disney+ ? Je veux offrir un abonnement à ma nièce pour son anniversaire.</p>
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-heart"></i>
+                            <span>24</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            <span>8</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-post">
+                    <div class="post-header">
+                        <div class="post-avatar">ML</div>
+                        <div>
+                            <h4>Marie L.</h4>
+                            <small>Membre VIP</small>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Je viens de recevoir mon code Spotify en 1 minute ! Merci ProntoGiftCards pour ce service ultra-rapide 🎵</p>
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-heart"></i>
+                            <span>45</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            <span>12</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="community-post">
+                    <div class="post-header">
+                        <div class="post-avatar">PG</div>
+                        <div>
+                            <h4>Pierre G.</h4>
+                            <small>Streamer</small>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Quel est le meilleur moment pour acheter des cartes Steam ? Y a-t-il des promotions régulières ?</p>
+                    </div>
+                    <div class="post-actions">
+                        <div class="post-action">
+                            <i class="far fa-heart"></i>
+                            <span>18</span>
+                        </div>
+                        <div class="post-action">
+                            <i class="far fa-comment"></i>
+                            <span>15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="showPage('signup')">
+                    <i class="fas fa-users"></i> Rejoindre la Communauté
+                </button>
             </div>
         </div>
 
@@ -1084,6 +2462,18 @@
         </div>
     </div>
 
+    <!-- Exit Intent Modal -->
+    <div class="exit-modal" id="exit-modal">
+        <div class="exit-modal-content">
+            <h3>🎁 Vous avez maintenant droit à un coupon !</h3>
+            <p>Êtes-vous sûr de vouloir partir ? Inscrivez-vous maintenant pour recevoir des coupons exclusifs!</p>
+            <div class="exit-modal-actions">
+                <button class="btn btn-secondary" onclick="closeExitModal()">Partir maintenant</button>
+                <button class="btn btn-primary" onclick="showPage('signup')">Continuez à vous inscrire</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -1096,6 +2486,10 @@
                 <ul class="footer-links">
                     <li><a href="#" onclick="showPage('home')" data-translate="nav_home">Accueil</a></li>
                     <li><a href="#" onclick="showPage('products')" data-translate="nav_products">Produits</a></li>
+                    <li><a href="#" onclick="showPage('faq')">FAQ</a></li>
+                    <li><a href="#" onclick="showPage('testimonials')">Témoignages</a></li>
+                    <li><a href="#" onclick="showPage('trustpilot')">Avis Clients</a></li>
+                    <li><a href="#" onclick="showPage('community')">Communauté</a></li>
                     <li><a href="#" onclick="showPage('cart')" data-translate="nav_cart">Panier</a></li>
                     <li><a href="#" onclick="showPage('support')" data-translate="nav_support">Support</a></li>
                 </ul>
@@ -1105,6 +2499,19 @@
                 <ul class="footer-links">
                     <li><i class="fas fa-envelope"></i> support@prontogiftcards.com</li>
                     <li><i class="fab fa-whatsapp"></i> +509 1234 5678</li>
+                    <li><i class="fas fa-clock"></i> Support 24h/24 et 7j/7</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Partenaires</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="openTaptapSend()"><i class="fas fa-external-link-alt"></i> Taptap Send</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> Amazon</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> Google Play</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> Disney+</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> HBO Max</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> Spotify</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> Steam</a></li>
                 </ul>
             </div>
         </div>
@@ -1131,402 +2538,385 @@
             localStorageKeys: {
                 cart: 'cart',
                 user: 'user',
-                language: 'language'
+                language: 'language',
+                coupons: 'coupons',
+                exitModalShown: 'exitModalShown'
             }
         };
 
-        // Système de traduction
-        const TRANSLATIONS = {
-            fr: {
-                // Navigation
-                'site_title': 'ProntoGiftCards',
-                'nav_home': 'Accueil',
-                'nav_products': 'Produits',
-                'nav_cart': 'Panier',
-                'nav_support': 'Support',
-                'nav_login': 'Connexion',
-                
-                // Hero Section
-                'hero_title': 'Cartes-cadeaux numériques instantanées',
-                'hero_subtitle': 'Achetez et recevez vos cartes-cadeaux en moins de 5 minutes',
-                'hero_cta': 'Acheter Maintenant',
-                
-                // Categories
-                'categories_title': 'Catégories Populaires',
-                'category_mobile': 'Recharges Mobiles',
-                'category_mobile_desc': 'Digicel, Natcom, Claro, AT&T',
-                'category_streaming': 'Streaming',
-                'category_streaming_desc': 'Netflix, Disney+, Spotify, HBO',
-                'category_gaming': 'Jeux',
-                'category_gaming_desc': 'Steam, PlayStation, Xbox',
-                'category_giftcards': 'Cartes-cadeaux',
-                'category_giftcards_desc': 'Amazon, Google Play, Apple',
-                
-                // Products
-                'featured_products': 'Produits Populaires',
-                'all_products': 'Tous les Produits',
-                'view_details': 'Voir Détails',
-                'add_to_cart': 'Ajouter au Panier',
-                'account_required': 'Compte requis',
-                
-                // Product Detail
-                'product_details': 'Détails du Produit',
-                'back_to_products': 'Retour aux produits',
-                'quantity': 'Quantité',
-                'fee_breakdown': 'Détail des frais',
-                'product_price': 'Prix du produit',
-                'instant_delivery': 'Livraison instantanée',
-                'transaction_fee': 'Frais de transaction',
-                'taxes': 'Taxes',
-                'total': 'Total',
-                
-                // Phone Form
-                'phone_title': 'Numéro à recharger',
-                'phone_required_format': 'Format requis',
-                'phone_example': 'Exemple',
-                'phone_prefix': 'Préfixe du numéro',
-                'phone_number': 'Numéro de téléphone',
-                'choose_prefix': 'Choisir un préfixe',
-                'phone_warning': 'ATTENTION! Si vous saisissez un numéro incorrect, vérifiez-le avant d\'acheter, car une fois l\'achat effectué, vous ne pourrez plus le modifier et aucun remboursement ne sera possible.',
-                
-                // Account Form
-                'account_info': 'Informations du compte',
-                'account_warning': 'ATTENTION: Ne partagez PAS votre Gmail et mot de passe. Nous pouvons vous retirer du compte sans remboursement si vous partagez vos identifiants.',
-                'account_email': 'Gmail du compte',
-                'account_password': 'Mot de passe du compte',
-                
-                // Cart
-                'cart_title': 'Votre Panier',
-                'cart_empty': 'Votre panier est vide',
-                'subtotal': 'Sous-total',
-                'remove': 'Retirer',
-                
-                // Checkout
-                'checkout_title': 'Informations de Commande',
-                'checkout_name': 'Nom Complet',
-                'checkout_email': 'Email',
-                'checkout_delivery': 'Méthode de livraison',
-                'checkout_confirm': 'Confirmer la Commande',
-                'delivery_email': 'Email',
-                
-                // Auth
-                'login_title': 'Connexion',
-                'login_email': 'Email',
-                'login_password': 'Mot de passe',
-                'login_button': 'Se Connecter',
-                'login_no_account': 'Pas de compte?',
-                'login_create_account': 'Créer un compte',
-                
-                'signup_title': 'Créer un Compte',
-                'signup_name': 'Nom Complet',
-                'signup_email': 'Email',
-                'signup_password': 'Mot de passe',
-                'signup_button': 'Créer le Compte',
-                
-                'support_title': 'Support Client',
-                'support_email': 'Email',
-                'support_subject': 'Sujet',
-                'support_message': 'Message',
-                'support_button': 'Envoyer',
-                
-                // Footer
-                'footer_about': 'ProntoGiftCards',
-                'footer_description': 'Votre destination de confiance pour les cartes-cadeaux numériques. Livraison instantanée 24h/24.',
-                'footer_links': 'Liens Rapides',
-                'footer_contact': 'Contact',
-                'footer_rights': 'Tous droits réservés.',
-                
-                // Alerts
-                'alert_product_added': 'Produit ajouté au panier!',
-                'alert_product_removed': 'Produit retiré du panier',
-                'alert_order_success': 'Commande passée avec succès! Nous vous contacterons bientôt.',
-                'alert_login_success': 'Connexion réussie!',
-                'alert_signup_success': 'Compte créé avec succès!',
-                'alert_support_success': 'Message envoyé! Nous vous répondrons dans les 24h.',
-                'alert_empty_cart': 'Votre panier est vide',
-                'alert_product_not_found': 'Produit non trouvé',
-                'alert_invalid_email': 'Veuillez fournir un email valide',
-                'alert_invalid_phone': 'Veuillez fournir un numéro de téléphone valide',
-                'alert_netflix_info_required': 'Veuillez fournir les informations du compte Netflix',
-                'alert_error': 'Une erreur est survenue. Veuillez réessayer.'
+        // Système de coupons
+        const COUPONS = {
+            'WELCOME10': {
+                code: 'WELCOME10',
+                discount: 10,
+                maxDiscount: 10.00,
+                minOrder: 0.01,
+                description: '10% DE RÉDUCTION (Jusqu\'à 10,00 $)',
+                expiry: new Date(Date.now() + 13 * 24 * 60 * 60 * 1000),
+                forNewUsers: true
             },
-            ht: {
-                // Navigation
-                'site_title': 'ProntoGiftCards',
-                'nav_home': 'Akèy',
-                'nav_products': 'Pwodwi',
-                'nav_cart': 'Kabwa',
-                'nav_support': 'Sipò',
-                'nav_login': 'Koneksyon',
-                
-                // Hero Section
-                'hero_title': 'Kat kado dijital enstantane',
-                'hero_subtitle': 'Achte epi resevwa kat kado ou an mwens pase 5 minit',
-                'hero_cta': 'Achte Kounye a',
-                
-                // Categories
-                'categories_title': 'Kategori Popilè',
-                'category_mobile': 'Rechaj Mobil',
-                'category_mobile_desc': 'Digicel, Natcom, Claro, AT&T',
-                'category_streaming': 'Streaming',
-                'category_streaming_desc': 'Netflix, Disney+, Spotify, HBO',
-                'category_gaming': 'Jwèt',
-                'category_gaming_desc': 'Steam, PlayStation, Xbox',
-                'category_giftcards': 'Kat kado',
-                'category_giftcards_desc': 'Amazon, Google Play, Apple',
-                
-                // Products
-                'featured_products': 'Pwodwi Popilè',
-                'all_products': 'Tout Pwodwi yo',
-                'view_details': 'Wè Detay',
-                'add_to_cart': 'Ajoute nan Kabwa',
-                'account_required': 'Kont obligatwa',
-                
-                // Product Detail
-                'product_details': 'Detay Pwodwi a',
-                'back_to_products': 'Retounen nan pwodwi yo',
-                'quantity': 'Kantite',
-                'fee_breakdown': 'Detay frè yo',
-                'product_price': 'Pri pwodwi a',
-                'instant_delivery': 'Livrezon enstantane',
-                'transaction_fee': 'Frè tranzaksyon',
-                'taxes': 'Taks',
-                'total': 'Total',
-                
-                // Phone Form
-                'phone_title': 'Nimewo pou rechaje',
-                'phone_required_format': 'Fòma ki nesesè',
-                'phone_example': 'Egzanp',
-                'phone_prefix': 'Prefiks nimewo a',
-                'phone_number': 'Nimewo telefòn',
-                'choose_prefix': 'Chwazi yon prefiks',
-                'phone_warning': 'ATANSYON! Si ou antre yon nimewo ki pa kòrèk, tcheke li anvan w achte, paske yon fwa acha a fèt, ou p ap ka chanje l epi p ap gen okenn ranbousman.',
-                
-                // Account Form
-                'account_info': 'Enfòmasyon kont lan',
-                'account_warning': 'ATANSYON: Pa pataje Gmail ak modpas ou. Nou ka retire w nan kont la san ranbousman si w pataje idantifyan ou.',
-                'account_email': 'Gmail kont lan',
-                'account_password': 'Modpas kont lan',
-                
-                // Cart
-                'cart_title': 'Kabwa Ou',
-                'cart_empty': 'Kabwa ou a vid',
-                'subtotal': 'Sou-total',
-                'remove': 'Retire',
-                
-                // Checkout
-                'checkout_title': 'Enfòmasyon Lòd',
-                'checkout_name': 'Non Konplè',
-                'checkout_email': 'Imèl',
-                'checkout_delivery': 'Metòd livrezon',
-                'checkout_confirm': 'Konfime Lòd la',
-                'delivery_email': 'Imèl',
-                
-                // Auth
-                'login_title': 'Koneksyon',
-                'login_email': 'Imèl',
-                'login_password': 'Modpas',
-                'login_button': 'Konekte',
-                'login_no_account': 'Pa gen kont?',
-                'login_create_account': 'Kreye yon kont',
-                
-                'signup_title': 'Kreye yon Kont',
-                'signup_name': 'Non Konplè',
-                'signup_email': 'Imèl',
-                'signup_password': 'Modpas',
-                'signup_button': 'Kreye Kont lan',
-                
-                'support_title': 'Sipò Kliyan',
-                'support_email': 'Imèl',
-                'support_subject': 'Sijè',
-                'support_message': 'Mesaj',
-                'support_button': 'Voye',
-                
-                // Footer
-                'footer_about': 'ProntoGiftCards',
-                'footer_description': 'Destinasyon konfians ou pou kat kado dijital. Livrezon enstantane 24/24.',
-                'footer_links': 'Lyen Rapid',
-                'footer_contact': 'Kontak',
-                'footer_rights': 'Tou dwa rezève.',
-                
-                // Alerts
-                'alert_product_added': 'Pwodwi ajoute nan kabwa!',
-                'alert_product_removed': 'Pwodwi retire nan kabwa',
-                'alert_order_success': 'Lòd pase avèk siksè! Nou pral kontakte w byento.',
-                'alert_login_success': 'Koneksyon reyisi!',
-                'alert_signup_success': 'Kont kreye avèk siksè!',
-                'alert_support_success': 'Mesaj voye! Nou pral reponn ou nan 24 èdtan.',
-                'alert_empty_cart': 'Kabwa ou a vid',
-                'alert_product_not_found': 'Pwodwi pa jwenn',
-                'alert_invalid_email': 'Tanpri bay yon imèl valab',
-                'alert_invalid_phone': 'Tanpri bay yon nimewo telefòn valab',
-                'alert_netflix_info_required': 'Tanpri bay enfòmasyon kont Netflix la',
-                'alert_error': 'Yon erè rive. Tanpri eseye ankò.'
+            'WELCOME6': {
+                code: 'WELCOME6',
+                discount: 6,
+                maxDiscount: 6.00,
+                minOrder: 0.01,
+                description: '6% DE RÉDUCTION (Jusqu\'à 6,00 $)',
+                expiry: new Date(Date.now() + 13 * 24 * 60 * 60 * 1000),
+                forNewUsers: true
             },
-            es: {
-                // Navigation
-                'site_title': 'ProntoGiftCards',
-                'nav_home': 'Inicio',
-                'nav_products': 'Productos',
-                'nav_cart': 'Carrito',
-                'nav_support': 'Soporte',
-                'nav_login': 'Iniciar Sesión',
-                
-                // Hero Section
-                'hero_title': 'Tarjetas regalo digitales instantáneas',
-                'hero_subtitle': 'Compra y recibe tus tarjetas regalo en menos de 5 minutos',
-                'hero_cta': 'Comprar Ahora',
-                
-                // Categories
-                'categories_title': 'Categorías Populares',
-                'category_mobile': 'Recargas Móviles',
-                'category_mobile_desc': 'Digicel, Natcom, Claro, AT&T',
-                'category_streaming': 'Streaming',
-                'category_streaming_desc': 'Netflix, Disney+, Spotify, HBO',
-                'category_gaming': 'Juegos',
-                'category_gaming_desc': 'Steam, PlayStation, Xbox',
-                'category_giftcards': 'Tarjetas regalo',
-                'category_giftcards_desc': 'Amazon, Google Play, Apple',
-                
-                // Products
-                'featured_products': 'Productos Populares',
-                'all_products': 'Todos los Productos',
-                'view_details': 'Ver Detalles',
-                'add_to_cart': 'Añadir al Carrito',
-                'account_required': 'Cuenta requerida',
-                
-                // Product Detail
-                'product_details': 'Detalles del Producto',
-                'back_to_products': 'Volver a productos',
-                'quantity': 'Cantidad',
-                'fee_breakdown': 'Desglose de tarifas',
-                'product_price': 'Precio del producto',
-                'instant_delivery': 'Entrega instantánea',
-                'transaction_fee': 'Tarifa de transacción',
-                'taxes': 'Impuestos',
-                'total': 'Total',
-                
-                // Phone Form
-                'phone_title': 'Número a recargar',
-                'phone_required_format': 'Formato requerido',
-                'phone_example': 'Ejemplo',
-                'phone_prefix': 'Prefijo del número',
-                'phone_number': 'Número de teléfono',
-                'choose_prefix': 'Elegir un prefijo',
-                'phone_warning': '¡ATENCIÓN! Si ingresa un número incorrecto, verifíquelo antes de comprar, porque una vez realizada la compra, no podrá modificarlo y no habrá reembolso posible.',
-                
-                // Account Form
-                'account_info': 'Información de la cuenta',
-                'account_warning': 'ATENCIÓN: NO comparta su Gmail y contraseña. Podemos retirarlo de la cuenta sin reembolso si comparte sus credenciales.',
-                'account_email': 'Gmail de la cuenta',
-                'account_password': 'Contraseña de la cuenta',
-                
-                // Cart
-                'cart_title': 'Tu Carrito',
-                'cart_empty': 'Tu carrito está vacío',
-                'subtotal': 'Subtotal',
-                'remove': 'Eliminar',
-                
-                // Checkout
-                'checkout_title': 'Información del Pedido',
-                'checkout_name': 'Nombre Completo',
-                'checkout_email': 'Email',
-                'checkout_delivery': 'Método de entrega',
-                'checkout_confirm': 'Confirmar Pedido',
-                'delivery_email': 'Email',
-                
-                // Auth
-                'login_title': 'Iniciar Sesión',
-                'login_email': 'Email',
-                'login_password': 'Contraseña',
-                'login_button': 'Iniciar Sesión',
-                'login_no_account': '¿No tienes cuenta?',
-                'login_create_account': 'Crear una cuenta',
-                
-                'signup_title': 'Crear Cuenta',
-                'signup_name': 'Nombre Completo',
-                'signup_email': 'Email',
-                'signup_password': 'Contraseña',
-                'signup_button': 'Crear Cuenta',
-                
-                'support_title': 'Soporte al Cliente',
-                'support_email': 'Email',
-                'support_subject': 'Asunto',
-                'support_message': 'Mensaje',
-                'support_button': 'Enviar',
-                
-                // Footer
-                'footer_about': 'ProntoGiftCards',
-                'footer_description': 'Tu destino de confianza para tarjetas regalo digitales. Entrega instantánea 24/7.',
-                'footer_links': 'Enlaces Rápidos',
-                'footer_contact': 'Contacto',
-                'footer_rights': 'Todos los derechos reservados.',
-                
-                // Alerts
-                'alert_product_added': '¡Producto añadido al carrito!',
-                'alert_product_removed': 'Producto eliminado del carrito',
-                'alert_order_success': '¡Pedido realizado con éxito! Nos contactaremos pronto.',
-                'alert_login_success': '¡Inicio de sesión exitoso!',
-                'alert_signup_success': '¡Cuenta creada con éxito!',
-                'alert_support_success': '¡Mensaje enviado! Te responderemos en 24 horas.',
-                'alert_empty_cart': 'Tu carrito está vacío',
-                'alert_product_not_found': 'Producto no encontrado',
-                'alert_invalid_email': 'Por favor proporcione un email válido',
-                'alert_invalid_phone': 'Por favor proporcione un número de teléfono válido',
-                'alert_netflix_info_required': 'Por favor proporcione la información de la cuenta Netflix',
-                'alert_error': 'Ocurrió un error. Por favor intente nuevamente.'
+            'CARLINE326': {
+                code: 'CARLINE326',
+                discount: 15,
+                maxDiscount: 15.00,
+                minOrder: 5.00,
+                description: '15% DE RÉDUCTION Taptap Send (Jusqu\'à 15,00 $)',
+                expiry: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+                forNewUsers: false,
+                partner: 'Taptap Send'
             }
         };
 
-        // Configuration des formats de numéros par pays et opérateur
-        const PHONE_FORMATS = {
-            'Haiti': {
-                'Digicel': {
-                    prefix: '+509',
-                    format: '+509 XX XX XXXX',
-                    example: '+509 48 12 3456',
-                    pattern: /^\+509\d{8}$/,
-                    placeholder: '+509XXXXXXXX'
-                },
-                'Natcom': {
-                    prefix: '+509', 
-                    format: '+509 XX XX XXXX',
-                    example: '+509 31 45 6789',
-                    pattern: /^\+509\d{8}$/,
-                    placeholder: '+509XXXXXXXX'
-                }
+        // Tous les produits
+        const ALL_PRODUCTS = [
+            // Free Fire Products
+            {
+                id: 'freefire-rabbit-50',
+                name: "50 TIRAGES DE L'ASCENSION DU LAPIN | Free Fire",
+                description: "L'ASCENSION DU LAPIN 50 TIRAGES - Contenu exclusif Free Fire",
+                price: 18.00,
+                originalPrice: 20.00,
+                discount: 2.00,
+                category: "gaming",
+                provider: "Free Fire",
+                region: "all",
+                image: "https://c2c.fp.guinfra.com/file/67d3f3c25e3caa15d42569bdD8L6TyRK03?fop=imageView/2/w/340/h/340",
+                featured: true
             },
-            'Dominican Republic': {
-                'Claro': {
-                    prefix: '',
-                    format: 'XXX XXX XXXX',
-                    example: '809 234 5678',
-                    pattern: /^(809|829|849)\d{7}$/,
-                    placeholder: '8092345678',
-                    prefixes: ['809', '829', '849']
-                },
-                'Viva': {
-                    prefix: '',
-                    format: 'XXX XXX XXXX', 
-                    example: '809 543 2109',
-                    pattern: /^(809|829|849)\d{7}$/,
-                    placeholder: '8095432109',
-                    prefixes: ['809', '829', '849']
-                },
-                'Altice': {
-                    prefix: '',
-                    format: 'XXX XXX XXXX',
-                    example: '809 876 5432',
-                    pattern: /^(809|829|849)\d{7}$/,
-                    placeholder: '8098765432',
-                    prefixes: ['809', '829', '849']
-                }
-            }
-        };
+            {
+                id: 'freefire-kord-mp5-50',
+                name: "KORD X MP5 RING 50 TIRAGES | Free Fire",
+                description: "KORD X MP5 RING 50 TIRAGES - Armes exclusives",
+                price: 12.60,
+                originalPrice: 14.00,
+                discount: 1.40,
+                category: "gaming",
+                provider: "Free Fire",
+                region: "all",
+                image: "https://c2c.fp.guinfra.com/file/67d3f3c25e3caa15d42569bdD8L6TyRK03?fop=imageView/2/w/340/h/340",
+                featured: true
+            },
+            {
+                id: 'freefire-evo-vault',
+                name: "EVO VAULT - une des armes EVO | Free Fire",
+                description: "EVO VAULT - l'une des armes EVO - Collection spéciale",
+                price: 12.60,
+                originalPrice: 14.00,
+                discount: 1.40,
+                category: "gaming",
+                provider: "Free Fire",
+                region: "all",
+                image: "https://c2c.fp.guinfra.com/file/67d3f3c25e3caa15d42569bdD8L6TyRK03?fop=imageView/2/w/340/h/340",
+                featured: true
+            },
+            {
+                id: 'freefire-booyah-pass',
+                name: "PASS BOOYAH | Free Fire",
+                description: "PASS BOOYAH - Accès aux récompenses exclusives",
+                price: 4.03,
+                originalPrice: 4.47,
+                discount: 0.44,
+                category: "gaming",
+                provider: "Free Fire",
+                region: "all",
+                image: "https://c2c.fp.guinfra.com/file/67d3f3c25e3caa15d42569bdD8L6TyRK03?fop=imageView/2/w/340/h/340",
+                featured: true
+            },
+            {
+                id: 'freefire-monthly',
+                name: "Abonnement Mensuel Free Fire",
+                description: "Abonnement mensuel avec avantages exclusifs",
+                price: 7.25,
+                category: "gaming",
+                provider: "Free Fire",
+                region: "all",
+                image: "https://c2c.fp.guinfra.com/file/67d3f3c25e3caa15d42569bdD8L6TyRK03?fop=imageView/2/w/340/h/340",
+                featured: true
+            },
 
-        // Initialisation de Parse
-        Parse.initialize(BACK4APP_CONFIG.applicationId, BACK4APP_CONFIG.javascriptKey);
-        Parse.serverURL = BACK4APP_CONFIG.serverURL;
+            // Netflix Products
+            { 
+                id: 'netflix-100', 
+                name: "Carte Cadeau Netflix $100", 
+                price: 100.00, 
+                category: "gift-cards", 
+                provider: "Netflix",
+                image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5835/5835817_sd.jpg;maxHeight=1920;maxWidth=900?format=webp",
+                featured: true,
+                description: "Carte cadeau Netflix de $100. Parfaite pour offrir ou pour votre propre utilisation."
+            },
+            { 
+                id: 'netflix-50', 
+                name: "Carte Cadeau Netflix $50", 
+                price: 50.00, 
+                category: "gift-cards", 
+                provider: "Netflix",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpr2QwFDVPpm_Jqec8A3UVCNAq0oT_1lwelgjYuRkvVA&s=10",
+                featured: true,
+                description: "Carte cadeau Netflix de $50. Idéale pour un cadeau ou pour prolonger votre abonnement."
+            },
+            { 
+                id: 'netflix-25', 
+                name: "Carte Cadeau Netflix $25", 
+                price: 25.00, 
+                category: "gift-cards", 
+                provider: "Netflix",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5INuUJAnSCT3EBh454WqrvMQZY0Ou0NLMjVtC-FN-PErKYIHUK0YTh4lO&s=10",
+                description: "Carte cadeau Netflix de $25. Parfaite pour découvrir Netflix ou offrir en cadeau."
+            },
+            { 
+                id: 'netflix-premium', 
+                name: "Netflix Premium 1 Mois", 
+                price: 15.00, 
+                category: "streaming", 
+                provider: "Netflix",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcJUTGiA2quh6dFmWbb2RHPegACkijU_EaoydQY7_kVrdVgFPXPdP1BH_u&s=10",
+                featured: true,
+                description: "Abonnement Netflix Premium 1 mois. 4 écrans simultanés, Ultra HD.",
+                requiresAccount: true
+            },
+
+            // Amazon Gift Cards - Toutes les valeurs demandées
+            { 
+                id: 'amazon-10', 
+                name: "Carte Cadeau Amazon $10", 
+                price: 10.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                featured: true,
+                description: "Carte cadeau Amazon $10 - Réception instantanée. Parfaite pour petits achats."
+            },
+            { 
+                id: 'amazon-15', 
+                name: "Carte Cadeau Amazon $15", 
+                price: 15.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                description: "Carte cadeau Amazon $15 - Paiement sécurisé. Idéale pour les applications."
+            },
+            { 
+                id: 'amazon-25', 
+                name: "Carte Cadeau Amazon $25", 
+                price: 25.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                featured: true,
+                description: "Carte cadeau Amazon $25. Parfaite pour les jeux et applications premium."
+            },
+            { 
+                id: 'amazon-50', 
+                name: "Carte Cadeau Amazon $50", 
+                price: 50.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                featured: true,
+                description: "Carte cadeau Amazon $50. Excellente valeur pour les gros achats."
+            },
+            { 
+                id: 'amazon-100', 
+                name: "Carte Cadeau Amazon $100", 
+                price: 100.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                description: "Carte cadeau Amazon $100. Le choix parfait pour les cadeaux importants."
+            },
+            { 
+                id: 'amazon-150', 
+                name: "Carte Cadeau Amazon $150", 
+                price: 150.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                description: "Carte cadeau Amazon $150. Valeur premium pour les grands projets."
+            },
+            { 
+                id: 'amazon-200', 
+                name: "Carte Cadeau Amazon $200", 
+                price: 200.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                description: "Carte cadeau Amazon $200. Le cadeau ultime pour les passionnés."
+            },
+            { 
+                id: 'amazon-260', 
+                name: "Carte Cadeau Amazon $260", 
+                price: 260.00, 
+                category: "gift-cards", 
+                provider: "Amazon",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F17081354%2FAmazon-DE.png&w=1920&q=100",
+                description: "Carte cadeau Amazon $260. La plus grande valeur disponible."
+            },
+
+            // Google Play Gift Cards - Toutes les valeurs demandées
+            { 
+                id: 'google-play-5', 
+                name: "Carte Google Play $5", 
+                price: 5.00, 
+                category: "gift-cards", 
+                provider: "Google Play",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F11151316%2FGoogle-Play-LL-New.png&w=1080&q=100",
+                description: "Carte Google Play $5. Parfaite pour les petites applications et jeux."
+            },
+            { 
+                id: 'google-play-25', 
+                name: "Carte Google Play $25", 
+                price: 25.00, 
+                category: "gift-cards", 
+                provider: "Google Play",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F11151316%2FGoogle-Play-LL-New.png&w=1080&q=100",
+                featured: true,
+                description: "Carte Google Play $25. Idéale pour les jeux et applications premium."
+            },
+            { 
+                id: 'google-play-50', 
+                name: "Carte Google Play $50", 
+                price: 50.00, 
+                category: "gift-cards", 
+                provider: "Google Play",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F11151316%2FGoogle-Play-LL-New.png&w=1080&q=100",
+                featured: true,
+                description: "Carte Google Play $50. Excellente valeur pour le divertissement mobile."
+            },
+            { 
+                id: 'google-play-100', 
+                name: "Carte Google Play $100", 
+                price: 100.00, 
+                category: "gift-cards", 
+                provider: "Google Play",
+                image: "https://www.recharge.fr/_next/image?url=https%3A%2F%2Fstatic.rapido.com%2Fcms%2Fsites%2F24%2F2024%2F07%2F11151316%2FGoogle-Play-LL-New.png&w=1080&q=100",
+                description: "Carte Google Play $100. Le choix parfait pour les grands projets."
+            },
+
+            // Disney+ Products
+            { 
+                id: 'disney-plus-basic', 
+                name: "Disney+ Basic 1 Mois", 
+                price: 7.99, 
+                category: "streaming", 
+                provider: "Disney+",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsx_-z7UbqxBjyolaDRGujAeEOi82HerPLhcFkaLmtYg&s",
+                featured: true,
+                description: "Abonnement Disney+ Basic 1 mois. Streaming avec publicités. Films Disney, Marvel, Star Wars.",
+                requiresAccount: true
+            },
+            { 
+                id: 'disney-plus-premium', 
+                name: "Disney+ Premium 1 Mois", 
+                price: 13.99, 
+                category: "streaming", 
+                provider: "Disney+",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsx_-z7UbqxBjyolaDRGujAeEOi82HerPLhcFkaLmtYg&s",
+                featured: true,
+                description: "Abonnement Disney+ Premium 1 mois. Sans publicités, 4 écrans simultanés, téléchargements.",
+                requiresAccount: true
+            },
+
+            // HBO Max Products
+            { 
+                id: 'hbo-max-1month', 
+                name: "HBO Max 1 Mois", 
+                price: 9.99, 
+                category: "streaming", 
+                provider: "HBO Max",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr3xT_uGTwZ1XxlWrj8V5J_Dn6_frrnqGPStgGWlulvg&s=10",
+                featured: true,
+                description: "Abonnement HBO Max 1 mois. Toutes les séries HBO, films Warner Bros et contenu exclusif.",
+                requiresAccount: true
+            },
+
+            // Spotify Premium Products
+            { 
+                id: 'spotify-1month', 
+                name: "Spotify Premium 1 Mois", 
+                price: 9.99, 
+                category: "streaming", 
+                provider: "Spotify",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3x2YZ8ZkXbIqQ8WqpPnO8z57uc3nW4taEhrvZVqAOKJYx7dOss0tAkrno&s=10",
+                featured: true,
+                description: "Spotify Premium 1 mois. Musique sans publicités, téléchargements hors ligne.",
+                requiresAccount: true
+            },
+
+            // Steam Products
+            { 
+                id: 'steam-5', 
+                name: "Carte Steam $5", 
+                price: 5.00, 
+                category: "gaming", 
+                provider: "Steam",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVW8D2kb3KplGwG5KeS2GiazzlV17zLuzgranVyFkA4lgqa9zLvXpq_EM&s=10",
+                description: "Carte cadeau Steam $5. Parfaite pour les petits achats ou DLC."
+            },
+            { 
+                id: 'steam-20', 
+                name: "Carte Steam $20", 
+                price: 20.00, 
+                category: "gaming", 
+                provider: "Steam",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVW8D2kb3KplGwG5KeS2GiazzlV17zLuzgranVyFkA4lgqa9zLvXpq_EM&s=10",
+                featured: true,
+                description: "Carte cadeau Steam $20. Achetez des jeux, DLC, et plus sur la plateforme Steam."
+            },
+
+            // Mobile Recharges - Natcom Haïti
+            { 
+                id: 'natcom-500', 
+                name: "Recharge Natcom 500 HTG", 
+                price: 4.99, 
+                category: "mobile-recharge", 
+                provider: "Natcom",
+                country: "Haiti",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn6F4vNzLDtKst30ytCn-kQ8QD0HzJxyijV6PFOA3Wgg&s=10",
+                featured: true,
+                description: "Recharge Natcom de 500 gourdes haïtiennes. Crédit d'appel pour téléphones Natcom en Haïti."
+            },
+            { 
+                id: 'natcom-1000', 
+                name: "Recharge Natcom 1000 HTG", 
+                price: 9.99, 
+                category: "mobile-recharge", 
+                provider: "Natcom",
+                country: "Haiti",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn6F4vNzLDtKst30ytCn-kQ8QD0HzJxyijV6PFOA3Wgg&s=10",
+                featured: true,
+                description: "Recharge Natcom de 1000 gourdes haïtiennes. Idéale pour l'utilisation quotidienne."
+            },
+
+            // Autres produits gaming
+            { 
+                id: 'playstation-10', 
+                name: "Carte PSN $10", 
+                price: 10.00, 
+                category: "gaming", 
+                provider: "PlayStation",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK1Q7X7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q&s=10",
+                description: "Carte PlayStation Network $10. Pour PlayStation Store."
+            },
+            { 
+                id: 'xbox-10', 
+                name: "Carte Xbox $10", 
+                price: 10.00, 
+                category: "gaming", 
+                provider: "Xbox",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK1Q7X7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q7Q&s=10",
+                description: "Carte Xbox $10. Pour Microsoft Store et jeux Xbox."
+            }
+        ];
 
         // Pattern d'état centralisé
         const AppState = {
@@ -1534,7 +2924,11 @@
             user: JSON.parse(localStorage.getItem(CONFIG.localStorageKeys.user)) || null,
             currentLanguage: localStorage.getItem(CONFIG.localStorageKeys.language) || 'fr',
             currentPage: 'home',
-            products: [],
+            products: ALL_PRODUCTS,
+            selectedRegion: 'all',
+            appliedCoupon: null,
+            coupons: JSON.parse(localStorage.getItem(CONFIG.localStorageKeys.coupons)) || COUPONS,
+            exitModalShown: localStorage.getItem(CONFIG.localStorageKeys.exitModalShown) === 'true',
             
             setCart(newCart) {
                 this.cart = newCart;
@@ -1554,6 +2948,21 @@
                 this.notify('languageChanged');
             },
             
+            setSelectedRegion(region) {
+                this.selectedRegion = region;
+                this.notify('regionChanged');
+            },
+            
+            setAppliedCoupon(coupon) {
+                this.appliedCoupon = coupon;
+                this.notify('couponApplied');
+            },
+            
+            setExitModalShown(shown) {
+                this.exitModalShown = shown;
+                localStorage.setItem(CONFIG.localStorageKeys.exitModalShown, shown.toString());
+            },
+            
             observers: {},
             
             subscribe(event, callback) {
@@ -1568,789 +2977,349 @@
             }
         };
 
-        // Sample product data (fallback) avec TOUS les produits
-        const FALLBACK_PRODUCTS = [
-            // Mobile Recharges - Digicel
-            { 
-                id: '1', 
-                name: "Recharge Digicel $10", 
-                price: 10.00, 
-                category: "mobile-recharge", 
-                provider: "Digicel",
-                country: "Haiti",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkON3sykRlMmo7x_SaGu1IObqHF96cNYx1EsP_eNz2g&s",
-                featured: true,
-                description: "Recharge de $10 pour téléphones Digicel. Parfait pour les appels, SMS et données. Livraison instantanée."
-            },
-            { 
-                id: '2', 
-                name: "Recharge Digicel 1000 HTG", 
-                price: 7.50, 
-                category: "mobile-recharge", 
-                provider: "Digicel",
-                country: "Haiti",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVkON3sykRlMmo7x_SaGu1IObqHF96cNYx1EsP_eNz2g&s",
-                description: "Recharge Digicel de 1000 gourdes haïtiennes. Idéale pour l'utilisation locale en Haïti."
-            },
-            
-            // Mobile Recharges - Claro
-            { 
-                id: '3', 
-                name: "Recharge Claro $10", 
-                price: 10.00, 
-                category: "mobile-recharge", 
-                provider: "Claro",
-                country: "Dominican Republic",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6UtGNmrsBQz0-uk2DVyDA6egaiCLlwVFMONlGFkwyjg&s",
-                featured: true,
-                description: "Recharge Claro de $10. Couverture nationale et internationale. Livraison instantanée par SMS ou email."
-            },
-            { 
-                id: '4', 
-                name: "Recharge Claro 500 DOP", 
-                price: 8.50, 
-                category: "mobile-recharge", 
-                provider: "Claro",
-                country: "Dominican Republic",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6UtGNmrsBQz0-uk2DVyDA6egaiCLlwVFMONlGFkwyjg&s",
-                featured: true,
-                description: "Recharge Claro de 500 pesos dominicains. Parfaite pour les appels locaux et l'utilisation de données en République Dominicaine."
-            },
-            
-            // Mobile Recharges - Viva
-            { 
-                id: '5', 
-                name: "Recharge Viva $10", 
-                price: 10.00, 
-                category: "mobile-recharge", 
-                provider: "Viva",
-                country: "Dominican Republic",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBzcZxGIXU4joqhuuJ1dq5GkfdFmgz5yySOI3OfT4TQ&s",
-                featured: true,
-                description: "Recharge Viva de $10. Opérateur mobile en Amérique latine. Couverture internationale étendue."
-            },
-            { 
-                id: '6', 
-                name: "Recharge Viva 500 DOP", 
-                price: 8.50, 
-                category: "mobile-recharge", 
-                provider: "Viva",
-                country: "Dominican Republic",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmBzcZxGIXU4joqhuuJ1dq5GkfdFmgz5yySOI3OfT4TQ&s",
-                description: "Recharge Viva de 500 pesos dominicains. Excellente couverture en République Dominicaine et destinations internationales."
-            },
-            
-            // Mobile Recharges - Altice
-            { 
-                id: '7', 
-                name: "Recharge Altice $10", 
-                price: 10.00, 
-                category: "mobile-recharge", 
-                provider: "Altice",
-                country: "Dominican Republic",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdNOPx8pqH6vZ2lkCwh6mU4vm1LaYM9XFK_USZ8EuCuqj30c0WvhE0tTeP&s",
-                featured: true,
-                description: "Recharge Altice de $10. Pour les utilisateurs en République Dominicaine et autres pays. Services voix et données."
-            },
-            { 
-                id: '8', 
-                name: "Recharge Altice 500 DOP", 
-                price: 8.50, 
-                category: "mobile-recharge", 
-                provider: "Altice",
-                country: "Dominican Republic",
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdNOPx8pqH6vZ2lkCwh6mU4vm1LaYM9XFK_USZ8EuCuqj30c0WvhE0tTeP&s",
-                description: "Recharge Altice de 500 pesos dominicains. Idéale pour l'utilisation locale avec une excellente couverture réseau."
-            },
-            
-            // Streaming - Netflix
-            { 
-                id: '9', 
-                name: "Netflix Premium 1 Mois", 
-                price: 15.00, 
-                category: "streaming", 
-                provider: "Netflix",
-                icon: "fab fa-netflix", 
-                featured: true,
-                description: "Abonnement Netflix Premium 1 mois. 4 écrans simultanés, Ultra HD. Compte privé avec vos identifiants.",
-                requiresAccount: true
-            },
-            
-            // Streaming - Other
-            { 
-                id: '10', 
-                name: "Disney+ 1 Mois", 
-                price: 9.99, 
-                category: "streaming", 
-                provider: "Disney",
-                icon: "fab fa-disney", 
-                featured: true,
-                description: "Abonnement Disney+ 1 mois. Films Disney, Marvel, Star Wars et National Geographic."
-            },
-            
-            // Gaming
-            { 
-                id: '11', 
-                name: "Carte Steam $20", 
-                price: 20.00, 
-                category: "gaming", 
-                provider: "Steam",
-                icon: "fab fa-steam", 
-                featured: true,
-                description: "Carte cadeau Steam $20. Achetez des jeux, DLC, et plus sur la plateforme Steam."
-            },
-            
-            // Gift Cards
-            { 
-                id: '12', 
-                name: "Carte Amazon $25", 
-                price: 25.00, 
-                category: "gift-cards", 
-                provider: "Amazon",
-                icon: "fab fa-amazon", 
-                featured: true,
-                description: "Carte cadeau Amazon $25. Achetez des millions de produits sur Amazon.com."
-            }
-        ];
-
         let currentProductId = null;
+        let countdownInterval;
 
         // Initialize the app
-        async function init() {
-            try {
-                await loadProductsFromBack4App();
-            } catch (error) {
-                console.error('Error loading from Back4App:', error);
-                // Use fallback products
-                AppState.products = FALLBACK_PRODUCTS;
-                showAlert('alert_error', 'error');
-            }
-            
-            // Set initial language
-            updateLanguage();
-            
+        function init() {
+            loadFreeFireProducts();
             loadFeaturedProducts();
             loadAllProducts();
+            loadCoupons();
             updateCartCount();
             setupEventListeners();
+            setupExitIntent();
+            startCountdown();
             
             // Subscribe to state changes
             AppState.subscribe('cartUpdated', updateCartCount);
             AppState.subscribe('cartUpdated', loadCart);
-            AppState.subscribe('languageChanged', updateLanguage);
-        }
-
-        // Language functions
-        function toggleLanguageDropdown() {
-            const dropdown = document.getElementById('language-dropdown');
-            dropdown.classList.toggle('show');
-        }
-
-        function changeLanguage(language) {
-            AppState.setLanguage(language);
-            document.getElementById('language-dropdown').classList.remove('show');
-        }
-
-        function updateLanguage() {
-            const language = AppState.currentLanguage;
-            const languageNames = { 'fr': 'FR', 'ht': 'HT', 'es': 'ES' };
-            document.getElementById('current-language').textContent = languageNames[language];
+            AppState.subscribe('regionChanged', loadFreeFireProducts);
+            AppState.subscribe('couponApplied', loadCart);
             
-            // Update all translatable elements
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (TRANSLATIONS[language] && TRANSLATIONS[language][key]) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                        element.placeholder = TRANSLATIONS[language][key];
-                    } else if (element.tagName === 'OPTION') {
-                        element.textContent = TRANSLATIONS[language][key];
-                    } else {
-                        element.textContent = TRANSLATIONS[language][key];
-                    }
-                }
+            // Initialize FAQ
+            initFAQ();
+        }
+
+        // Taptap Send Function
+        function openTaptapSend() {
+            // Open Taptap Send website
+            window.open('https://taptapsend.com', '_blank');
+            
+            // Show success message with promo code
+            showAlert('Code promo CARLINE326 copié! Utilisez-le sur Taptap Send pour votre bonus.', 'success');
+            
+            // Copy promo code to clipboard
+            navigator.clipboard.writeText('CARLINE326').then(() => {
+                console.log('Code promo copié dans le presse-papier');
             });
+        }
+
+        // Product Loading Functions
+        function loadFreeFireProducts() {
+            const container = document.getElementById('freefire-products');
+            const region = AppState.selectedRegion;
             
-            // Update dynamic content
-            loadFeaturedProducts();
-            loadAllProducts();
-            if (AppState.currentPage === 'cart') {
-                loadCart();
-            }
-        }
-
-        function translate(key) {
-            return TRANSLATIONS[AppState.currentLanguage]?.[key] || key;
-        }
-
-        // Load products from Back4App
-        async function loadProductsFromBack4App() {
-            try {
-                const Product = Parse.Object.extend('Product');
-                const query = new Parse.Query(Product);
-                query.equalTo('active', true);
-                const results = await query.find();
-                
-                AppState.products = results.map(product => ({
-                    id: product.id,
-                    name: product.get('name'),
-                    price: product.get('price'),
-                    category: product.get('category'),
-                    provider: product.get('provider'),
-                    country: product.get('country'),
-                    icon: product.get('icon') || 'fas fa-gift',
-                    image: product.get('image'),
-                    featured: product.get('featured') || false,
-                    description: product.get('description'),
-                    requiresAccount: product.get('requiresAccount') || false
-                }));
-                
-                console.log('Products loaded from Back4App:', AppState.products.length);
-            } catch (error) {
-                console.error('Error loading products from Back4App:', error);
-                throw error;
-            }
-        }
-
-        // Save order to Back4App
-        async function saveOrderToBack4App(orderData) {
-            try {
-                const Order = Parse.Object.extend('Order');
-                const order = new Order();
-                
-                await order.save(orderData);
-                console.log('Order saved to Back4App:', order.id);
-                return order.id;
-            } catch (error) {
-                console.error('Error saving order to Back4App:', error);
-                throw error;
-            }
-        }
-
-        // Save user to Back4App
-        async function saveUserToBack4App(userData) {
-            try {
-                const User = Parse.Object.extend('User');
-                const user = new User();
-                
-                await user.save(userData);
-                console.log('User saved to Back4App:', user.id);
-                return user.id;
-            } catch (error) {
-                console.error('Error saving user to Back4App:', error);
-                throw error;
-            }
-        }
-
-        // Show specific page
-        function showPage(pageName) {
-            safeExecute(() => {
-                document.querySelectorAll('.page').forEach(page => {
-                    page.classList.remove('active');
-                });
-                document.getElementById(`${pageName}-page`).classList.add('active');
-                AppState.currentPage = pageName;
-
-                // Update navigation
-                document.querySelectorAll('.nav-links a').forEach(link => {
-                    link.classList.remove('active');
-                    if (link.textContent.includes(pageName) || (pageName === 'home' && link.textContent === translate('nav_home'))) {
-                        link.classList.add('active');
-                    }
-                });
-
-                // Load page-specific content
-                if (pageName === 'cart') {
-                    loadCart();
-                }
-
-                // Focus management for accessibility
-                setTimeout(() => {
-                    const activePage = document.getElementById(`${pageName}-page`);
-                    if (activePage) {
-                        activePage.focus();
-                    }
-                }, 100);
-            }, 'alert_error');
-        }
-
-        // Load featured products on home page
-        function loadFeaturedProducts() {
-            const container = document.getElementById('featured-products');
-            const featured = AppState.products.filter(p => p.featured);
+            const freeFireProducts = AppState.products.filter(product => 
+                product.provider === 'Free Fire' && 
+                (region === 'all' || product.region === 'all' || product.region === region)
+            );
             
-            container.innerHTML = featured.map(product => `
+            container.innerHTML = freeFireProducts.map(product => `
                 <div class="product-card">
-                    ${product.requiresAccount ? `<div class="product-badge">${translate('account_required')}</div>` : ''}
+                    ${product.featured ? `<div class="product-badge">Populaire</div>` : ''}
                     <div class="product-image">
-                        ${product.image ? 
-                            `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
-                            `<i class="${product.icon}"></i>`
-                        }
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
-                        <div class="product-description">${product.description.substring(0, 60)}...</div>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <button class="view-button" onclick="showProductDetail('${product.id}')">
-                            ${translate('view_details')}
+                        <div class="product-description">${product.description}</div>
+                        <div class="product-price">
+                            ${product.originalPrice ? `
+                                <span class="price-old">$${product.originalPrice.toFixed(2)}</span>
+                                <span class="price-discount">-$${product.discount.toFixed(2)}</span>
+                                <br>
+                            ` : ''}
+                            $${product.price.toFixed(2)}
+                        </div>
+                        <button class="view-button" onclick="addToCart('${product.id}')">
+                            Ajouter au Panier
                         </button>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Load all products on products page
+        function loadFeaturedProducts() {
+            const container = document.getElementById('featured-products');
+            const featuredProducts = AppState.products.filter(product => product.featured);
+            
+            container.innerHTML = featuredProducts.map(product => `
+                <div class="product-card">
+                    ${product.requiresAccount ? `<div class="product-badge">Compte requis</div>` : ''}
+                    <div class="product-image">
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
+                            `<i class="fas fa-gift"></i>`
+                        }
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <div class="product-description">${product.description}</div>
+                        <div class="product-price">
+                            ${product.originalPrice ? `
+                                <span class="price-old">$${product.originalPrice.toFixed(2)}</span>
+                                <span class="price-discount">-$${product.discount.toFixed(2)}</span>
+                                <br>
+                            ` : ''}
+                            $${product.price.toFixed(2)}
+                        </div>
+                        <button class="view-button" onclick="showProductDetail('${product.id}')">
+                            Voir Détails
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         function loadAllProducts() {
             const container = document.getElementById('all-products');
             
             container.innerHTML = AppState.products.map(product => `
                 <div class="product-card">
-                    ${product.requiresAccount ? `<div class="product-badge">${translate('account_required')}</div>` : ''}
+                    ${product.requiresAccount ? `<div class="product-badge">Compte requis</div>` : ''}
                     <div class="product-image">
                         ${product.image ? 
                             `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
-                            `<i class="${product.icon}"></i>`
+                            `<i class="fas fa-gift"></i>`
                         }
                     </div>
                     <div class="product-info">
                         <h3>${product.name}</h3>
-                        <div class="product-description">${product.description.substring(0, 60)}...</div>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <div class="product-description">${product.description}</div>
+                        <div class="product-price">
+                            ${product.originalPrice ? `
+                                <span class="price-old">$${product.originalPrice.toFixed(2)}</span>
+                                <span class="price-discount">-$${product.discount.toFixed(2)}</span>
+                                <br>
+                            ` : ''}
+                            $${product.price.toFixed(2)}
+                        </div>
                         <button class="view-button" onclick="showProductDetail('${product.id}')">
-                            ${translate('view_details')}
+                            Voir Détails
                         </button>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Show product detail page
-        function showProductDetail(productId) {
-            console.log('Showing product detail for:', productId);
+        // Cart Functions
+        function addToCart(productId) {
             const product = AppState.products.find(p => p.id === productId);
             
             if (!product) {
-                console.error('Product not found:', productId, 'Available products:', AppState.products);
-                showAlert('alert_product_not_found', 'error');
+                showAlert('Produit non trouvé', 'error');
                 return;
             }
             
-            currentProductId = productId;
-            const container = document.getElementById('product-detail-page');
+            const existingItem = AppState.cart.find(item => item.id === productId);
             
-            // Calculate fees
-            const instantDeliveryFee = CONFIG.fees.instantDelivery;
-            const transactionFee = CONFIG.fees.transaction;
-            const tax = CONFIG.fees.tax;
-            
-            container.innerHTML = `
-                <div class="section-title">
-                    <h2>${translate('product_details')}</h2>
-                </div>
-                <div class="product-detail">
-                    <div class="product-image-large">
-                        ${product.image ? 
-                            `<img src="${product.image}" alt="${product.name}">` : 
-                            `<i class="${product.icon}"></i>`
-                        }
-                    </div>
-                    <div class="product-detail-info">
-                        <h1>${product.name}</h1>
-                        <p class="product-detail-description">${product.description}</p>
-                        <div class="product-price-large">$${product.price.toFixed(2)}</div>
-                        
-                        ${product.category === 'mobile-recharge' ? generatePhoneForm(product) : ''}
-                        
-                        ${product.requiresAccount ? `
-                        <div class="account-form">
-                            <h3>${translate('account_info')}</h3>
-                            <div class="warning">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                ${translate('account_warning')}
-                            </div>
-                            <div class="form-group">
-                                <label for="account-email">${translate('account_email')}</label>
-                                <input type="email" id="account-email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="account-password">${translate('account_password')}</label>
-                                <input type="password" id="account-password" required>
-                            </div>
-                        </div>
-                        ` : ''}
-                        
-                        <div class="quantity-selector">
-                            <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
-                            <input type="number" class="quantity-input" id="product-quantity" value="1" min="1">
-                            <button class="quantity-btn" onclick="increaseQuantity()">+</button>
-                        </div>
-                        
-                        <div class="fee-breakdown">
-                            <h3>${translate('fee_breakdown')}</h3>
-                            <div class="fee-item">
-                                <span>${translate('product_price')}:</span>
-                                <span id="product-subtotal">$${product.price.toFixed(2)}</span>
-                            </div>
-                            <div class="fee-item">
-                                <span>${translate('instant_delivery')}:</span>
-                                <span>$${instantDeliveryFee.toFixed(2)}</span>
-                            </div>
-                            <div class="fee-item">
-                                <span>${translate('transaction_fee')}:</span>
-                                <span>$${transactionFee.toFixed(2)}</span>
-                            </div>
-                            <div class="fee-item">
-                                <span>${translate('taxes')}:</span>
-                                <span>$${tax.toFixed(2)}</span>
-                            </div>
-                            <div class="fee-total">
-                                <span>${translate('total')}:</span>
-                                <span id="product-total">$${(product.price + instantDeliveryFee + transactionFee + tax).toFixed(2)}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-actions">
-                            <button class="btn btn-secondary" onclick="showPage('products')">
-                                ${translate('back_to_products')}
-                            </button>
-                            <button class="btn btn-primary" onclick="addToCart('${product.id}')">
-                                ${translate('add_to_cart')}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            // Set up quantity change listeners
-            const quantityInput = document.getElementById('product-quantity');
-            quantityInput.addEventListener('change', function() {
-                if (this.value < 1) this.value = 1;
-                updateProductTotal(product);
-            });
-            
-            showPage('product-detail');
-        }
-
-        // Generate phone number form based on product country and provider
-        function generatePhoneForm(product) {
-            const country = product.country;
-            const provider = product.provider;
-            
-            if (!country || !provider || !PHONE_FORMATS[country] || !PHONE_FORMATS[country][provider]) {
-                return '';
-            }
-            
-            const phoneConfig = PHONE_FORMATS[country][provider];
-            
-            let prefixSelect = '';
-            if (phoneConfig.prefixes) {
-                prefixSelect = `
-                    <div class="form-group">
-                        <label for="phone-prefix">${translate('phone_prefix')}</label>
-                        <select id="phone-prefix" required>
-                            <option value="">${translate('choose_prefix')}</option>
-                            ${phoneConfig.prefixes.map(prefix => `<option value="${prefix}">${prefix}</option>`).join('')}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone-number">${translate('phone_number')} (${translate('phone_prefix')})</label>
-                        <input type="tel" id="phone-number" placeholder="2345678" pattern="[0-9]{7}" required>
-                    </div>
-                `;
+            if (existingItem) {
+                existingItem.quantity += 1;
             } else {
-                prefixSelect = `
-                    <div class="form-group">
-                        <label for="phone-number">${translate('phone_number')}</label>
-                        <input type="tel" id="phone-number" placeholder="${phoneConfig.placeholder}" required>
-                    </div>
-                `;
+                AppState.cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    image: product.image,
+                    requiresAccount: product.requiresAccount
+                });
             }
             
-            return `
-                <div class="phone-form">
-                    <h3>${translate('phone_title')}</h3>
-                    <div class="phone-format">
-                        <strong>${translate('phone_required_format')}:</strong> ${phoneConfig.format}<br>
-                        <strong>${translate('phone_example')}:</strong> ${phoneConfig.example}
-                    </div>
-                    ${prefixSelect}
-                    <div class="warning">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        ${translate('phone_warning')}
-                    </div>
-                </div>
-            `;
+            AppState.setCart([...AppState.cart]);
+            showAlert('Produit ajouté au panier!', 'success');
         }
 
-        // Validate phone number based on country and provider
-        function validatePhoneNumber(phoneNumber, product) {
-            const country = product.country;
-            const provider = product.provider;
+        function addAllFreeFireToCart() {
+            const region = AppState.selectedRegion;
+            const freeFireProducts = AppState.products.filter(product => 
+                product.provider === 'Free Fire' && 
+                (region === 'all' || product.region === 'all' || product.region === region)
+            );
             
-            if (!country || !provider || !PHONE_FORMATS[country] || !PHONE_FORMATS[country][provider]) {
-                return true; // Skip validation if no format defined
-            }
+            let addedCount = 0;
             
-            const phoneConfig = PHONE_FORMATS[country][provider];
-            
-            // For Dominican Republic, combine prefix and number
-            if (phoneConfig.prefixes) {
-                const prefix = document.getElementById('phone-prefix').value;
-                const number = document.getElementById('phone-number').value;
-                if (!prefix || !number) {
-                    return false;
-                }
-                phoneNumber = prefix + number;
-            }
-            
-            return phoneConfig.pattern.test(phoneNumber);
-        }
-
-        // Get formatted phone number for display
-        function getFormattedPhoneNumber(product) {
-            const country = product.country;
-            const provider = product.provider;
-            
-            if (!country || !provider || !PHONE_FORMATS[country] || !PHONE_FORMATS[country][provider]) {
-                return '';
-            }
-            
-            const phoneConfig = PHONE_FORMATS[country][provider];
-            
-            if (phoneConfig.prefixes) {
-                const prefix = document.getElementById('phone-prefix').value;
-                const number = document.getElementById('phone-number').value;
-                if (!prefix || !number) {
-                    return '';
-                }
-                
-                // Format as XXX XXX XXXX
-                const formattedNumber = number.replace(/(\d{3})(\d{4})/, '$1 $2');
-                return `${prefix} ${formattedNumber}`;
-            } else {
-                const number = document.getElementById('phone-number').value;
-                // Format as +509 XX XX XXXX
-                return number.replace(/(\d{2})(\d{2})(\d{4})/, '$1 $2 $3');
-            }
-        }
-
-        // Update product total when quantity changes
-        function updateProductTotal(product) {
-            const quantity = parseInt(document.getElementById('product-quantity').value);
-            const instantDeliveryFee = CONFIG.fees.instantDelivery;
-            const transactionFee = CONFIG.fees.transaction;
-            const tax = CONFIG.fees.tax;
-            
-            const subtotal = product.price * quantity;
-            const total = subtotal + instantDeliveryFee + transactionFee + tax;
-            
-            document.getElementById('product-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('product-total').textContent = `$${total.toFixed(2)}`;
-        }
-
-        // Quantity controls
-        function decreaseQuantity() {
-            const quantityInput = document.getElementById('product-quantity');
-            if (quantityInput.value > 1) {
-                quantityInput.value = parseInt(quantityInput.value) - 1;
-                const product = AppState.products.find(p => p.id === currentProductId);
-                updateProductTotal(product);
-            }
-        }
-
-        function increaseQuantity() {
-            const quantityInput = document.getElementById('product-quantity');
-            quantityInput.value = parseInt(quantityInput.value) + 1;
-            const product = AppState.products.find(p => p.id === currentProductId);
-            updateProductTotal(product);
-        }
-
-        // Filter products by category
-        function filterProducts(category) {
-            showPage('products');
-            const container = document.getElementById('all-products');
-            const filtered = category === 'all' ? AppState.products : AppState.products.filter(p => p.category === category);
-            
-            container.innerHTML = filtered.map(product => `
-                <div class="product-card">
-                    ${product.requiresAccount ? `<div class="product-badge">${translate('account_required')}</div>` : ''}
-                    <div class="product-image">
-                        ${product.image ? 
-                            `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
-                            `<i class="${product.icon}"></i>`
-                        }
-                    </div>
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <div class="product-description">${product.description.substring(0, 60)}...</div>
-                        <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <button class="view-button" onclick="showProductDetail('${product.id}')">
-                            ${translate('view_details')}
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Add product to cart
-        function addToCart(productId) {
-            safeExecute(() => {
-                const product = AppState.products.find(p => p.id === productId);
-                if (!product) {
-                    showAlert('alert_product_not_found', 'error');
-                    return;
-                }
-                
-                const quantity = document.getElementById('product-quantity') ? 
-                    parseInt(document.getElementById('product-quantity').value) : 1;
-                
-                // For mobile recharges, validate phone number
-                let phoneNumber = '';
-                if (product.category === 'mobile-recharge') {
-                    if (!validatePhoneNumber('', product)) {
-                        showAlert('alert_invalid_phone', 'error');
-                        return;
-                    }
-                    phoneNumber = getFormattedPhoneNumber(product);
-                    if (!phoneNumber) {
-                        showAlert('alert_invalid_phone', 'error');
-                        return;
-                    }
-                }
-                
-                // For Netflix accounts, validate account info
-                if (product.requiresAccount) {
-                    const accountEmail = document.getElementById('account-email');
-                    const accountPassword = document.getElementById('account-password');
-                    
-                    if (!accountEmail.value || !accountPassword.value) {
-                        showAlert('alert_netflix_info_required', 'error');
-                        return;
-                    }
-                    
-                    if (!validateEmail(accountEmail.value)) {
-                        showAlert('alert_invalid_email', 'error');
-                        return;
-                    }
-                }
-                
-                const existingItem = AppState.cart.find(item => item.id === productId);
+            freeFireProducts.forEach(product => {
+                const existingItem = AppState.cart.find(item => item.id === product.id);
                 
                 if (existingItem) {
-                    existingItem.quantity += quantity;
+                    existingItem.quantity += 1;
                 } else {
                     AppState.cart.push({
                         id: product.id,
                         name: product.name,
                         price: product.price,
-                        quantity: quantity,
-                        requiresAccount: product.requiresAccount,
-                        accountEmail: product.requiresAccount ? sanitizeInput(document.getElementById('account-email').value) : null,
-                        accountPassword: product.requiresAccount ? '••••••••' : null,
-                        phoneNumber: product.category === 'mobile-recharge' ? phoneNumber : null
+                        quantity: 1,
+                        image: product.image
                     });
+                    addedCount++;
                 }
-                
-                AppState.setCart([...AppState.cart]);
-                showAlert('alert_product_added', 'success');
-                
-                // Return to products page after adding to cart
-                setTimeout(() => {
-                    showPage('products');
-                }, 1500);
-            }, 'alert_error');
+            });
+            
+            AppState.setCart([...AppState.cart]);
+            showAlert(`${addedCount} produits Free Fire ajoutés au panier!`, 'success');
         }
 
-        // Load cart page
-        function loadCart() {
-            const container = document.getElementById('cart-items');
+        // Coupon Functions
+        function loadCoupons() {
+            const container = document.getElementById('coupon-grid');
+            const availableCoupons = Object.values(AppState.coupons).filter(coupon => 
+                new Date(coupon.expiry) > new Date()
+            );
             
-            if (AppState.cart.length === 0) {
-                container.innerHTML = `<p style="text-align: center; padding: 2rem;">${translate('cart_empty')}</p>`;
-                return;
-            }
-            
-            let total = 0;
-            const instantDeliveryFee = CONFIG.fees.instantDelivery;
-            const transactionFee = CONFIG.fees.transaction;
-            const tax = CONFIG.fees.tax;
-            
-            container.innerHTML = AppState.cart.map(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                
-                return `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <h4>${item.name}</h4>
-                            ${item.requiresAccount ? `<p><small>${translate('account_info')}: ${item.accountEmail}</small></p>` : ''}
-                            ${item.phoneNumber ? `<p><small>${translate('phone_number')}: ${item.phoneNumber}</small></p>` : ''}
-                            <div class="cart-item-quantity">
-                                <button onclick="updateCartQuantity('${item.id}', ${item.quantity - 1})">-</button>
-                                <span>${translate('quantity')}: ${item.quantity}</span>
-                                <button onclick="updateCartQuantity('${item.id}', ${item.quantity + 1})">+</button>
-                            </div>
+            container.innerHTML = availableCoupons.map(coupon => `
+                <div class="coupon-card">
+                    <div class="coupon-percentage">${coupon.discount}% DE RÉDUCTION</div>
+                    <div class="coupon-description">
+                        ${coupon.description}<br>
+                        ${coupon.partner ? `Partenaire: ${coupon.partner}<br>` : ''}
+                        Valable pour les commandes supérieures à $${coupon.minOrder.toFixed(2)}<br>
+                        ${coupon.forNewUsers ? 'Coupon de réduction pour les nouveaux utilisateurs' : 'Coupon disponible pour tous'}
+                    </div>
+                    <div class="coupon-expiry">
+                        Expire dans ${Math.ceil((new Date(coupon.expiry) - new Date()) / (1000 * 60 * 60 * 24))} jours
+                    </div>
+                    <div class="countdown-timer" id="countdown-${coupon.code}">
+                        <div class="countdown-unit">
+                            <div class="countdown-number">00</div>
+                            <div class="countdown-label">Jours</div>
                         </div>
-                        <div>
-                            <strong>$${itemTotal.toFixed(2)}</strong>
-                            <button onclick="removeFromCart('${item.id}')" style="background: none; border: none; color: var(--error); cursor: pointer; margin-left: 1rem;">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                        <div class="countdown-unit">
+                            <div class="countdown-number">00</div>
+                            <div class="countdown-label">Heures</div>
                         </div>
-                    </div>
-                `;
-            }).join('');
-            
-            const totalWithFees = total + instantDeliveryFee + transactionFee + tax;
-            
-            container.innerHTML += `
-                <div class="fee-breakdown">
-                    <h3>${translate('fee_breakdown')}</h3>
-                    <div class="fee-item">
-                        <span>${translate('subtotal')}:</span>
-                        <span>$${total.toFixed(2)}</span>
-                    </div>
-                    <div class="fee-item">
-                        <span>${translate('instant_delivery')}:</span>
-                        <span>$${instantDeliveryFee.toFixed(2)}</span>
-                    </div>
-                    <div class="fee-item">
-                        <span>${translate('transaction_fee')}:</span>
-                        <span>$${transactionFee.toFixed(2)}</span>
-                    </div>
-                    <div class="fee-item">
-                        <span>${translate('taxes')}:</span>
-                        <span>$${tax.toFixed(2)}</span>
-                    </div>
-                    <div class="fee-total">
-                        <span>${translate('total')}:</span>
-                        <span>$${totalWithFees.toFixed(2)}</span>
+                        <div class="countdown-unit">
+                            <div class="countdown-number">00</div>
+                            <div class="countdown-label">Minutes</div>
+                        </div>
                     </div>
                 </div>
-            `;
+            `).join('');
         }
 
-        // Update item quantity in cart
-        function updateCartQuantity(productId, newQuantity) {
-            if (newQuantity < 1) {
-                removeFromCart(productId);
+        function applyCoupon() {
+            const couponCode = document.getElementById('coupon-code').value.toUpperCase();
+            const messageContainer = document.getElementById('coupon-message');
+            
+            if (!couponCode) {
+                messageContainer.innerHTML = '<p style="color: var(--error);">Veuillez entrer un code coupon</p>';
                 return;
             }
             
-            const item = AppState.cart.find(item => item.id === productId);
-            if (item) {
-                item.quantity = newQuantity;
-                AppState.setCart([...AppState.cart]);
+            const coupon = AppState.coupons[couponCode];
+            
+            if (!coupon) {
+                messageContainer.innerHTML = '<p style="color: var(--error);">Code coupon invalide</p>';
+                return;
             }
+            
+            if (new Date(coupon.expiry) < new Date()) {
+                messageContainer.innerHTML = '<p style="color: var(--error);">Ce coupon a expiré</p>';
+                return;
+            }
+            
+            const subtotal = AppState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (subtotal < coupon.minOrder) {
+                messageContainer.innerHTML = `<p style="color: var(--error);">Commande minimum de $${coupon.minOrder.toFixed(2)} requise</p>`;
+                return;
+            }
+            
+            AppState.setAppliedCoupon(coupon);
+            messageContainer.innerHTML = `<p style="color: var(--success);">Coupon appliqué! ${coupon.discount}% de réduction</p>`;
+            showAlert('Coupon appliqué avec succès!', 'success');
         }
 
-        // Remove item from cart
-        function removeFromCart(productId) {
-            AppState.setCart(AppState.cart.filter(item => item.id !== productId));
-            showAlert('alert_product_removed', 'success');
+        function calculateDiscount(subtotal) {
+            if (!AppState.appliedCoupon) return 0;
+            
+            const coupon = AppState.appliedCoupon;
+            const discountAmount = (subtotal * coupon.discount) / 100;
+            return Math.min(discountAmount, coupon.maxDiscount);
         }
 
-        // Update cart count in header
+        // Countdown Timer
+        function startCountdown() {
+            if (countdownInterval) clearInterval(countdownInterval);
+            
+            countdownInterval = setInterval(() => {
+                const expiry = new Date(Date.now() + 13 * 24 * 60 * 60 * 1000);
+                const now = new Date();
+                const diff = expiry - now;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.querySelectorAll('.countdown-timer').forEach(timer => {
+                    const dayElement = timer.querySelector('.countdown-unit:nth-child(1) .countdown-number');
+                    const hourElement = timer.querySelector('.countdown-unit:nth-child(2) .countdown-number');
+                    const minuteElement = timer.querySelector('.countdown-unit:nth-child(3) .countdown-number');
+                    
+                    if (dayElement) dayElement.textContent = days.toString().padStart(2, '0');
+                    if (hourElement) hourElement.textContent = hours.toString().padStart(2, '0');
+                    if (minuteElement) minuteElement.textContent = minutes.toString().padStart(2, '0');
+                });
+            }, 1000);
+        }
+
+        // Region Selection
+        function setupRegionSelection() {
+            document.querySelectorAll('.region-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.classList.contains('disabled')) return;
+                    
+                    document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const region = this.dataset.region;
+                    AppState.setSelectedRegion(region);
+                });
+            });
+        }
+
+        // Exit Intent Modal
+        function setupExitIntent() {
+            let mouseY = 0;
+            
+            document.addEventListener('mouseout', (e) => {
+                if (!e.relatedTarget && e.clientY < 50 && !AppState.exitModalShown) {
+                    showExitModal();
+                }
+            });
+        }
+
+        function showExitModal() {
+            document.getElementById('exit-modal').classList.add('show');
+            AppState.setExitModalShown(true);
+        }
+
+        function closeExitModal() {
+            document.getElementById('exit-modal').classList.remove('show');
+        }
+
+        // FAQ Functions
+        function initFAQ() {
+            // FAQ items are already in the HTML, just need to handle clicks
+        }
+
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+
+        // Utility Functions
         function updateCartCount() {
             const totalItems = AppState.cart.reduce((sum, item) => sum + item.quantity, 0);
             document.querySelectorAll('.cart-count').forEach(el => {
@@ -2358,9 +3327,7 @@
             });
         }
 
-        // Show alert message
-        function showAlert(messageKey, type) {
-            const message = translate(messageKey);
+        function showAlert(message, type) {
             const alert = document.createElement('div');
             alert.className = `alert alert-${type}`;
             alert.textContent = message;
@@ -2371,124 +3338,306 @@
             }, 3000);
         }
 
-        // Utility functions
-        function validateEmail(email) {
-            const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        function sanitizeInput(input) {
-            const div = document.createElement('div');
-            div.textContent = input;
-            return div.innerHTML;
-        }
-
-        function safeExecute(fn, errorMessage) {
-            try {
-                return fn();
-            } catch (error) {
-                console.error(errorMessage, error);
-                showAlert('alert_error', 'error');
-                return null;
-            }
-        }
-
-        // Setup event listeners
         function setupEventListeners() {
+            setupRegionSelection();
+            
             // Mobile menu
-            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
                 const navLinks = document.querySelector('.nav-links');
                 navLinks.classList.toggle('show');
             });
 
-            // Close language dropdown when clicking outside
+            // Language dropdown
             document.addEventListener('click', function(event) {
                 const dropdown = document.getElementById('language-dropdown');
                 const button = document.querySelector('.language-btn');
+                
                 if (!button.contains(event.target) && !dropdown.contains(event.target)) {
                     dropdown.classList.remove('show');
                 }
             });
 
-            // Form submissions
-            document.getElementById('checkout-form')?.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                if (AppState.cart.length === 0) {
-                    showAlert('alert_empty_cart', 'error');
-                    return;
-                }
+            // Forms
+            document.getElementById('checkout-form')?.addEventListener('submit', handleCheckout);
+            document.getElementById('login-form')?.addEventListener('submit', handleLogin);
+            document.getElementById('signup-form')?.addEventListener('submit', handleSignup);
+            document.getElementById('support-form')?.addEventListener('submit', handleSupport);
 
-                const submitButton = this.querySelector('button[type="submit"]');
-                submitButton.classList.add('loading');
-                
-                try {
-                    // Calculate total
-                    const subtotal = AppState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                    const total = subtotal + CONFIG.fees.instantDelivery + CONFIG.fees.transaction + CONFIG.fees.tax;
+            // Filter products by category
+            window.filterProducts = function(category) {
+                showPage('products');
+                setTimeout(() => {
+                    const filteredProducts = ALL_PRODUCTS.filter(product => product.category === category);
+                    const container = document.getElementById('all-products');
                     
-                    // Prepare order data
-                    const orderData = {
-                        customerName: document.getElementById('name').value,
-                        customerEmail: document.getElementById('email').value,
-                        customerWhatsApp: document.getElementById('whatsapp').value,
-                        deliveryMethod: document.getElementById('delivery').value,
-                        items: AppState.cart,
-                        subtotal: subtotal,
-                        fees: CONFIG.fees,
-                        total: total,
-                        status: 'pending'
-                    };
-                    
-                    // Save to Back4App
-                    const orderId = await saveOrderToBack4App(orderData);
-                    
-                    showAlert('alert_order_success', 'success');
-                    AppState.setCart([]);
-                    showPage('home');
-                } catch (error) {
-                    showAlert('alert_error', 'error');
-                } finally {
-                    submitButton.classList.remove('loading');
-                }
-            });
-
-            document.getElementById('login-form')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                showAlert('alert_login_success', 'success');
-                showPage('home');
-            });
-
-            document.getElementById('signup-form')?.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const submitButton = this.querySelector('button[type="submit"]');
-                submitButton.classList.add('loading');
-                
-                try {
-                    const userData = {
-                        name: document.getElementById('signup-name').value,
-                        email: document.getElementById('signup-email').value,
-                        whatsapp: document.getElementById('signup-whatsapp').value
-                    };
-                    
-                    await saveUserToBack4App(userData);
-                    showAlert('alert_signup_success', 'success');
-                    showPage('home');
-                } catch (error) {
-                    showAlert('alert_error', 'error');
-                } finally {
-                    submitButton.classList.remove('loading');
-                }
-            });
-
-            document.getElementById('support-form')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                showAlert('alert_support_success', 'success');
-                showPage('home');
-            });
+                    container.innerHTML = filteredProducts.map(product => `
+                        <div class="product-card">
+                            ${product.requiresAccount ? `<div class="product-badge">Compte requis</div>` : ''}
+                            <div class="product-image">
+                                ${product.image ? 
+                                    `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
+                                    `<i class="fas fa-gift"></i>`
+                                }
+                            </div>
+                            <div class="product-info">
+                                <h3>${product.name}</h3>
+                                <div class="product-description">${product.description}</div>
+                                <div class="product-price">
+                                    ${product.originalPrice ? `
+                                        <span class="price-old">$${product.originalPrice.toFixed(2)}</span>
+                                        <span class="price-discount">-$${product.discount.toFixed(2)}</span>
+                                        <br>
+                                    ` : ''}
+                                    $${product.price.toFixed(2)}
+                                </div>
+                                <button class="view-button" onclick="showProductDetail('${product.id}')">
+                                    Voir Détails
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                }, 100);
+            };
         }
 
-        // Initialize the app when page loads
-        document.addEventListener('DOMContentLoaded', init);
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(`${pageId}-page`).classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Update active nav link
+            const activeLink = document.querySelector(`.nav-links a[onclick="showPage('${pageId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            // Close mobile menu
+            document.querySelector('.nav-links').classList.remove('show');
+            
+            // Update current page in state
+            AppState.currentPage = pageId;
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Product Detail Functions
+        function showProductDetail(productId) {
+            const product = AppState.products.find(p => p.id === productId);
+            if (!product) return;
+            
+            currentProductId = productId;
+            const container = document.getElementById('product-detail-page');
+            
+            container.innerHTML = `
+                <div class="product-detail">
+                    <div class="product-image-large">
+                        ${product.image ? 
+                            `<img src="${product.image}" alt="${product.name}" loading="lazy">` : 
+                            `<i class="fas fa-gift"></i>`
+                        }
+                    </div>
+                    <div class="product-detail-info">
+                        <h1>${product.name}</h1>
+                        <div class="product-detail-description">${product.description}</div>
+                        <div class="product-price-large">
+                            ${product.originalPrice ? `
+                                <span class="price-old">$${product.originalPrice.toFixed(2)}</span>
+                                <span class="price-discount">-$${product.discount.toFixed(2)}</span>
+                                <br>
+                            ` : ''}
+                            $${product.price.toFixed(2)}
+                        </div>
+                        
+                        ${product.requiresAccount ? `
+                            <div class="account-form">
+                                <h3>Informations du compte</h3>
+                                <div class="form-group">
+                                    <label for="account-email">Email du compte</label>
+                                    <input type="email" id="account-email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="account-password">Mot de passe du compte</label>
+                                    <input type="password" id="account-password" required>
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
+                            <input type="number" class="quantity-input" id="quantity" value="1" min="1">
+                            <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCartWithQuantity('${product.id}')">
+                                Ajouter au Panier
+                            </button>
+                            <button class="btn btn-secondary" onclick="showPage('products')">
+                                Retour
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            showPage('product-detail');
+        }
+
+        function updateQuantity(change) {
+            const input = document.getElementById('quantity');
+            let newValue = parseInt(input.value) + change;
+            if (newValue < 1) newValue = 1;
+            input.value = newValue;
+        }
+
+        function addToCartWithQuantity(productId) {
+            const product = AppState.products.find(p => p.id === productId);
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+            
+            if (!product) {
+                showAlert('Produit non trouvé', 'error');
+                return;
+            }
+            
+            const existingItem = AppState.cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                AppState.cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: quantity,
+                    image: product.image,
+                    requiresAccount: product.requiresAccount
+                });
+            }
+            
+            AppState.setCart([...AppState.cart]);
+            showAlert(`${quantity} ${product.name} ajouté(s) au panier!`, 'success');
+        }
+
+        // Cart Management Functions
+        function loadCart() {
+            const container = document.getElementById('cart-items');
+            const subtotal = AppState.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const discount = calculateDiscount(subtotal);
+            const total = subtotal - discount + CONFIG.fees.instantDelivery + CONFIG.fees.transaction + CONFIG.fees.tax;
+            
+            container.innerHTML = AppState.cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <div>$${item.price.toFixed(2)} × ${item.quantity}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateCartQuantity('${item.id}', -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateCartQuantity('${item.id}', 1)">+</button>
+                            <button class="btn btn-secondary" onclick="removeFromCart('${item.id}')" style="margin-left: 1rem;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div>$${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('') + `
+                <div class="cart-total">
+                    Sous-total: $${subtotal.toFixed(2)}<br>
+                    ${discount > 0 ? `Réduction: -$${discount.toFixed(2)}<br>` : ''}
+                    Livraison instantanée: $${CONFIG.fees.instantDelivery.toFixed(2)}<br>
+                    Frais de transaction: $${CONFIG.fees.transaction.toFixed(2)}<br>
+                    Taxes: $${CONFIG.fees.tax.toFixed(2)}<br>
+                    <strong>Total: $${total.toFixed(2)}</strong>
+                </div>
+            `;
+        }
+
+        function updateCartQuantity(productId, change) {
+            const item = AppState.cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity < 1) {
+                    AppState.cart = AppState.cart.filter(item => item.id !== productId);
+                }
+                AppState.setCart([...AppState.cart]);
+            }
+        }
+
+        function removeFromCart(productId) {
+            AppState.cart = AppState.cart.filter(item => item.id !== productId);
+            AppState.setCart([...AppState.cart]);
+            showAlert('Produit retiré du panier', 'success');
+        }
+
+        // Form Handlers
+        function handleCheckout(e) {
+            e.preventDefault();
+            
+            if (AppState.cart.length === 0) {
+                showAlert('Votre panier est vide', 'error');
+                return;
+            }
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                delivery: document.getElementById('delivery').value
+            };
+            
+            // Simulate order processing
+            showAlert('Commande passée avec succès! Vous recevrez vos codes dans quelques minutes.', 'success');
+            AppState.setCart([]);
+            showPage('home');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            showAlert('Connexion réussie!', 'success');
+            showPage('home');
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            showAlert('Compte créé avec succès!', 'success');
+            showPage('home');
+        }
+
+        function handleSupport(e) {
+            e.preventDefault();
+            showAlert('Message envoyé au support! Nous vous répondrons dans les plus brefs délais.', 'success');
+            showPage('home');
+        }
+
+        // Language Functions
+        function toggleLanguageDropdown() {
+            document.getElementById('language-dropdown').classList.toggle('show');
+        }
+
+        function changeLanguage(lang) {
+            AppState.setLanguage(lang);
+            document.getElementById('current-language').textContent = lang.toUpperCase();
+            // Add actual translation implementation
+            showAlert(`Langue changée en ${lang}`, 'success');
+            toggleLanguageDropdown();
+        }
+
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            init();
+        });
     </script>
 </body>
 </html>
